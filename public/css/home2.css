@@ -1,0 +1,18 @@
+img#mainImage1, img#mainImage2, img#mainImage3, img#mainImage4{
+  width: 100%;
+}
+
+#main-page-pics{
+  text-align: center;
+}
+
+p {
+  margin: 0;
+  color: #008CBA;
+  font-weight: bold;
+}
+
+#content h3{
+  font-family: 'David Libre', serif;
+  color:#cc6699;
+}

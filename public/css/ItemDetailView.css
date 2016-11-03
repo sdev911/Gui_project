@@ -1,0 +1,110 @@
+#content{
+  display: block;
+    width: 100%;
+}
+
+#image{
+  display: block;
+}
+
+#info{
+  display: inline-block;
+  width: 30%;
+  min-width: 470px;
+}
+
+.info{
+  display:inline-block;
+  min-width: 440px;
+}
+
+#description{
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  font-size: 2em;
+
+  margin: 0;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+   color: gold;
+}
+
+#ratings-header{
+  margin: 10px 0 0 0;
+}
+
+#add-to-cart{
+  width: 50%;
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 20px 0 20px 0;
+}
+
+#item-image{
+  width:50%;
+  max-width: 450px;
+}
+
+ul#breadcrumbs{
+  list-style: none;
+  display: block;
+  padding: 0 !important;
+}
+
+#breadcrumbs li{
+  display: inline-block;
+  font-size: 13px;
+}
+
+.info-heading{
+  display: inline-block;
+
+}
+
+#sizing{
+  display: inline;
+  font-size: 15px;
+  padding-left: 10px;
+}
+
+#sizing a{
+  color: #008CBA;
+}
+
+.product-and-info{
+  display: inline;
+}
+
+form{
+  display: inline-block;
+}
+
+input{
+  border: .5px solid grey;
+}
+
+h2{
+}
+
+#boxes{
+  width: 50%;
+  margin: 0 auto;
+  text-align: left;
+
+}

@@ -1,0 +1,91 @@
+.outfits img{
+  width: 100%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.outfits {
+  display: block;
+}
+
+.outfits li{
+  display: inline;
+  list-style: none;
+  margin: 5px;
+}
+
+.outfits ul{
+  padding: 0px !important;
+  text-align: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  min-width: 788px;
+}
+
+button#update-filters{
+  display: inline;
+  padding: 10px;
+  margin: 2px;
+  border: none;
+  background-color: #008CBA;
+  color: white;
+}
+
+button#addtocart{
+  padding: 10px;
+  margin: 2px;
+  border: none;
+  background-color: #008CBA;
+  color: white;
+}
+
+button#edit{
+  padding: 10px;
+  border: none;
+  background-color: #4faf55;
+  color: white;
+}
+button#delete{
+  padding: 10px;
+  border: none;
+  background-color: #ff5b5b;
+  color: white;
+}
+
+#filterbar {
+  padding: 10px;
+  min-width: 748px;
+  max-width: 748px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  background-color: pink;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#items {
+  margin: 0 auto;
+}
+
+div.filter{
+  display: block;
+  padding: 10px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#update-filters{
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  border: none;
+  background-color: #008CBA;
+  color: white;
+}
+
+#filterbar-header{
+  text-align: center;
+  margin: 0px !important;
+}
+

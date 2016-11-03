@@ -1,0 +1,13 @@
+label{
+  display: block;
+  margin: 10px;
+  font-weight: bold;
+}
+
+#save{
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  background-color: #008CBA;
+  color: white;
+}

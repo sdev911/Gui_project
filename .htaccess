@@ -1,0 +1,37 @@
+Options -Indexes
+
+RewriteEngine on
+
+# ErrorDocument 404 /app/controller/error.php
+
+# Site
+RewriteRule ^$ app/controller/siteController.php?action=home [QSA,L]
+RewriteRule ^contact/?$ app/controller/siteController.php?action=contact [QSA,L]
+RewriteRule ^login/process/?$ app/controller/siteController.php?action=processLogin [QSA,L]
+RewriteRule ^login/?$ app/controller/siteController.php?action=login [QSA,L]
+RewriteRule ^logout/?$ app/controller/siteController.php?action=logout [QSA,L]
+RewriteRule ^cart/?$ app/controller/siteController.php?action=cart [QSA,L]
+
+
+# Product
+RewriteRule ^itemdetailview/(\d+)/?$ app/controller/productController.php?action=itemdetailview&pid=$1 [QSA,L]
+
+RewriteRule ^outfits/?$ app/controller/productController.php?action=products&ptype=outfits [QSA,L]
+
+RewriteRule ^outfits/additem/?$ app/controller/productController.php?action=additem [QSA,L]
+
+RewriteRule ^outfits/addtocart/(\d+)/?$ app/controller/productController.php?action=addtocart&pid=$1 [QSA,L]
+
+RewriteRule ^outfits/removefromcart/(\d+)/?$ app/controller/productController.php?action=removefromcart&pid=$1 [QSA,L]
+
+RewriteRule ^outfits/additem/process/?$ app/controller/productController.php?action=additemprocess [QSA,L]
+
+RewriteRule ^itemdetailview/?$ app/controller/productController.php?action=itemdetailview [QSA,L]
+
+RewriteRule ^outfits/edit/(\d+)/process/?$ app/controller/productController.php?action=editProductProcess&pid=$1 [QSA,L]
+
+RewriteRule ^outfits/edit/(\d+)/?$ app/controller/productController.php?action=editProduct&pid=$1 [QSA,L]
+
+RewriteRule ^outfits/remove/(\d+)/process/?$ app/controller/productController.php?action=removeProductProcess&pid=$1 [QSA,L]
+
+RewriteRule ^viewcat/process/?$ app/controller/productController.php?action=viewcatprocess [QSA,L]
