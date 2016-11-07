@@ -58,7 +58,13 @@
         <?php
           if(isset($_SESSION['user'])): ?>
           <a href="<?=BASE_URL?>/outfits/edit/<?= $product->get('id') ?>"><button id="edit">Edit Item</button></a>
-          <a href="<?=BASE_URL?>/outfits/remove/<?= $product->get('id') ?>/process" onClick="return confirm('Delete This Product?')"><button id="delete">Delete Item</button></a>
+          <a href="<?=BASE_URL?>/outfits/remove/<?= $product->get('id') ?>/process" onClick="return confirm('Delete This Product?')"><button id="delete">Delete Item
+          </button></a>
+
+          <form id="comment" action="<?= BASE_URL ?>/outfits/comment/<?= $product->get('id') ?>/" method="POST">
+          <label>Comment: <input type="text" name="commentText"></label>
+          <input type="submit" name="createComment" value="Submit Comment">
+          </form>
           <?php endif; ?>
       </div>
   </div>

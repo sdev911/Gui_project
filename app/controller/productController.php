@@ -35,6 +35,11 @@ class ProductController {
 				$this->additemprocess();
 				break;
 
+			case 'comment':
+				$productID = $_GET['pid'];
+				$this->comment($productID);
+				break;
+
 			case 'itemdetailview':
 				$productID = $_GET['pid'];
 				$this->itemdetailview($productID);
@@ -111,7 +116,7 @@ public function viewcatprocess(){
 		    $description = $_POST['description'];
 		    $price = $_POST['price'];
 				$sizes = $_POST['sizes'];
-		  $q = sprintf ("INSERT INTO `products` (`tittle`, `img_url`, `description`, `price`, 'sizes') VALUES ('%s', '%s', '%s', '%d', '%s'); ", $title, $img_url, $description, $price, $sizes);
+		  $q = sprintf ("INSERT INTO `products` (`title`, `img_url`, `description`, `price`, 'sizes', `creator_id`) VALUES ('%s', '%s', '%s', '%d', '%s', '%d'); ", $title, $img_url, $description, $price, $size, $_SESSION['id']);
 		  mysql_query($q);
 		  header('Location: '.BASE_URL.'/');
 		  echo "Hello World";
@@ -255,6 +260,16 @@ public function viewcatprocess(){
 		session_start();
 		$_SESSION['msg'] = "You deleted the product called ";
 		header('Location: '.BASE_URL.'/outfits/');
+	}
+
+	public function comment($pid){
+		$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
+		      or die ('Error: Could not connect to MySql database');
+		    mysql_select_db(DB_DATABASE);
+		    $myComment = $_POST['commentText'];
+		  $q = sprintf ("INSERT INTO `comments` (`product_id`, `comment`, `creator_id`, `creator_username`) VALUES ('%d', '%s', '%d', '%s'); ", $pid, $myComment, $_SESSION['id'], $_SESSION['user']);
+		  mysql_query($q);
+		  header('Location: '.BASE_URL.'/');
 	}
 
 }

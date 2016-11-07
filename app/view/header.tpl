@@ -53,7 +53,9 @@ function isSelected($pn, $link) {
 				<li style="float:right"><a href="<?=BASE_URL?>/logout">Logout</a></li>
 				<li style="float:right"><a><?= $_SESSION['user'] ?></a></li>
 		 <?php	else: ?>
+		 		<li style="float:right"><a href="<?=BASE_URL?>/signup">Sign Up</a></li>
 				<li style="float:right"><a href="<?=BASE_URL?>/login">Login</a></li>
+
 
 
 			<?php endif; ?>

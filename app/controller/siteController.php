@@ -32,6 +32,20 @@ class SiteController {
 				$this->processLogin($username, $password);
 				break;
 
+			case 'processSignup':
+				$username = $_POST['un'];
+				$password = $_POST['pw'];
+				$confPassword = $_POST['confirmpw'];
+				$email = $_POST['email'];
+				$first_name = $_POST['fname'];
+				$last_name = $_POST['lname'];
+				$this->processSignup($username, $password, $confPassword, $email, $first_name, $last_name);
+				break;
+
+			case 'signup':
+				$this->signup();
+				break;
+
 			case 'logout':
 				$this->logout();
 				break;
@@ -104,30 +118,64 @@ class SiteController {
 			or die ('Error: Could not connect to MySql database');
 		mysql_select_db(DB_DATABASE);
 
-		$q = sprintf("SELECT * FROM user WHERE id = %d; ",
-			1
-			);
+		$q = sprintf("SELECT * FROM user");
 		$result = mysql_query($q);
 		while($row = mysql_fetch_assoc($result)) {
-			$adminUsername['username'] = $row['username'];
-			$adminPassword['password'] = $row['password'];
+			if ($p == $row['password'] && $u ==$row['username'])
+				{
+					session_start();
+					$_SESSION['user'] = $row['username'];
+					$_SESSION['id'] = $row['id'];
+					$_SESSION['msg'] = "Welcome back "+$row["first_name"]+"!";
+					header('Location: http://ec2-54-191-243-249.us-west-2.compute.amazonaws.com/');
+					exit();
+				}
 		}
-		if(($u == $adminUsername['username']) && ($p == $adminPassword['password'])) {
-			session_start();
-			$_SESSION['user'] = $u;
-			header('Location: http://ec2-54-200-33-61.us-west-2.compute.amazonaws.com/');
-			echo 'You have logged in successfully!';
-			exit();
-		// 	echo 'Hooray! Access is granted.';
-		// } else {
-		// 	echo 'Access denied.';
-		} else {
-			// send them back
-			header('Location: '.BASE_URL);
-			echo 'Login failed!';
-			exit();
-		}
+		$_SESSION['msg'] = "Login failed";
+		exit();
+	}
 
+	public function signup() {
+		$pageName = 'Sign Up';
+		$cssSheet = 'styles.css';
+		include_once SYSTEM_PATH.'/view/header.tpl';
+		include_once SYSTEM_PATH.'/view/signup.tpl';
+		include_once SYSTEM_PATH.'/view/footer.tpl';
+	}
+
+	public function processSignup($u, $p, $c, $e, $f, $l) {
+		if ($p != $c)
+		{
+			$_SESSION['msg'] = "Your password selections do not match";
+			header('Location: http://ec2-54-191-243-249.us-west-2.compute.amazonaws.com/signup/');
+			exit();
+		}
+		$host     = DB_HOST;
+		$database = DB_DATABASE;
+		$username = DB_USER;
+		$password = DB_PASS;
+
+		$conn = mysql_connect($host, $username, $password)
+			or die ('Error: Could not connect to MySql database');
+
+		mysql_select_db($database);
+		$q = sprintf("SELECT * FROM user");  //WHERE username LIKE (%s)", $u);
+		$result = mysql_query($q);
+		while($row = mysql_fetch_assoc($result))
+		{
+			if ($u == $row['username'])
+			{
+				$_SESSION['msg'] = "The username: "+$u+" is already in use.";
+				header('Location: http://ec2-54-191-243-249.us-west-2.compute.amazonaws.com/signup/');
+				exit();
+			}
+		}
+		$inserts = array('first_name' => $f,'last_name' => $l,'username' => $u,'password' => $p,'email' => $e, 'user_type' => 0);
+		$values = array_map('mysql_real_escape_string', array_values($inserts));
+		$keys = array_keys($inserts);
+		mysql_query('INSERT INTO `user` (`'.implode('`,`', $keys).'`) VALUES (\''.implode('\',\'', $values).'\')');
+		header('Location: http://ec2-54-191-243-249.us-west-2.compute.amazonaws.com/');
+		exit();
 	}
 
 }
