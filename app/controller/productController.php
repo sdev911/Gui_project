@@ -111,7 +111,7 @@ public function viewcatprocess(){
 		$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
 		      or die ('Error: Could not connect to MySql database');
 		    mysql_select_db(DB_DATABASE);
-		    $tittle = $_POST['tittle'];
+		    $title = $_POST['tittle'];
 		    $img_url = $_POST['img_url'];
 		    $description = $_POST['description'];
 		    $price = $_POST['price'];
@@ -119,7 +119,6 @@ public function viewcatprocess(){
 		  $q = sprintf ("INSERT INTO `products` (`title`, `img_url`, `description`, `price`, 'sizes', `creator_id`) VALUES ('%s', '%s', '%s', '%d', '%s', '%d'); ", $title, $img_url, $description, $price, $size, $_SESSION['id']);
 		  mysql_query($q);
 		  header('Location: '.BASE_URL.'/');
-		  echo "Hello World";
 
 		// $pageName = 'Add Item';
 		// echo 'additem';
@@ -129,6 +128,7 @@ public function viewcatprocess(){
   }
 	public function itemdetailview($id) {
 		$product = Product::loadById($id);
+		$comments = Comment::loadByProductId($id);
 		$pageName = '<?= $product->get("title") ?>';
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/itemdetailview.tpl';
@@ -152,7 +152,6 @@ public function viewcatprocess(){
 
 	public function removefromcart($id){
 		Cart::removeProduct($id);
-		session_start();
 		$_SESSION['msg'] = "You removed the from your cart called ";
 		header('Location: '.BASE_URL.'/cart/');
 	}
@@ -244,7 +243,6 @@ public function viewcatprocess(){
 		// 	echo $q;
 		// 	mysql_query($q);
 
-		session_start();
 		$_SESSION['msg'] = "You edited the product called ".$title;
 		header('Location: '.BASE_URL.'/outfits/');
 	}
@@ -257,7 +255,6 @@ public function viewcatprocess(){
 
 	public function removeProductProcess($id){
 		Product::removeProduct($id);
-		session_start();
 		$_SESSION['msg'] = "You deleted the product called ";
 		header('Location: '.BASE_URL.'/outfits/');
 	}

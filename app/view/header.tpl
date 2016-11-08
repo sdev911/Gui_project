@@ -48,7 +48,6 @@ function isSelected($pn, $link) {
 	    </li>
 			<?php
 
-			session_start();
 			if(isset($_SESSION['user'])): ?>
 				<li style="float:right"><a href="<?=BASE_URL?>/logout">Logout</a></li>
 				<li style="float:right"><a><?= $_SESSION['user'] ?></a></li>

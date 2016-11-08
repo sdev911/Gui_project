@@ -50,9 +50,15 @@ class SiteController {
 				$this->logout();
 				break;
 
-		 case 'cart':
+		 	case 'cart':
 		 		$this->cart();
 				break;
+
+			case 'follow':
+				//$userId = $_GET['userId']
+		 		//$this->follow($userId);
+				break;
+
 
 			// redirect to home page if all else fails
       default:
@@ -86,6 +92,7 @@ class SiteController {
   }
 
 	public function logout() {
+		session_destroy();
 		include_once SYSTEM_PATH.'/view/logout.tpl';
   }
 
@@ -123,7 +130,6 @@ class SiteController {
 		while($row = mysql_fetch_assoc($result)) {
 			if ($p == $row['password'] && $u ==$row['username'])
 				{
-					session_start();
 					$_SESSION['user'] = $row['username'];
 					$_SESSION['id'] = $row['id'];
 					$_SESSION['msg'] = "Welcome back "+$row["first_name"]+"!";
@@ -176,6 +182,26 @@ class SiteController {
 		mysql_query('INSERT INTO `user` (`'.implode('`,`', $keys).'`) VALUES (\''.implode('\',\'', $values).'\')');
 		header('Location: http://ec2-54-191-243-249.us-west-2.compute.amazonaws.com/');
 		exit();
+	}
+
+	public function follow($followingID)
+	{
+		$host     = DB_HOST;
+		$database = DB_DATABASE;
+		$username = DB_USER;
+		$password = DB_PASS;
+
+		$conn = mysql_connect($host, $username, $password)
+			or die ('Error: Could not connect to MySql database');
+
+		mysql_select_db($database);
+		$inserts = array('follower_id' => $_SESSION['id'],'following_id' => $followingID);
+		$values = array_map('mysql_real_escape_string', array_values($inserts));
+		$keys = array_keys($inserts);
+		$query = mysql_query('INSERT INTO `followers` (`'.implode('`,`', $keys).'`) VALUES (\''.implode('\',\'', $values).'\')');
+		echo $query;
+		//header('Location: http://ec2-54-191-243-249.us-west-2.compute.amazonaws.com/');
+		//exit();
 	}
 
 }
