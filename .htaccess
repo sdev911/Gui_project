@@ -9,8 +9,11 @@ RewriteRule ^$ app/controller/siteController.php?action=home [QSA,L]
 RewriteRule ^contact/?$ app/controller/siteController.php?action=contact [QSA,L]
 RewriteRule ^login/process/?$ app/controller/siteController.php?action=processLogin [QSA,L]
 RewriteRule ^login/?$ app/controller/siteController.php?action=login [QSA,L]
+RewriteRule ^signup/?$ app/controller/siteController.php?action=signup [QSA,L]
+RewriteRule ^signup/process/?$ app/controller/siteController.php?action=processSignup [QSA,L]
 RewriteRule ^logout/?$ app/controller/siteController.php?action=logout [QSA,L]
 RewriteRule ^cart/?$ app/controller/siteController.php?action=cart [QSA,L]
+RewriteRule ^follow/(\d+)/?$ app/controller/siteController.php?action=follow&userId=$1 [QSA,L]
 
 
 # Product
@@ -35,3 +38,5 @@ RewriteRule ^outfits/edit/(\d+)/?$ app/controller/productController.php?action=e
 RewriteRule ^outfits/remove/(\d+)/process/?$ app/controller/productController.php?action=removeProductProcess&pid=$1 [QSA,L]
 
 RewriteRule ^viewcat/process/?$ app/controller/productController.php?action=viewcatprocess [QSA,L]
+
+RewriteRule ^outfits/comment/(\d+)/?$ app/controller/productController.php?action=comment&pid=$1 [QSA,L]
