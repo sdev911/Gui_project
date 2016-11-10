@@ -58,6 +58,10 @@ class SiteController {
 				//$userId = $_GET['userId']
 		 		//$this->follow($userId);
 				break;
+				
+			case 'profile':
+				$this->profile();
+				break;
 
 
 			// redirect to home page if all else fails
@@ -73,6 +77,13 @@ class SiteController {
 		$pageName = 'Home';
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/home.tpl';
+		include_once SYSTEM_PATH.'/view/footer.tpl';
+  }
+	
+  public function profile() {
+		$pageName = 'Profile';
+		include_once SYSTEM_PATH.'/view/header.tpl';
+		include_once SYSTEM_PATH.'/view/profile.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
