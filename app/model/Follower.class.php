@@ -1,35 +1,28 @@
 <?php
 
-class Comment extends DbObject {
+class Follower extends DbObject {
     // name of database table
-    const DB_TABLE = 'comments';
+    const DB_TABLE = 'followers';
 
     // database fields
-    protected $id;
-    protected $product_id;
-    protected $comment;
-    protected $creator_id;
-    protected $creator_username;
+    protected $follower_id;
+    protected $following_id;
     protected $date_created;
 
     // constructor
     public function __construct($args = array()) {
         $defaultArgs = array(
             'id' => null,
-            'product_id' => null,
-            'comment' => '',
-            'creator_id' => null,
-            'creator_username' => '',
+            'follower_id' => null,
+            'following_id' => null,
             'date_created' => null
             );
 
         $args += $defaultArgs;
 
         $this->id = $args['id'];
-        $this->product_id = $args['product_id'];
-        $this->comment = $args['comment'];
-        $this->creator_id = $args['creator_id'];
-        $this->creator_username = $args['creator_username'];
+        $this->follower_id = $args['follower_id'];
+        $this->following_id = $args['following_id'];
         $this->date_created = $args['date_created'];
     }
 
@@ -39,10 +32,8 @@ class Comment extends DbObject {
         $db = Db::instance();
         // omit id and any timestamps
         $db_properties = array(
-            'product_id' => $this->product_id,
-            'comment' => $this->comment,
-            'creator_id' => $this->creator_id,
-            'creator_username' => $this->creator_username,
+            'follower_id' => $this->follower_id,
+            'following_id' => $this->following_id,
             );
         $db->store($this, __CLASS__, self::DB_TABLE, $db_properties);
     }
@@ -54,8 +45,8 @@ class Comment extends DbObject {
         return $obj;
     }
 
-    public static function loadByProductId($pid, $limit=null) {
-        $query = sprintf(" SELECT id FROM %s WHERE product_id=%d ORDER BY date_created DESC ", self::DB_TABLE, $pid);
+    public static function loadByFollowerId($id, $limit=null) {
+        $query = sprintf(" SELECT id FROM %s WHERE follower_id=%d ORDER BY date_created DESC ", self::DB_TABLE, $id);
         $db = Db::instance();
         $result = $db->lookup($query);
         if(!mysql_num_rows($result))
@@ -69,11 +60,8 @@ class Comment extends DbObject {
         }
     }
 
-    // load all products
-    public static function getAllComments($limit=null) {
-        $query = sprintf(" SELECT id FROM %s ORDER BY date_created DESC ",
-            self::DB_TABLE
-            );
+    public static function loadByFollowingId($id, $limit=null) {
+        $query = sprintf(" SELECT id FROM %s WHERE following_id=%d ORDER BY date_created DESC ", self::DB_TABLE, $id);
         $db = Db::instance();
         $result = $db->lookup($query);
         if(!mysql_num_rows($result))
@@ -88,9 +76,9 @@ class Comment extends DbObject {
     }
 
     //remove product
-    public function removeComment($id){
+    public function removeFollow($following_id){
       $query = sprintf(" DELETE FROM %s
-                          WHERE id=$id; ",
+                          WHERE following_id=$following_id; ",
           (string)self::DB_TABLE
           );
       $db = Db::instance();
@@ -98,13 +86,13 @@ class Comment extends DbObject {
     }
 
     //add product issues
-    public function addComment($product_id, $comment, $creator_id, $creator_username){
-      echo $product_id, "<br>", $comment, "<br>", $creator_id, "<br>", $creator_username, "<br>";
+    public function addFollow($follower_id, $following_id){
+      echo $follower_id, "<br>", $following_id, "<br>";
       /**$query = sprintf("INSERT INTO %s (`title`, `description`, `price`, `sizes`, `image_url`)
                          VALUES (%s, %s, %s, %s, %s);",
                          (string)self::DB_TABLE, $title, $desc, $sizes, $price, $img
                        );**/
-      $query = "INSERT INTO comments VALUES (DEFAULT, '$product_id', '$comment', '$creator_id', '$creator_username', DEFAULT)";
+      $query = "INSERT INTO followers VALUES (DEFAULT, '$follower_id', '$following_id', DEFAULT)";
       $db = Db::instance();
       $db->execute($query);
     }

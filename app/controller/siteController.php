@@ -55,9 +55,14 @@ class SiteController {
 				break;
 
 			case 'follow':
-				//$userId = $_GET['userId']
-		 		//$this->follow($userId);
+				$userId = $_GET['userId'];
+		 		$this->follow($userId);
 				break;
+
+			case 'myFollowers':
+		 		$this->myFollowers();
+				break;
+
 
 
 			// redirect to home page if all else fails
@@ -200,8 +205,19 @@ class SiteController {
 		$keys = array_keys($inserts);
 		$query = mysql_query('INSERT INTO `followers` (`'.implode('`,`', $keys).'`) VALUES (\''.implode('\',\'', $values).'\')');
 		echo $query;
-		//header('Location: http://ec2-54-191-243-249.us-west-2.compute.amazonaws.com/');
-		//exit();
+		header('Location: http://ec2-54-191-243-249.us-west-2.compute.amazonaws.com/');
+		exit();
+	}
+
+	public function myFollowers()
+	{
+		$followers = Follower::loadByFollowerId($_SESSION['id']);
+		$following = Follower::loadByFollowingId($_SESSION['id']);
+		include_once SYSTEM_PATH.'/view/header.tpl';
+		include_once SYSTEM_PATH.'/view/myFollowers.tpl';
+		include_once SYSTEM_PATH.'/view/footer.tpl';
+
+
 	}
 
 }
