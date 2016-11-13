@@ -4,7 +4,7 @@
   <img id="banner" src="<?=$this->getCatPic() ?>" alt="Dresses">
 
   <!--src="<?= BASE_URL ?>/public/img/DreamAloud.png"-->
-
+<!-- hello-->
   <!-- change these images -->
   <div id=shopthislook>
     <ul>
