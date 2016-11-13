@@ -70,6 +70,11 @@ ul#breadcrumbs{
 #breadcrumbs li{
   display: inline-block;
   font-size: 13px;
+  font-family: 'Lobster', cursive;
+}
+#breadcrumbs li, a{
+  text-decoration: none;
+  color:#cc6699;
 }
 
 .info-heading{
