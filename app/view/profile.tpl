@@ -5,10 +5,10 @@
 
   <title>Profile</title>
 
-  <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
-  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link href="<?= BASE_URL ?>/app/css/bootstrap.css" rel="stylesheet" type="text/css" />
+  <link href="<?= BASE_URL ?>/app/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
-  <script src="bootstrap-validator-master/dist/validator.min.js"></script>
+  <script src="<?= BASE_URL ?>/app/bootstrap-validator-master/dist/validator.min.js"></script>
 
 </head>
 <body>
