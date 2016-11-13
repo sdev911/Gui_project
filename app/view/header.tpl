@@ -46,16 +46,15 @@ function isSelected($pn, $link) {
 	    <li id="search2">
 	      <input type="text" value="Search products" /> <button>Go</button>
 	    </li>
-			<?php
-
-			if(isset($_SESSION['user'])): ?>
+			<?php	if(isset($_SESSION['user'])): ?>
 				<li style="float:right"><a href="<?=BASE_URL?>/logout">Logout</a></li>
 				<li style="float:right"><a><?= $_SESSION['user'] ?></a></li>
+				<?php if(($_SESSION['permissions'])==2): ?>
+					<li style="float:right"><a href="<?=BASE_URL?>/users">Set User Roles</a></li>
+				<?php endif; ?>
 		 <?php	else: ?>
 		 		<li style="float:right"><a href="<?=BASE_URL?>/signup">Sign Up</a></li>
 				<li style="float:right"><a href="<?=BASE_URL?>/login">Login</a></li>
-
-
 
 			<?php endif; ?>
 	    <li><a href="<?=BASE_URL?>/cart" id="shopping-cart">Shopping Cart</a></li>

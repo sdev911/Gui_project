@@ -22,6 +22,10 @@ class SiteController {
 				$this->contact();
 				break;
 
+			case 'editUserRoles':
+				$this->editUserRoles();
+				break;
+
 			case 'login':
 				$this->login();
 				break;
@@ -54,11 +58,17 @@ class SiteController {
 		 		$this->cart();
 				break;
 
+			case 'changeRole':
+					$userId = $_GET['userId'];
+					$newRole = $_GET['newRole'];
+			 		$this->changeRole($userId, $newRole);
+					break;
+
 			case 'follow':
 				$userId = $_GET['userId'];
 		 		$this->follow($userId);
 				break;
-				
+
 			case 'profile':
 				$this->profile();
 				break;
@@ -84,7 +94,7 @@ class SiteController {
 		include_once SYSTEM_PATH.'/view/home.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
-	
+
   public function profile() {
 		$pageName = 'Profile';
 		include_once SYSTEM_PATH.'/view/header.tpl';
@@ -148,12 +158,14 @@ class SiteController {
 				{
 					$_SESSION['user'] = $row['username'];
 					$_SESSION['id'] = $row['id'];
+					$_SESSION['permissions']= $row['user_type'];
 					$_SESSION['msg'] = "Welcome back "+$row["first_name"]+"!";
-					header('Location: http://ec2-54-191-243-249.us-west-2.compute.amazonaws.com/');
+					header('Location: '.BASE_URL.'/');
 					exit();
 				}
 		}
 		$_SESSION['msg'] = "Login failed";
+		header('Location: '.BASE_URL.'/login/');
 		exit();
 	}
 
@@ -169,7 +181,7 @@ class SiteController {
 		if ($p != $c)
 		{
 			$_SESSION['msg'] = "Your password selections do not match";
-			header('Location: http://ec2-54-191-243-249.us-west-2.compute.amazonaws.com/signup/');
+			header('Location: '.BASE_URL.'/signup/');
 			exit();
 		}
 		$host     = DB_HOST;
@@ -188,7 +200,7 @@ class SiteController {
 			if ($u == $row['username'])
 			{
 				$_SESSION['msg'] = "The username: "+$u+" is already in use.";
-				header('Location: http://ec2-54-191-243-249.us-west-2.compute.amazonaws.com/signup/');
+				header('Location: '.BASE_URL.'/signup/');
 				exit();
 			}
 		}
@@ -196,7 +208,7 @@ class SiteController {
 		$values = array_map('mysql_real_escape_string', array_values($inserts));
 		$keys = array_keys($inserts);
 		mysql_query('INSERT INTO `user` (`'.implode('`,`', $keys).'`) VALUES (\''.implode('\',\'', $values).'\')');
-		header('Location: http://ec2-54-191-243-249.us-west-2.compute.amazonaws.com/');
+		header('Location: '.BASE_URL.'/');
 		exit();
 	}
 
@@ -229,6 +241,22 @@ class SiteController {
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 
 
+	}
+
+	public function editUserRoles()
+	{
+		$users = User::getAllUsers();
+		include_once SYSTEM_PATH.'/view/header.tpl';
+		include_once SYSTEM_PATH.'/view/users.tpl';
+		include_once SYSTEM_PATH.'/view/footer.tpl';
+	}
+
+	public function changeRole($userId, $newRole)
+	{
+		$user = User::loadById($userId);
+		$user->set('user_type', $newRole);
+		$user->save();
+		header('Location: '.BASE_URL.'/users/')
 	}
 
 }

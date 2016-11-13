@@ -76,7 +76,6 @@ class ProductController {
         header('Location: '.BASE_URL);
         exit();
 		}
-
 	}
 
 public function viewcatprocess(){
@@ -269,4 +268,6 @@ public function viewcatprocess(){
 		  header('Location: '.BASE_URL.'/');
 	}
 
+
+u
 }
