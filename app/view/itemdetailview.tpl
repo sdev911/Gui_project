@@ -56,9 +56,6 @@
         </div>
         <a href="<?= BASE_URL ?>/outfits/addtocart/<?= $product->get('id') ?>/"><button id="add-to-cart">Add to Cart</button></a>
 
-    
-
-
         <?php
           if(isset($_SESSION['user'])): ?>
           <a href="<?=BASE_URL?>/outfits/edit/<?= $product->get('id') ?>"><button id="edit">Edit Item</button></a>
