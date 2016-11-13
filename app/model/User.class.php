@@ -7,30 +7,33 @@ class User extends DbObject {
     // database fields
     protected $id;
     protected $username;
-    protected $pw;
+    protected $password;
     protected $first_name;
     protected $last_name;
     protected $email;
+    protected $user_type;
 
     // constructor
     public function __construct($args = array()) {
         $defaultArgs = array(
             'id' => null,
             'username' => '',
-            'pw' => '',
+            'password' => '',
             'email' => null,
             'first_name' => null,
-            'last_name' => null
+            'last_name' => null,
+            'user_type' => null
             );
 
         $args += $defaultArgs;
 
         $this->id = $args['id'];
         $this->username = $args['username'];
-        $this->pw = $args['pw'];
+        $this->password = $args['password'];
         $this->email = $args['email'];
         $this->first_name = $args['first_name'];
         $this->last_name = $args['last_name'];
+        $this->user_type = $args['user_type'];
     }
 
     // save changes to object
@@ -39,10 +42,11 @@ class User extends DbObject {
         // omit id and any timestamps
         $db_properties = array(
             'username' => $this->username,
-            'pw' => $this->pw,
+            'password' => $this->password,
             'email' => $this->email,
             'first_name' => $this->first_name,
-            'last_name' => $this->last_name
+            'last_name' => $this->last_name,
+            'user_type' => $this->user_type
             );
         $db->store($this, __CLASS__, self::DB_TABLE, $db_properties);
     }
@@ -71,6 +75,23 @@ class User extends DbObject {
             $row = mysql_fetch_assoc($result);
             $obj = self::loadById($row['id']);
             return ($obj);
+        }
+    }
+
+    public static function getAllUsers($limit=null) {
+        $query = sprintf(" SELECT id FROM %s ORDER BY creation_date DESC ",
+            self::DB_TABLE
+            );
+        $db = Db::instance();
+        $result = $db->lookup($query);
+        if(!mysql_num_rows($result))
+            return null;
+        else {
+            $objects = array();
+            while($row = mysql_fetch_assoc($result)) {
+                $objects[] = self::loadById($row['id']);
+            }
+            return ($objects);
         }
     }
 
