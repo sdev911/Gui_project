@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dependencies
 markdown:          kramdown
 highlighter:       pygments
@@ -14,4 +15,22 @@ encoding:          UTF-8
 
 repo:              https://github.com/1000hz/bootstrap-validator
 cdn_bootstrap_css: //netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css
+=======
+# Dependencies
+markdown:          kramdown
+highlighter:       pygments
+
+# Permalinks
+permalink:         pretty
+
+# Server
+source:            docs
+destination:       _gh_pages
+port:              9001
+baseurl:           /
+encoding:          UTF-8
+
+repo:              https://github.com/1000hz/bootstrap-validator
+cdn_bootstrap_css: //netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css
+>>>>>>> 9f3dbdb60a303aeb47ced3fa05e24eb0e83329a8
 cdn_bootstrap_js:  //netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js

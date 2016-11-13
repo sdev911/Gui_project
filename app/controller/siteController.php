@@ -22,6 +22,10 @@ class SiteController {
 				$this->contact();
 				break;
 
+			case 'editUserRoles':
+				$this->editUserRoles();
+				break;
+
 			case 'login':
 				$this->login();
 				break;
@@ -32,15 +36,40 @@ class SiteController {
 				$this->processLogin($username, $password);
 				break;
 
+			case 'processSignup':
+				$username = $_POST['un'];
+				$password = $_POST['pw'];
+				$confPassword = $_POST['confirmpw'];
+				$email = $_POST['email'];
+				$first_name = $_POST['fname'];
+				$last_name = $_POST['lname'];
+				$this->processSignup($username, $password, $confPassword, $email, $first_name, $last_name);
+				break;
+
+			case 'signup':
+				$this->signup();
+				break;
+
 			case 'logout':
 				$this->logout();
 				break;
 
-		 case 'cart':
+		 	case 'cart':
 		 		$this->cart();
 				break;
 
-		case 'profile':
+			case 'changeRole':
+					$userId = $_GET['userId'];
+					$newRole = $_GET['newRole'];
+			 		$this->changeRole($userId, $newRole);
+					break;
+
+			case 'follow':
+				$userId = $_GET['userId'];
+		 		$this->follow($userId);
+				break;
+
+			case 'profile':
 				$this->profile();
 				break;
 
@@ -60,7 +89,7 @@ class SiteController {
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
-	public function profile() {
+  public function profile() {
 		$pageName = 'Profile';
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/profile.tpl';
@@ -83,6 +112,7 @@ class SiteController {
   }
 
 	public function logout() {
+		session_destroy();
 		include_once SYSTEM_PATH.'/view/logout.tpl';
   }
 
@@ -115,30 +145,101 @@ class SiteController {
 			or die ('Error: Could not connect to MySql database');
 		mysql_select_db(DB_DATABASE);
 
-		$q = sprintf("SELECT * FROM user WHERE id = %d; ",
-			1
-			);
+		$q = sprintf("SELECT * FROM user");
 		$result = mysql_query($q);
 		while($row = mysql_fetch_assoc($result)) {
-			$adminUsername['username'] = $row['username'];
-			$adminPassword['password'] = $row['password'];
+			if ($p == $row['password'] && $u ==$row['username'])
+				{
+					$_SESSION['user'] = $row['username'];
+					$_SESSION['id'] = $row['id'];
+					$_SESSION['permissions']= $row['user_type'];
+					$_SESSION['msg'] = "Welcome back "+$row["first_name"]+"!";
+					header('Location: '.BASE_URL.'/');
+					exit();
+				}
 		}
-		if(($u == $adminUsername['username']) && ($p == $adminPassword['password'])) {
-			session_start();
-			$_SESSION['user'] = $u;
-			header('Location: http://ec2-54-200-33-61.us-west-2.compute.amazonaws.com/');
-			echo 'You have logged in successfully!';
-			exit();
-		// 	echo 'Hooray! Access is granted.';
-		// } else {
-		// 	echo 'Access denied.';
-		} else {
-			// send them back
-			header('Location: '.BASE_URL);
-			echo 'Login failed!';
-			exit();
-		}
+		$_SESSION['msg'] = "Login failed";
+		header('Location: '.BASE_URL.'/login/');
+		exit();
+	}
 
+	public function signup() {
+		$pageName = 'Sign Up';
+		$cssSheet = 'styles.css';
+		include_once SYSTEM_PATH.'/view/header.tpl';
+		include_once SYSTEM_PATH.'/view/signup.tpl';
+		include_once SYSTEM_PATH.'/view/footer.tpl';
+	}
+
+	public function processSignup($u, $p, $c, $e, $f, $l) {
+		if ($p != $c)
+		{
+			$_SESSION['msg'] = "Your password selections do not match";
+			header('Location: '.BASE_URL.'/signup/');
+			exit();
+		}
+		$host     = DB_HOST;
+		$database = DB_DATABASE;
+		$username = DB_USER;
+		$password = DB_PASS;
+
+		$conn = mysql_connect($host, $username, $password)
+			or die ('Error: Could not connect to MySql database');
+
+		mysql_select_db($database);
+		$q = sprintf("SELECT * FROM user");  //WHERE username LIKE (%s)", $u);
+		$result = mysql_query($q);
+		while($row = mysql_fetch_assoc($result))
+		{
+			if ($u == $row['username'])
+			{
+				$_SESSION['msg'] = "The username: "+$u+" is already in use.";
+				header('Location: '.BASE_URL.'/signup/');
+				exit();
+			}
+		}
+		$inserts = array('first_name' => $f,'last_name' => $l,'username' => $u,'password' => $p,'email' => $e, 'user_type' => 0);
+		$values = array_map('mysql_real_escape_string', array_values($inserts));
+		$keys = array_keys($inserts);
+		mysql_query('INSERT INTO `user` (`'.implode('`,`', $keys).'`) VALUES (\''.implode('\',\'', $values).'\')');
+		header('Location: '.BASE_URL.'/');
+		exit();
+	}
+
+	public function follow($followingID)
+	{
+		$host     = DB_HOST;
+		$database = DB_DATABASE;
+		$username = DB_USER;
+		$password = DB_PASS;
+
+		$conn = mysql_connect($host, $username, $password)
+			or die ('Error: Could not connect to MySql database');
+
+		mysql_select_db($database);
+		$inserts = array('follower_id' => $_SESSION['id'],'following_id' => $followingID);
+		$values = array_map('mysql_real_escape_string', array_values($inserts));
+		$keys = array_keys($inserts);
+		$query = mysql_query('INSERT INTO `followers` (`'.implode('`,`', $keys).'`) VALUES (\''.implode('\',\'', $values).'\')');
+		echo $query;
+		//header('Location: http://ec2-54-191-243-249.us-west-2.compute.amazonaws.com/');
+		//exit();
+	}
+
+	public function editUserRoles()
+	{
+		$users = User::getAllUsers();
+		include_once SYSTEM_PATH.'/view/header.tpl';
+		include_once SYSTEM_PATH.'/view/users.tpl';
+		include_once SYSTEM_PATH.'/view/footer.tpl';
+	}
+
+	public function changeRole($userId, $newRole)
+	{
+		$user = User::loadById($userId);
+		$user->set('user_type', $newRole);
+		$user->save();
+		header('Location: '.BASE_URL.'/users/')
 	}
 
 }
