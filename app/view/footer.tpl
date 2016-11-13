@@ -4,7 +4,7 @@
 
   <div class=footer-links>
     <ul>
-      <li><a href="shirts.html">Home</a></li>
+      <li><a href=<?= BASE_URL ?>>Home</a></li>
       <li><a href="about.html">About Us</a></li>
       <li><a href="pants.html">Contact Us</a></li>
     </ul>
