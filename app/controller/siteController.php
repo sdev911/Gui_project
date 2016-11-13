@@ -259,4 +259,20 @@ class SiteController {
 		header('Location: '.BASE_URL.'/users/')
 	}
 
+	public function editUserRoles()
+	{
+		$users = User::getAllUsers();
+		include_once SYSTEM_PATH.'/view/header.tpl';
+		include_once SYSTEM_PATH.'/view/users.tpl';
+		include_once SYSTEM_PATH.'/view/footer.tpl';
+	}
+
+	public function changeRole($userId, $newRole)
+	{
+		$user = User::loadById($userId);
+		$user->set('user_type', $newRole);
+		$user->save();
+		header('Location: '.BASE_URL.'/users/')
+	}
+
 }
