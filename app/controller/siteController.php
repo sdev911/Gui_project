@@ -74,6 +74,11 @@ class SiteController {
 				$this->followers($userId);
 				break;		
 				
+			case 'removefollowers':
+				$userId = $_GET['userId'];
+				$this->removeFollowers($userId);
+				break;
+				
 			case 'profile':
 				$userId = $_GET['userId'];
 				$this->profile($userId);
@@ -257,6 +262,12 @@ class SiteController {
 		//exit();
 	}
 
+	public function removeFollowers($userId)
+	{
+		Follower::removeFollow($userId, $_SESSION['id']);
+		header('Location: '.BASE_URL);
+	}
+	
 	public function editUserRoles()
 	{
 		$users = User::getAllUsers();
