@@ -14,10 +14,14 @@ RewriteRule ^signup/process/?$ app/controller/siteController.php?action=processS
 RewriteRule ^logout/?$ app/controller/siteController.php?action=logout [QSA,L]
 RewriteRule ^cart/?$ app/controller/siteController.php?action=cart [QSA,L]
 RewriteRule ^follow/(\d+)/?$ app/controller/siteController.php?action=follow&userId=$1 [QSA,L]
-RewriteRule ^profile/(\d+)?$ app/controller/siteController.php?action=profile&userId=$1 [QSA,L]
-RewriteRule ^profile/process?$ app/controller/siteController.php?action=profileProcess [QSA,L]
+RewriteRule ^profile/process/?$ app/controller/siteController.php?action=profileProcess [QSA,L]
+RewriteRule ^profile/(\d+)/?$ app/controller/siteController.php?action=profile&userId=$1 [QSA,L]
 RewriteRule ^users/?$ app/controller/siteController.php?action=editUserRoles [QSA,L]
 RewriteRule ^changePermission/(\d+)/(\d+)/?$ app/controller/siteController.php?action=changeRole&userId=$1&newRole=$2 [QSA,L]
+RewriteRule ^profile/(\d+)/followers/?$ app/controller/siteController.php?action=followers&userId=$1 [QSA,L]
+RewriteRule ^removeFollow/(\d+)/?$ app/controller/siteController.php?action=removefollowers&userId=$1 [QSA,L]
+
+
 
 # Product
 RewriteRule ^itemdetailview/(\d+)/?$ app/controller/productController.php?action=itemdetailview&pid=$1 [QSA,L]

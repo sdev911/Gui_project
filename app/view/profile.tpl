@@ -57,8 +57,12 @@
     <h4>Email: <?=$userInfo->get('email') ?></h4>
     <h4>Gender: </h4>
     <h4>Bio: <?=$userInfo->get('bio') ?></h4>
-
+<a href="<?= BASE_URL ?>/profile/<?= $userId ?>/followers/">
 <button type="button" id="viewFollowers" class="btn btn-success">View Followers</button>
+</a>
+<?php if($_SESSION['id']==$userId): ?>
 <button type="button" id="editProfile" class="btn btn-warning">Edit Profile</button>
+<?php endif; ?>
   </div>
 </div>
+>>>>>>> 5ca3cbe0ad8cff0566c30643a6b63d6104da8c15

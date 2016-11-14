@@ -76,9 +76,9 @@ class Follower extends DbObject {
     }
 
     //remove product
-    public function removeFollow($following_id){
+      public function removeFollow($following_id, $follower_id){
       $query = sprintf(" DELETE FROM %s
-                          WHERE following_id=$following_id; ",
+                          WHERE following_id=$following_id AND follower_id=$follower_id; ",
           (string)self::DB_TABLE
           );
       $db = Db::instance();
