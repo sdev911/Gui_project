@@ -50,8 +50,8 @@
 
 
 <div class="container" id="profileInfo">
-  <div class="col-sm-4" style="display: block;">
-    <h4>First Name: </h4>
+  <div class="col-sm-4">
+    <h4>First Name: <?=$userInfo->get('username') ?></h4>
     <h4>Last Name: </h4>
     <h4>Username: </h4>
     <h4>Email: </h4>
@@ -61,3 +61,4 @@
 <button type="button" id="editProfile" class="btn btn-warning">Edit Profile</button>
   </div>
 </div>
+>>>>>>> ffa155d2951ff7b53b264408b719dab647bc48ad
