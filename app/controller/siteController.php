@@ -125,6 +125,7 @@ class SiteController {
   }
 
 	public function logout() {
+		$_SESSION['msg'] = null;
 		session_destroy();
 		include_once SYSTEM_PATH.'/view/logout.tpl';
   }
@@ -166,7 +167,7 @@ class SiteController {
 					$_SESSION['user'] = $row['username'];
 					$_SESSION['id'] = $row['id'];
 					$_SESSION['permissions']= $row['user_type'];
-					$_SESSION['msg'] = "Welcome back "+$row["first_name"]+"!";
+					$_SESSION['msg'] = null;
 					header('Location: '.BASE_URL.'/');
 					exit();
 				}
@@ -206,7 +207,7 @@ class SiteController {
 		{
 			if ($u == $row['username'])
 			{
-				$_SESSION['msg'] = "The username: "+$u+" is already in use.";
+				$_SESSION['msg'] = "That username is already in use.";
 				header('Location: '.BASE_URL.'/signup/');
 				exit();
 			}
@@ -215,7 +216,8 @@ class SiteController {
 		$values = array_map('mysql_real_escape_string', array_values($inserts));
 		$keys = array_keys($inserts);
 		mysql_query('INSERT INTO `user` (`'.implode('`,`', $keys).'`) VALUES (\''.implode('\',\'', $values).'\')');
-		header('Location: '.BASE_URL.'/');
+		$_SESSION['msg'] = null;
+		$this->processLogin($u, $p);
 		exit();
 	}
 
