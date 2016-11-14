@@ -68,7 +68,12 @@ class SiteController {
 				$userId = $_GET['userId'];
 		 		$this->follow($userId);
 				break;
-
+				
+			case 'followers':
+				$userId = $_GET['userId'];
+				$this->followers($userId);
+				break;		
+				
 			case 'profile':
 				$userId = $_GET['userId'];
 				$this->profile($userId);
@@ -221,6 +226,17 @@ class SiteController {
 		exit();
 	}
 
+	public function followers($followingID)
+{
+	$followers = Follower::loadByFollowerId($followingID);
+	$following = Follower::loadByFollowingId($followingID);
+	
+	include_once SYSTEM_PATH.'/view/header.tpl';
+	include_once SYSTEM_PATH.'/view/myFollowers.tpl';
+	include_once SYSTEM_PATH.'/view/footer.tpl';
+}
+
+	
 	public function follow($followingID)
 	{
 		$host     = DB_HOST;
