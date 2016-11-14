@@ -265,7 +265,7 @@ class SiteController {
 	public function removeFollowers($userId)
 	{
 		Follower::removeFollow($userId, $_SESSION['id']);
-		header('Location: '.BASE_URL);
+		header('Location: '.BASE_URL'/profile/'.$userId'/followers/');
 	}
 	
 	public function editUserRoles()
@@ -291,7 +291,7 @@ class SiteController {
 		$user->set('bio', $biography);
 		$user->set('email', $emailaddress);
 		$user->save();
-		header('Location: '.BASE_URL.'/profile/');
+		header('Location: '.BASE_URL.'/profile/'.$userId);
 	}
 
 }
