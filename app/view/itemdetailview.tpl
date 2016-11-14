@@ -72,7 +72,7 @@
           
           <?php foreach($comments as $comment) : ?>
         <div>
-        <h3>Comment from: <?= $comment->get('creator_username') ?>           
+        <h3>Comment from: <a href="<?=BASE_URL?>/profile/<?= $_SESSION['id'] ?>"><?= $comment->get('creator_username') ?></a>            
             <a href="<?= BASE_URL ?>/follow/<?= $comment->get('creator_id') ?>/">
                 <button id="follow">Follow <?= $comment->get('creator_username') ?></button>
             </a>
