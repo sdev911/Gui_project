@@ -51,7 +51,7 @@
 
 <div class="container" id="profileInfo">
   <div class="col-sm-4" style="display: block;">
-    <h4>First Name: </h4>
+    <h4>First Name: <?=$userInfo->get('username') ?></h4>
     <h4>Last Name: </h4>
     <h4>Username: </h4>
     <h4>Email: </h4>
