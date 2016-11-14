@@ -258,7 +258,7 @@ class SiteController {
 	}
 	
 	public function profileProcess($userId, $firstname, $lastname, $biography, $emailaddress){
-		$user = Product::loadById($userId);
+		$user = User::loadById($userId);
 		$p->set('first_name', $firstname);
 		$p->set('last_name', $lastname);
 		$p->set('bio', $biography);
