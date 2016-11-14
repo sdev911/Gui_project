@@ -12,7 +12,7 @@
 
 </head>
 <body>
-<form class="col-sm-4" data-toggle="validator" role="form" id="profileForm">
+<form class="col-sm-4" data-toggle="validator" role="form" id="profileForm" method="post" action="<?= BASE_URL ?>/profile/process/">
   <div class="form-group">
     <label for="exampleInputEmail1">Name</label>
     <input type="name" class="form-control" id="inputName1" aria-describedby="nameHelp" placeholder="Enter name">
