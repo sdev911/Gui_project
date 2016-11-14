@@ -18,6 +18,8 @@ RewriteRule ^profile/(\d+)?$ app/controller/siteController.php?action=profile&us
 RewriteRule ^profile/process?$ app/controller/siteController.php?action=profileProcess [QSA,L]
 RewriteRule ^users/?$ app/controller/siteController.php?action=editUserRoles [QSA,L]
 RewriteRule ^changePermission/(\d+)/(\d+)/?$ app/controller/siteController.php?action=changeRole&userId=$1&newRole=$2 [QSA,L]
+RewriteRule ^profile/(\d+)/followers/?$ app/controller/siteController.php?action=followers&userId=$1 [QSA,L]
+
 
 # Product
 RewriteRule ^itemdetailview/(\d+)/?$ app/controller/productController.php?action=itemdetailview&pid=$1 [QSA,L]
