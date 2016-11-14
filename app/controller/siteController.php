@@ -252,7 +252,7 @@ class SiteController {
 		$user = User::loadById($userId);
 		$user->set('user_type', $newRole);
 		$user->save();
-		header('Location: '.BASE_URL.'/users/')
+		header('Location: '.BASE_URL.'/users/');
 	}
 	
 	public function profileProcess($userId, $firstname, $lastname, $biography, $emailaddress){
