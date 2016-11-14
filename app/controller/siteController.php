@@ -72,6 +72,15 @@ class SiteController {
 			case 'profile':
 				$this->profile();
 				break;
+				
+			case 'profileProcess':
+				$firstname = $_POST['fname'];
+				$lastname = $_POST['lname'];
+				$biography = $_POST['bio'];
+				$emailaddress = $_POST['email'];
+				
+				$this->profileProcess($userId, $firstname, $lastname, $biography, $emailaddress);
+				break;
 
 
 			// redirect to home page if all else fails
@@ -241,6 +250,10 @@ class SiteController {
 		$user->set('user_type', $newRole);
 		$user->save();
 		header('Location: '.BASE_URL.'/users/')
+	}
+	
+	public function profileProcess($userId, $firstname, $lastname, $biography, $emailaddress){
+	
 	}
 
 }
