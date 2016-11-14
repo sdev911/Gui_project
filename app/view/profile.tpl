@@ -12,42 +12,42 @@
 
 </head>
 <body>
-<form class="col-sm-4" data-toggle="validator" role="form" id="profileForm">
+<form class="col-sm-4" data-toggle="validator" role="form" id="profileForm" method="post" action="<?= BASE_URL ?>/profile/process/">
   <div class="form-group">
-    <label for="exampleInputEmail1">Name</label>
-    <input type="name" class="form-control" id="inputName1" aria-describedby="nameHelp" placeholder="Enter name">
+    <label for="exampleInputEmail1">First Name</label>
+    <input type="first name" class="form-control" id="inputFName" aria-describedby="fnameHelp" placeholder="Enter first name" name="fname">
+  </div>
+    <div class="form-group">
+    <label for="exampleInputAdress1">Last Name</label>
+    <input type="last name" name="lname" class="form-control" id="inputLName" aria-describedby="lnameHelp" placeholder="Enter last name">
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Bio</label>
-    <textarea form="profileForm" class="form-control" id="inputBio1" aria-describedby="bioHelp" placeholder="Enter bio"></textarea>
+    <textarea form="profileForm" class="form-control" id="inputBio" aria-describedby="bioHelp" placeholder="Enter bio" name="bio"></textarea>
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Email</label>
-    <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email" class="form-control" data-error="Bruh, that email address is invalid" required>
+    <input type="email" name="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" class="form-control" data-error="Bruh, that email address is invalid">
   </div>
   <div class="help-block with-errors"></div>
-  <div class="form-group">
-    <label for="exampleInputAdress1">Address</label>
-    <input type="address" class="form-control" id="inputAddress1" aria-describedby="addressHelp" placeholder="Enter address">
-  </div>
   <fieldset class="form-group">
     <legend>Gender</legend>
     <div class="form-check">
       <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1">
+        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="male">
         Male
       </label>
     </div>
     <div class="form-check">
     <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="female">
         Female
       </label>
     </div>
     <div class="form-check disabled">
     <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3">
-        Neither
+        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="other">
+        Other
       </label>
     </div>
   </fieldset>
@@ -57,10 +57,10 @@
 
 
 <div class="container">
-  <div class="col-sm-4">
-    <h4>Name: </h4>
+  <div class="col-sm-4" style="display: block;">
+    <h4>First Name: </h4>
+    <h4>Last Name: </h4>
     <h4>Username: </h4>
-    <h4>Address: </h4>
     <h4>Email: </h4>
     <h4>Gender: </h4>
 
