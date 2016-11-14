@@ -259,11 +259,11 @@ class SiteController {
 	
 	public function profileProcess($userId, $firstname, $lastname, $biography, $emailaddress){
 		$user = User::loadById($userId);
-		$p->set('first_name', $firstname);
-		$p->set('last_name', $lastname);
-		$p->set('bio', $biography);
-		$p->set('email', $emailaddress);
-		$p->save();
+		$user->set('first_name', $firstname);
+		$user->set('last_name', $lastname);
+		$user->set('bio', $biography);
+		$user->set('email', $emailaddress);
+		$user->save();
 		header('Location: '.BASE_URL.'/profile/');
 	}
 
