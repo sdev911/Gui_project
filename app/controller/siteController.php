@@ -70,10 +70,12 @@ class SiteController {
 				break;
 
 			case 'profile':
-				$this->profile();
+				$userId = $_GET['userId'];
+				$this->profile($userId);
 				break;
 				
 			case 'profileProcess':
+				$userId = $_GET['userId'];
 				$firstname = $_POST['fname'];
 				$lastname = $_POST['lname'];
 				$biography = $_POST['bio'];
@@ -99,7 +101,8 @@ class SiteController {
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
-  public function profile() {
+  public function profile($userId) {
+	  	$id = $userId;
 		$pageName = 'Profile';
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/profile.tpl';
