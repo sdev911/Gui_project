@@ -59,10 +59,10 @@ class SiteController {
 				break;
 
 			case 'changeRole':
-					$userId = $_GET['userId'];
-					$newRole = $_GET['newRole'];
-			 		$this->changeRole($userId, $newRole);
-					break;
+				$userId = $_GET['userId'];
+				$newRole = $_GET['newRole'];
+			 	$this->changeRole($userId, $newRole);
+				break;
 
 			case 'follow':
 				$userId = $_GET['userId'];
@@ -77,11 +77,9 @@ class SiteController {
 		 		$this->myFollowers();
 				break;
 
-
-
 			// redirect to home page if all else fails
       default:
-        header('Location: '.BASE_URL);
+        header('Location: http://ec2-54-191-243-249.us-west-2.compute.amazonaws.com/');
         exit();
 
 		}
@@ -102,6 +100,7 @@ class SiteController {
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
+
 	public function contact() {
 		$pageName = 'Contact';
 		include_once SYSTEM_PATH.'/view/header.tpl';
@@ -121,6 +120,7 @@ class SiteController {
 		session_destroy();
 		include_once SYSTEM_PATH.'/view/logout.tpl';
   }
+
 
 	public function cart(){
 		$products = Cart::getAllProducts();
@@ -239,8 +239,6 @@ class SiteController {
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/myFollowers.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
-
-
 	}
 
 	public function editUserRoles()
@@ -256,23 +254,6 @@ class SiteController {
 		$user = User::loadById($userId);
 		$user->set('user_type', $newRole);
 		$user->save();
-		header('Location: '.BASE_URL.'/users/')
+		header('Location: '.BASE_URL.'/users/');
 	}
-
-	public function editUserRoles()
-	{
-		$users = User::getAllUsers();
-		include_once SYSTEM_PATH.'/view/header.tpl';
-		include_once SYSTEM_PATH.'/view/users.tpl';
-		include_once SYSTEM_PATH.'/view/footer.tpl';
-	}
-
-	public function changeRole($userId, $newRole)
-	{
-		$user = User::loadById($userId);
-		$user->set('user_type', $newRole);
-		$user->save();
-		header('Location: '.BASE_URL.'/users/')
-	}
-
 }
