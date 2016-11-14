@@ -64,8 +64,8 @@
     <h4>Email: </h4>
     <h4>Gender: </h4>
 
-<button type="button" class="btn btn-success">View Friends List</button>
-<button type="button" class="btn btn-warning">Edit Profile</button>
+<button type="button" id="viewFollowers" class="btn btn-success">View Followers</button>
+<button type="button" id="editProfile" class="btn btn-warning">Edit Profile</button>
   </div>
 </div>
 
