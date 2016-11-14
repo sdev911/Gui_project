@@ -58,9 +58,11 @@
 
         <?php
           if(isset($_SESSION['user'])): ?>
+          <?php if((($_SESSION['permissions'])==1) And (($_SESSION['id'])==($product->get('creator_id'))) OR (($_SESSION['permissions'])==2)): ?>
           <a href="<?=BASE_URL?>/outfits/edit/<?= $product->get('id') ?>"><button id="edit">Edit Item</button></a>
           <a href="<?=BASE_URL?>/outfits/remove/<?= $product->get('id') ?>/process" onClick="return confirm('Delete This Product?')"><button id="delete">Delete Item
           </button></a>
+          <?php endif; ?>
 
           <form id="comment" action="<?= BASE_URL ?>/outfits/comment/<?= $product->get('id') ?>/" method="POST">
           <label>Comment: <input type="text" name="commentText"></label>
