@@ -1,5 +1,7 @@
 <div id="content">
-
+<?php	if(isset($_SESSION['msg'])): ?>
+<h3> <?=$_SESSION['msg']?> </h3>
+<?php endif; ?>
 <h2>Sign Up</h2>
 
 <form id="signup" action="<?= BASE_URL ?>/signup/process" method="POST">

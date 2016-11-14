@@ -1,6 +1,7 @@
 #content{
   display: block;
-  width: 100%;
+    width: 100%;
+  padding: 30px; 
 }
 
 #image{
@@ -70,6 +71,11 @@ ul#breadcrumbs{
 #breadcrumbs li{
   display: inline-block;
   font-size: 13px;
+  font-family: 'Lobster', cursive;
+}
+#breadcrumbs li, a{
+  text-decoration: none;
+  color:#cc6699;
 }
 
 .info-heading{

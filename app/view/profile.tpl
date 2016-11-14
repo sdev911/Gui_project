@@ -1,18 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-
-  <title>Profile</title>
-
    <link href="<?= BASE_URL ?>/app/view/css/bootstrap.css" rel="stylesheet" type="text/css" />
   <link href="<?= BASE_URL ?>/app/view/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link href="<?= BASE_URL ?>/public/css/profile.css" rel="stylesheet" type="text/css" />
 
   <script src="<?= BASE_URL ?>/app/view/bootstrap-validator-master/dist/validator.min.js"></script>
   <script src="<?= BASE_URL ?>/public/js/profile.js"></script>
-
-</head>
-<body>
+  
 <form class="col-sm-4" data-toggle="validator" role="form" id="profileForm" method="post" action="<?= BASE_URL ?>/profile/process/<?=id ?>">
   <div class="form-group">
     <label for="exampleInputEmail1">First Name</label>
@@ -69,7 +61,3 @@
 <button type="button" id="editProfile" class="btn btn-warning">Edit Profile</button>
   </div>
 </div>
-
-</body>
-
-</html>
