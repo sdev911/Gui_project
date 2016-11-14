@@ -102,7 +102,7 @@ class SiteController {
   }
 
   public function profile($userId) {
-	  	$userId = $_SESSION['id'];
+	  	$id = $userId;
 		$pageName = 'Profile';
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/profile.tpl';
