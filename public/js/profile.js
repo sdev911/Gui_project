@@ -1,9 +1,9 @@
 $( document ).ready(function() {
-    $(.profileForm).hide();
-    $(.profileInfo).show();
+    $('.profileForm').hide();
+    $('.profileInfo').show();
     
     $(.editProfile).click(function(){
-      $(.profileInfo).hide();
-      $(.profileForm).show();
+      $('.profileInfo').hide();
+      $('.profileForm').show();
     });
 });
