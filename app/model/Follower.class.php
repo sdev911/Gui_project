@@ -96,5 +96,17 @@ class Follower extends DbObject {
       $db = Db::instance();
       $db->execute($query);
     }
+    
+    public function isFollowing($follower_id, $following_id)
+    {
+      $query = sprintf(" SELECT id FROM %s WHERE follower_id=%d AND following_id=%d ORDER BY date_created DESC ", self::DB_TABLE, $follower_id, $following_id);
+      $db = Db::instance();
+      $result = $db->lookup($query);
+      if(!mysql_num_rows($result))
+          return false;
+      else {
+          return true;
+          }
+    }
 
 }
