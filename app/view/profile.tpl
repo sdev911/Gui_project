@@ -60,6 +60,8 @@
 <a href="<?= BASE_URL ?>/profile/<?= $userId ?>/followers/">
 <button type="button" id="viewFollowers" class="btn btn-success">View Followers</button>
 </a>
+<?php if($_SESSION['id']==$userId): ?>
 <button type="button" id="editProfile" class="btn btn-warning">Edit Profile</button>
+<?php endif; ?>
   </div>
 </div>
