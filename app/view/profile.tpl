@@ -57,7 +57,7 @@
     <h4>Email: <?=$userInfo->get('email') ?></h4>
     <h4>Gender: </h4>
     <h4>Bio: <?=$userInfo->get('bio') ?></h4>
-<a href="<?= BASE_URL ?>/profile/<?= $id ?>/followers/">
+<a href="<?= BASE_URL ?>/profile/<?= $userId ?>/followers/">
 <button type="button" id="viewFollowers" class="btn btn-success">View Followers</button>
 </a>
 <button type="button" id="editProfile" class="btn btn-warning">Edit Profile</button>
