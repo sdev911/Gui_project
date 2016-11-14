@@ -51,11 +51,12 @@
 
 <div class="container" id="profileInfo">
   <div class="col-sm-4" style="display: block;">
-    <h4>First Name: <?=$userInfo->get('username') ?></h4>
-    <h4>Last Name: </h4>
-    <h4>Username: </h4>
-    <h4>Email: </h4>
+    <h4>First Name: <?=$userInfo->get('first_name') ?></h4>
+    <h4>Last Name: <?=$userInfo->get('last_name') ?></h4>
+    <h4>Username: <?=$userInfo->get('username') ?></h4>
+    <h4>Email: <?=$userInfo->get('email') ?></h4>
     <h4>Gender: </h4>
+    <h4>Bio: <?=$userInfo->get('bio') ?></h4>
 
 <button type="button" id="viewFollowers" class="btn btn-success">View Followers</button>
 <button type="button" id="editProfile" class="btn btn-warning">Edit Profile</button>
