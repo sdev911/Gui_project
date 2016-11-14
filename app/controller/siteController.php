@@ -75,7 +75,7 @@ class SiteController {
 				break;
 				
 			case 'profileProcess':
-				$userId = $_GET['userId'];
+				$userId = $_SESSION['id'];
 				$firstname = $_POST['fname'];
 				$lastname = $_POST['lname'];
 				$biography = $_POST['bio'];
@@ -102,7 +102,7 @@ class SiteController {
   }
 
   public function profile($userId) {
-	  	$id = $userId;
+	  	$userId = $_SESSION['id'];
 		$pageName = 'Profile';
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/profile.tpl';
@@ -258,7 +258,13 @@ class SiteController {
 	}
 	
 	public function profileProcess($userId, $firstname, $lastname, $biography, $emailaddress){
-	
+		$user = Product::loadById($userId);
+		$p->set('first_name', $firstname);
+		$p->set('last_name', $lastname);
+		$p->set('bio', $biography);
+		$p->set('email', $emailaddress);
+		$p->save();
+		header('Location: '.BASE_URL.'/profile/');
 	}
 
 }
