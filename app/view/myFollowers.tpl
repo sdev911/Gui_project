@@ -8,7 +8,11 @@
     <a href = "<?= BASE_URL ?>/profile/<?= $follower->get('following_id') ?>">
       <?= User::loadById($follower->get('following_id'))->get('username') ?>
     </a>
+    <a href="<?=BASE_URL?>/removeFollow/<?= $follower->get('following_id') ?>">
+      <button>Stop Following </button>
+    </a>
 </h5>
+
 <?php endforeach; ?>
 
 <?php else: ?>
