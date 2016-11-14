@@ -286,7 +286,9 @@ class SiteController {
 	
 	public function profileProcess($userId, $firstname, $lastname, $biography, $emailaddress){
 		$user = User::loadById($userId);
-		$user->set('first_name', $firstname);
+		if ($firstname != '' || $firstname != null){
+			$user->set('first_name', $firstname);
+		}
 		$user->set('last_name', $lastname);
 		$user->set('bio', $biography);
 		$user->set('email', $emailaddress);
