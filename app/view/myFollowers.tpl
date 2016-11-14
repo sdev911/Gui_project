@@ -21,10 +21,10 @@
 
 <h2>My Followers:</h2>
 <?php if ($following != null):  ?>
-<?php foreach($following as $follower) : ?>
+<?php foreach($following as $user) : ?>
   <h5>
-  <a href = "<?= BASE_URL ?>/profile/<?= $following->get('follower_id') ?>">
-    <?= User::loadById($following->get('follower_id'))->get('username') ?>
+  <a href = "<?= BASE_URL ?>/profile/<?= $user->get('follower_id') ?>">
+    <?= User::loadById($user->get('follower_id'))->get('username') ?>
   </a>
   </h5>
 
