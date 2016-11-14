@@ -267,7 +267,4 @@ public function viewcatprocess(){
 		  mysql_query($q);
 		  header('Location: '.BASE_URL.'/');
 	}
-
-
-u
 }
