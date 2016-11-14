@@ -56,7 +56,6 @@
         </div>
         <a href="<?= BASE_URL ?>/outfits/addtocart/<?= $product->get('id') ?>/"><button id="add-to-cart">Add to Cart</button></a>
 
-
         <?php
           if(isset($_SESSION['user'])): ?>
           <a href="<?=BASE_URL?>/outfits/edit/<?= $product->get('id') ?>"><button id="edit">Edit Item</button></a>
@@ -68,14 +67,18 @@
           <input type="submit" name="createComment" value="Submit Comment">
           </form>
           <?php endif; ?>
+          
           <?php foreach($comments as $comment) : ?>
-              <div>
-              <h3>Comment from: <?= $comment->get('creator_username') ?>           <a href="<?= BASE_URL ?>/follow/<?= $comment->get('creator_id') ?>/"><button id="follow">Follow <?= $comment->get('creator_username') ?></button></a></h3>
+        <div>
+        <h3>Comment from: <?= $comment->get('creator_username') ?>           
+            <a href="<?= BASE_URL ?>/follow/<?= $comment->get('creator_id') ?>/">
+                <button id="follow">Follow <?= $comment->get('creator_username') ?></button>
+            </a>
+        </h3>
 
-              <label><?= $comment->get('comment') ?></label>
-              </div>
-            <?php endforeach; ?>
-
+        <label><?= $comment->get('comment') ?></label>
+        </div>
+      <?php endforeach; ?>
       </div>
   </div>
 </div>

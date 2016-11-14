@@ -48,7 +48,7 @@ function isSelected($pn, $link) {
 	    </li>
 			<?php	if(isset($_SESSION['user'])): ?>
 				<li style="float:right"><a href="<?=BASE_URL?>/logout">Logout</a></li>
-				<li style="float:right"><a><?= $_SESSION['user'] ?></a></li>
+				<li style="float:right"><a href="<?=BASE_URL?>/profile"><?= $_SESSION['user'] ?></a></li>
 				<?php if(($_SESSION['permissions'])==2): ?>
 					<li style="float:right"><a href="<?=BASE_URL?>/users">Set User Roles</a></li>
 				<?php endif; ?>
