@@ -1,6 +1,6 @@
 <div id="content">
 
-<h2>Users I'm Following:</h2>
+<h2><?= User::loadById($followingID)->get('username') ?> is Following:</h2>
 <?php if ($followers != null):  ?>
 
 <?php foreach($followers as $follower) : ?>
@@ -19,7 +19,7 @@
   <h5> You are not following anyone </h5>
 <?php endif; ?>
 
-<h2>My Followers:</h2>
+<h2><?= User::loadById($followingID)->get('username') ?>'s Followers:</h2>
 <?php if ($following != null):  ?>
 <?php foreach($following as $user) : ?>
   <h5>

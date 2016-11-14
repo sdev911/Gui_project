@@ -279,7 +279,7 @@ class SiteController {
 	public function removeFollowers($userId)
 	{
 		Follower::removeFollow($userId, $_SESSION['id']);
-		header('Location: '.BASE_URL);
+		header('Location: '.BASE_URL'/profile/'.$userId'/followers/');
 	}
 	
 	public function editUserRoles()
@@ -300,13 +300,11 @@ class SiteController {
 	
 	public function profileProcess($userId, $firstname, $lastname, $biography, $emailaddress){
 		$user = User::loadById($userId);
-		if ($firstname != '' || $firstname != null){
-			$user->set('first_name', $firstname);
-		}
+		$user->set('first_name', $firstname);
 		$user->set('last_name', $lastname);
 		$user->set('bio', $biography);
 		$user->set('email', $emailaddress);
 		$user->save();
-		header('Location: '.BASE_URL.'/profile/');
+		header('Location: '.BASE_URL.'/profile/'.$userId);
 	}
 }
