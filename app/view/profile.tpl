@@ -9,6 +9,7 @@
   <link href="<?= BASE_URL ?>/app/view/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
   <script src="<?= BASE_URL ?>/app/view/bootstrap-validator-master/dist/validator.min.js"></script>
+  <script src="<?= BASE_URL ?>/public/js/profile.js"></script>
 
 </head>
 <body>
