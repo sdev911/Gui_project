@@ -6,6 +6,5 @@ $( document ).ready(function() {
       $('#profileInfo').hide();
       $('#profileForm').show();
     });
-    
-    $("#profileForm").validator();
+
 });
