@@ -42,12 +42,12 @@
         </form>
         <br >
         <h3 class="info-heading" id="ratings-header">Ratings</h3>
-        <div class="rating">
-          <span>☆</span>
-          <span>☆</span>
-          <span>☆</span>
-          <span>☆</span>
-          <span>☆</span>
+        <div class="rating" id="item-rating">
+          <span class="star5 star">☆</span>
+          <span class="star4 star">☆</span>
+          <span class="star3 star">☆</span>
+          <span class="star2 star">☆</span>
+          <span class="star1 star">☆</span>
         </div>
         <h3 class="info-heading">Description</h3>
         <br >
@@ -69,11 +69,11 @@
           <input type="submit" name="createComment" value="Submit Comment">
           </form>
           <?php endif; ?>
-          
+
           <?php foreach($comments as $comment) : ?>
         <div>
-        <h3>Comment from: <a href="<?=BASE_URL?>/profile/<?= $comment->get('creator_id') ?>"><?= $comment->get('creator_username') ?></a>            
-            
+        <h3>Comment from: <a href="<?=BASE_URL?>/profile/<?= $comment->get('creator_id') ?>"><?= $comment->get('creator_username') ?></a>
+
             <?php if($_SESSION['id'] != $comment->get('creator_id')): ?>
                 <?php if(!Follower::isFollowing($_SESSION['id'], $comment->get('creator_id'))): ?> <!-- makes it so that you cannot follow yourself -->
                 <a href="<?= BASE_URL ?>/follow/<?= $comment->get('creator_id') ?>/">

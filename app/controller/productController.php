@@ -71,11 +71,18 @@ class ProductController {
 			case 'viewcatprocess':
 				$this->viewcatprocess($_GET);
 				break;
+			case 'rateproduct':
+				$this->rateproduct($productID);
+				break;
       // redirect to home page if all else fails
       default:
         header('Location: '.BASE_URL);
         exit();
 		}
+	}
+
+	public function rateproduct($pid) {
+		
 	}
 
 public function viewcatprocess(){
