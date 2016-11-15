@@ -8,10 +8,7 @@
     <a href = "<?= BASE_URL ?>/profile/<?= $follower->get('following_id') ?>">
       <?= User::loadById($follower->get('following_id'))->get('username') ?>
     </a>
-    <a href="<?=BASE_URL?>/removeFollow/<?= $follower->get('following_id') ?>">
-      <button>Stop Following </button>
-    </a>
-    <?php if(Follower::isFollowing($_SESSION['id'], $follower->get('following_id'))): ?>
+     <?php if(Follower::isFollowing($_SESSION['id'], $follower->get('following_id'))): ?>
     <a href="<?=BASE_URL?>/removeFollow/<?= $follower->get('following_id') ?>">
       <button>Stop Following </button>
     </a>
