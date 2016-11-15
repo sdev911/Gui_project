@@ -86,13 +86,14 @@ class SiteController {
 				$userId = $_GET['userId'];
 				$this->profile($userId);
 				break;
-				
+
 			case 'profileProcess':
 				$userId = $_SESSION['id'];
 				$firstname = $_POST['fname'];
 				$lastname = $_POST['lname'];
 				$biography = $_POST['bio'];
 				$emailaddress = $_POST['email'];
+
 				$this->profileProcess($userId, $firstname, $lastname, $biography, $emailaddress);
 				break;
 				
@@ -109,16 +110,24 @@ class SiteController {
 
   public function home() {
 		$pageName = 'Home';
+
 		include_once SYSTEM_PATH.'/view/header.tpl';
+		if ($_SESSION['user'] != NULL) {
+			$actions = Actions::getActionsFollowed($_SESSION['id']);
+			include_once SYSTEM_PATH.'/view/feed.tpl';
+		}
 		include_once SYSTEM_PATH.'/view/home.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
 
   public function profile($userId) {
-	  	$userInfo = User::loadbyId($userId);
+	  $userInfo = User::loadbyId($userId);
+		$actions = Actions::getUserActions($userId);
 		$pageName = 'Profile';
+
 		include_once SYSTEM_PATH.'/view/header.tpl';
+		include_once SYSTEM_PATH.'/view/feed.tpl';
 		include_once SYSTEM_PATH.'/view/profile.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
@@ -256,6 +265,11 @@ class SiteController {
 		echo $query;
 		header('Location: http://ec2-54-191-243-249.us-west-2.compute.amazonaws.com/');
 		exit();
+
+		$action = 'follow';
+		$description = ' followed ';
+		$q = sprintf("INSERT INTO `actions` (`id_referral`, `action`, `description`, `creator_id`, `creator_username`) VALUES ('%d', '%s', '%s', '%d', '%s'); ", $followingID, $action, $description, $_SESSION['id'], $_SESSION['user']);
+		mysql_query($q);
 	}
 
 
@@ -291,7 +305,7 @@ class SiteController {
 		$user->save();
 		header('Location: '.BASE_URL.'/users/');
 	}
-	
+
 	public function profileProcess($userId, $firstname, $lastname, $biography, $emailaddress){
 		$user = User::loadById($userId);
 		$user->set('first_name', $firstname);

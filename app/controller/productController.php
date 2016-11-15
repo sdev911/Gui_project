@@ -197,6 +197,11 @@ public function viewcatprocess(){
 			}
 		}
 		Product::addProduct($title, $description, $sizes, $price, $image_url);
+
+		if ($title != null) {
+			$id = Product::getId();
+			$this->addAction('add', ' added the product ', $id, $title);
+		}
   }
 
 	private function getCatFact() {
@@ -244,6 +249,8 @@ public function viewcatprocess(){
 
 		$_SESSION['msg'] = "You edited the product called ".$title;
 		header('Location: '.BASE_URL.'/outfits/');
+
+		$this->addAction('edit', ' edited the item ', $id, $title);
 	}
 
 	public function removeProductCheck($id){
@@ -253,9 +260,12 @@ public function viewcatprocess(){
 	}
 
 	public function removeProductProcess($id){
+		$name = Product::loadById($id)->get('title');
 		Product::removeProduct($id);
 		$_SESSION['msg'] = "You deleted the product called ";
 		header('Location: '.BASE_URL.'/outfits/');
+
+		$this->addAction('remove', ' removed ', $id, $name);
 	}
 
 	public function comment($pid){
@@ -265,6 +275,26 @@ public function viewcatprocess(){
 		    $myComment = $_POST['commentText'];
 		  $q = sprintf ("INSERT INTO `comments` (`product_id`, `comment`, `creator_id`, `creator_username`) VALUES ('%d', '%s', '%d', '%s'); ", $pid, $myComment, $_SESSION['id'], $_SESSION['user']);
 		  mysql_query($q);
-		  header('Location: '.BASE_URL.'/');
+			header('Location: '.BASE_URL.'/');
+
+			$name = Product::loadById($pid)->get('title');
+			$this->addAction('comment', ' added the comment "'.$myComment.'" to item ', $pid, $name);
+	}
+
+	public function addAction($action, $description, $id, $target_name) {
+		$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
+		      or die ('Error: Could not connect to MySql database');
+		mysql_select_db(DB_DATABASE);
+
+		if ($action == 'follow') {
+			$url_mod = 'profile';
+		}
+		else {
+			$url_mod = 'itemdetailview';
+		}
+
+		$q = sprintf("INSERT INTO `actions` (`url_mod`, `target_id`, `target_name`, `action`, `description`, `creator_id`, `creator_username`) VALUES ('%s', '%d', '%s', '%s', '%s', '%d', '%s'); ", $url_mod, $id, $target_name, $action, $description, $_SESSION['id'], $_SESSION['user']);
+		mysql_query($q);
+		header('Location: '.BASE_URL.'/');
 	}
 }
