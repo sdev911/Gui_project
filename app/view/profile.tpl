@@ -16,7 +16,7 @@
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Bio</label>
-    <textarea form="profileForm" class="form-control" id="inputBio" aria-describedby="bioHelp" placeholder="Enter bio" name="bio value="<?=$userInfo->get('bio') ?>"></textarea>
+    <textarea form="profileForm" class="form-control" id="inputBio" aria-describedby="bioHelp" placeholder="Enter bio" name="bio" value="<?=$userInfo->get('bio') ?>"></textarea>
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Email</label>
