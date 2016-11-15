@@ -68,7 +68,17 @@ class SiteController {
 				$userId = $_GET['userId'];
 		 		$this->follow($userId);
 				break;
-
+				
+			case 'followers':
+				$userId = $_GET['userId'];
+				$this->followers($userId);
+				break;		
+				
+			case 'removefollowers':
+				$userId = $_GET['userId'];
+				$this->removeFollowers($userId);
+				break;
+				
 			case 'profile':
 				$userId = $_GET['userId'];
 				$this->profile($userId);
@@ -229,6 +239,17 @@ class SiteController {
 		exit();
 	}
 
+	public function followers($followingID)
+{
+	$followers = Follower::loadByFollowerId($followingID);
+	$following = Follower::loadByFollowingId($followingID);
+	
+	include_once SYSTEM_PATH.'/view/header.tpl';
+	include_once SYSTEM_PATH.'/view/myFollowers.tpl';
+	include_once SYSTEM_PATH.'/view/footer.tpl';
+}
+
+	
 	public function follow($followingID)
 	{
 		$host     = DB_HOST;
@@ -252,6 +273,12 @@ class SiteController {
 		mysql_query($q);
 	}
 
+	public function removeFollowers($userId)
+	{
+		Follower::removeFollow($userId, $_SESSION['id']);
+		header('Location: '.BASE_URL.'/profile/'.$_SESSION['id'].'/followers');
+	}
+	
 	public function editUserRoles()
 	{
 		$users = User::getAllUsers();
@@ -275,7 +302,7 @@ class SiteController {
 		$user->set('bio', $biography);
 		$user->set('email', $emailaddress);
 		$user->save();
-		header('Location: '.BASE_URL.'/profile/');
+		header('Location: '.BASE_URL.'/profile/'.$userId);
 	}
 
 }
