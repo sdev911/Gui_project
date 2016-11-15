@@ -7,5 +7,5 @@ $( document ).ready(function() {
       $('#profileForm').show();
     });
     
-    $("#profileForm").bootstrapValidator();
+    $("#profileForm").validator();
 });
