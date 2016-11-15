@@ -14,7 +14,7 @@ class SiteController {
 	// route us to the appropriate class method for this action
 	public function route($action) {
 		switch($action) {
-			
+
 			case 'home':
 				$this->home();
 				break;
@@ -70,18 +70,18 @@ class SiteController {
 				$userId = $_GET['userId'];
 		 		$this->follow($userId);
 				break;
-				
+
 			case 'followers':
 				$userId = $_GET['userId'];
 				$this->followers($userId);
-				break;		
-				
+				break;
+
 
 			case 'removefollowers':
 				$userId = $_GET['userId'];
 				$this->removeFollowers($userId);
 				break;
-				
+
 			case 'profile':
 				$userId = $_GET['userId'];
 				$this->profile($userId);
@@ -96,7 +96,7 @@ class SiteController {
 
 				$this->profileProcess($userId, $firstname, $lastname, $biography, $emailaddress);
 				break;
-				
+
 
 			// redirect to home page if all else fails
       default:
@@ -113,7 +113,8 @@ class SiteController {
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		if ($_SESSION['user'] != NULL) {
-			$actions = Actions::getActionsFollowed($_SESSION['id']);
+			//$actions = Actions::getActionsFollowed($_SESSION['id']);
+			$actions = Actions::getAllActions();
 			include_once SYSTEM_PATH.'/view/feed.tpl';
 		}
 		include_once SYSTEM_PATH.'/view/home.tpl';
@@ -268,7 +269,8 @@ class SiteController {
 
 		$action = 'follow';
 		$description = ' followed ';
-		$q = sprintf("INSERT INTO `actions` (`id_referral`, `action`, `description`, `creator_id`, `creator_username`) VALUES ('%d', '%s', '%s', '%d', '%s'); ", $followingID, $action, $description, $_SESSION['id'], $_SESSION['user']);
+		$name = 'FIX ME';
+		$q = sprintf("INSERT INTO `actions` (`target_id`, `target_name`, `action`, `description`, `creator_id`, `creator_username`) VALUES ('%d', '%s', '%s', '%s', '%d', '%s'); ", $followingID, $name, $action, $description, $_SESSION['id'], $_SESSION['user']);
 		mysql_query($q);
 	}
 
@@ -277,12 +279,12 @@ class SiteController {
 	{
 	$followers = Follower::loadByFollowerId($followingID);
 	$following = Follower::loadByFollowingId($followingID);
-	
+
 	include_once SYSTEM_PATH.'/view/header.tpl';
 	include_once SYSTEM_PATH.'/view/myFollowers.tpl';
 	include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
-	
+
 	public function removeFollowers($userId)
 	{
 		Follower::removeFollow($userId, $_SESSION['id']);
@@ -316,5 +318,5 @@ class SiteController {
 		header('Location: '.BASE_URL.'/profile/'.$userId);
 	}
 
-	
+
 }
