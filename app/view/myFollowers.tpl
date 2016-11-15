@@ -8,9 +8,15 @@
     <a href = "<?= BASE_URL ?>/profile/<?= $follower->get('following_id') ?>">
       <?= User::loadById($follower->get('following_id'))->get('username') ?>
     </a>
+     <?php if(Follower::isFollowing($_SESSION['id'], $follower->get('following_id'))): ?>
     <a href="<?=BASE_URL?>/removeFollow/<?= $follower->get('following_id') ?>">
       <button>Stop Following </button>
     </a>
+    <?php else: ?>
+       <a href="<?=BASE_URL?>/follow/<?= $follower->get('following_id') ?>">
+      <button>Follow </button>
+    </a>
+    <?php endif; ?>
 </h5>
 
 <?php endforeach; ?>
@@ -26,6 +32,15 @@
   <a href = "<?= BASE_URL ?>/profile/<?= $user->get('follower_id') ?>">
     <?= User::loadById($user->get('follower_id'))->get('username') ?>
   </a>
+  <?php if(Follower::isFollowing($_SESSION['id'], $user->get('follower_id'))): ?>
+    <a href="<?=BASE_URL?>/removeFollow/<?= $user->get('follower_id') ?>">
+      <button>Stop Following </button>
+    </a>
+    <?php else: ?>
+       <a href="<?=BASE_URL?>/follow/<?= $user->get('follower_id') ?>">
+      <button>Follow </button>
+    </a>
+    <?php endif; ?>
   </h5>
 
 <?php endforeach; ?>
