@@ -20,7 +20,7 @@
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Email</label>
-    <input type="email" name="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" value="<?=$userInfo->get('email') ?>" class="form-control" data-error="Bruh, that email address is invalid" required>
+    <input type="email" name="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" value="<?=$userInfo->get('email') ?>" class="form-control" data-error="Please enter a valid email address." required>
     <div class="help-block with-errors"></div>
   </div>
   <fieldset class="form-group">
