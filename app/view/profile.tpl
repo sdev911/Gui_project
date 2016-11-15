@@ -5,6 +5,8 @@
   <script src="<?= BASE_URL ?>/app/view/bootstrap-validator-master/dist/validator.min.js"></script>
   <script src="<?= BASE_URL ?>/public/js/profile.js"></script>
   
+  <h3 class="class="col-sm-4 col-md-offset-4"><?=$userInfo->get('username') ?>'s Profile</h3>
+  
 <form class="col-sm-4 col-md-offset-4" data-toggle="validator" role="form" id="profileForm" method="post" action="<?= BASE_URL ?>/profile/process/">
   <div class="form-group">
     <label for="exampleInputEmail1">First Name</label>
