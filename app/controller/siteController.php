@@ -14,6 +14,7 @@ class SiteController {
 	// route us to the appropriate class method for this action
 	public function route($action) {
 		switch($action) {
+			
 			case 'home':
 				$this->home();
 				break;
@@ -29,6 +30,7 @@ class SiteController {
 			case 'login':
 				$this->login();
 				break;
+
 
 			case 'processLogin':
 				$username = $_POST['un'];
@@ -74,6 +76,7 @@ class SiteController {
 				$this->followers($userId);
 				break;		
 				
+
 			case 'removefollowers':
 				$userId = $_GET['userId'];
 				$this->removeFollowers($userId);
@@ -90,13 +93,9 @@ class SiteController {
 				$lastname = $_POST['lname'];
 				$biography = $_POST['bio'];
 				$emailaddress = $_POST['email'];
-				
 				$this->profileProcess($userId, $firstname, $lastname, $biography, $emailaddress);
 				break;
-
-			case 'myFollowers':
-		 		$this->myFollowers();
-				break;
+				
 
 			// redirect to home page if all else fails
       default:
@@ -107,12 +106,14 @@ class SiteController {
 
 	}
 
+
   public function home() {
 		$pageName = 'Home';
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/home.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
+
 
   public function profile($userId) {
 	  	$userInfo = User::loadbyId($userId);
@@ -168,6 +169,7 @@ class SiteController {
 		$pic = $json->{'file'};
 		return $pic;
 	}
+
 
 	public function processLogin($u, $p) {
 		$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
@@ -236,17 +238,6 @@ class SiteController {
 		exit();
 	}
 
-	public function followers($followingID)
-{
-	$followers = Follower::loadByFollowerId($followingID);
-	$following = Follower::loadByFollowingId($followingID);
-	
-	include_once SYSTEM_PATH.'/view/header.tpl';
-	include_once SYSTEM_PATH.'/view/myFollowers.tpl';
-	include_once SYSTEM_PATH.'/view/footer.tpl';
-}
-
-	
 	public function follow($followingID)
 	{
 		$host     = DB_HOST;
@@ -267,21 +258,24 @@ class SiteController {
 		exit();
 	}
 
-	public function myFollowers()
-	{
-		$followers = Follower::loadByFollowerId($_SESSION['id']);
-		$following = Follower::loadByFollowingId($_SESSION['id']);
-		include_once SYSTEM_PATH.'/view/header.tpl';
-		include_once SYSTEM_PATH.'/view/myFollowers.tpl';
-		include_once SYSTEM_PATH.'/view/footer.tpl';
-	}
 
+	public function followers($followingID)
+	{
+	$followers = Follower::loadByFollowerId($followingID);
+	$following = Follower::loadByFollowingId($followingID);
+	
+	include_once SYSTEM_PATH.'/view/header.tpl';
+	include_once SYSTEM_PATH.'/view/myFollowers.tpl';
+	include_once SYSTEM_PATH.'/view/footer.tpl';
+	}
+	
 	public function removeFollowers($userId)
 	{
 		Follower::removeFollow($userId, $_SESSION['id']);
-		header('Location: '.BASE_URL'/profile/'.$userId'/followers/');
+		header('Location: '.BASE_URL.'/profile/'.$_SESSION['id'].'/followers');
 	}
-	
+
+
 	public function editUserRoles()
 	{
 		$users = User::getAllUsers();
@@ -307,4 +301,6 @@ class SiteController {
 		$user->save();
 		header('Location: '.BASE_URL.'/profile/'.$userId);
 	}
+
+	
 }
