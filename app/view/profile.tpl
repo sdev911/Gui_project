@@ -12,7 +12,7 @@
   </div>
     <div class="form-group">
     <label for="exampleInputAdress1">Last Name</label>
-    <input type="last name" name="lname" class="form-control" id="inputLName" aria-describedby="lnameHelp" placeholder="Enter last name" value="<?=$userInfo->get('last_name') ?>>
+    <input type="last name" name="lname" class="form-control" id="inputLName" aria-describedby="lnameHelp" placeholder="Enter last name" value="<?=$userInfo->get('last_name') ?>">
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Bio</label>
@@ -20,7 +20,7 @@
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Email</label>
-    <input type="email" name="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" value="<?=$userInfo->get('email') ?> class="form-control" data-error="Bruh, that email address is invalid">
+    <input type="email" name="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" value="<?=$userInfo->get('email') ?>" class="form-control" data-error="Bruh, that email address is invalid">
   </div>
   <div class="help-block with-errors"></div>
   <fieldset class="form-group">
