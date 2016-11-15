@@ -101,6 +101,7 @@ class Actions extends DbObject {
   public static function getActionsFollowed($id) {
     // Create array of ids
     $followed = Follower::loadByFollowerId($id);
+    if ($followed == NULL) return null;
 
     $ids = '';
     $counter = 0;
@@ -109,7 +110,7 @@ class Actions extends DbObject {
       $counter++;
       $ids = $ids.$num->get('following_id');
     }
-    if ($query == NULL) return null;
+    
     // Only return correct actions.
     $query = sprintf(" SELECT id FROM %s WHERE creator_id IN ({$ids}) ORDER BY date_created DESC ",
         self::DB_TABLE
