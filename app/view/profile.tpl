@@ -20,14 +20,14 @@
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Email</label>
-    <input type="email" name="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" value="<?=$userInfo->get('email') ?>" class="form-control" data-error="Bruh, that email address is invalid">
+    <input type="email" name="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" value="<?=$userInfo->get('email') ?>" class="form-control" data-error="Bruh, that email address is invalid" required>
   </div>
   <div class="help-block with-errors"></div>
   <fieldset class="form-group">
     <legend>Gender</legend>
     <div class="form-check">
       <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="male" <?=($userInfo->get('gender') == male)?'checked':''?>>
+        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="male" <?=($userInfo->get('gender') == male)?'checked':''?> required>
         Male
       </label>
     </div>
