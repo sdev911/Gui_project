@@ -61,6 +61,12 @@ class Product extends DbObject {
         return $obj;
     }
 
+    // Returns the last id created
+    public function getId() {
+      $id = mysql_insert_id();
+      return $id;
+    }
+
     // load all products
     public static function getAllProducts($limit=null) {
         $query = sprintf(" SELECT id FROM %s ORDER BY creation_date DESC ",
