@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/signup.css">
+
 <div id="content">
 <?php	if(isset($_SESSION['msg'])): ?>
 <h3> <?=$_SESSION['msg']?> </h3>
