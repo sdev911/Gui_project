@@ -72,6 +72,7 @@ class ProductController {
 				$this->viewcatprocess($_GET);
 				break;
 			case 'rateproduct':
+				$productID = $_GET['pid'];
 				$this->rateproduct($productID);
 				break;
       // redirect to home page if all else fails
@@ -81,8 +82,10 @@ class ProductController {
 		}
 	}
 
-	public function rateproduct($pid) {
-		
+	public function rateproduct($pid, $rating) {
+		Rating::addRating($_SESSION['id'], $pid, $rating);
+		$name = Product::loadById($pid)->get('title');
+		$this->addAction('rating', ' gave a '.$rating.' star rating to item ', $pid, $name);
 	}
 
 public function viewcatprocess(){
