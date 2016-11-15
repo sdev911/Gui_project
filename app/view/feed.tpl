@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/itemdetailview.css">
+<link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/ItemDetailView.css">
 
   <div id="content">
     <div id="boxes">
