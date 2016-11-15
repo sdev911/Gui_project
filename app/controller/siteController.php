@@ -271,7 +271,8 @@ class SiteController {
 		$action = 'follow';
 		$description = ' followed ';
 		$name = 'FIX ME';
-		$q = sprintf("INSERT INTO `actions` (`target_id`, `target_name`, `action`, `description`, `creator_id`, `creator_username`) VALUES ('%d', '%s', '%s', '%s', '%d', '%s'); ", $followingID, $name, $action, $description, $_SESSION['id'], $_SESSION['user']);
+		$url_mod = 'profile';
+		$q = sprintf("INSERT INTO `actions` (`url_mod`, `target_id`, `target_name`, `action`, `description`, `creator_id`, `creator_username`) VALUES ('%s', '%d', '%s', '%s', '%s', '%d', '%s'); ", $url_mod, $followingID, $name, $action, $description, $_SESSION['id'], $_SESSION['user']);
 		mysql_query($q);
 	}
 

@@ -49,6 +49,7 @@
           <span class="star2 star">☆</span>
           <span class="star1 star">☆</span>
         </div>
+        <div id="text-rating">text</div>
         <h3 class="info-heading">Description</h3>
         <br >
         <div id=description>
