@@ -265,8 +265,7 @@ class SiteController {
 		$keys = array_keys($inserts);
 		$query = mysql_query('INSERT INTO `followers` (`'.implode('`,`', $keys).'`) VALUES (\''.implode('\',\'', $values).'\')');
 		echo $query;
-		header('Location: http://ec2-54-191-243-249.us-west-2.compute.amazonaws.com/');
-		exit();
+
 
 		$action = 'follow';
 		$description = ' followed ';
@@ -274,6 +273,9 @@ class SiteController {
 		$url_mod = 'profile';
 		$q = sprintf("INSERT INTO `actions` (`url_mod`, `target_id`, `target_name`, `action`, `description`, `creator_id`, `creator_username`) VALUES ('%s', '%d', '%s', '%s', '%s', '%d', '%s'); ", $url_mod, $followingID, $name, $action, $description, $_SESSION['id'], $_SESSION['user']);
 		mysql_query($q);
+
+		header('Location: http://ec2-54-191-243-249.us-west-2.compute.amazonaws.com/');
+		exit();
 	}
 
 
