@@ -114,8 +114,8 @@ class SiteController {
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		if ($_SESSION['user'] != NULL) {
-			//$actions = Actions::getActionsFollowed($_SESSION['id']);
-			$actions = Actions::getAllActions();
+			$actions = Actions::getActionsFollowed($_SESSION['id']);
+			//$actions = Actions::getAllActions();
 			include_once SYSTEM_PATH.'/view/feed.tpl';
 		}
 		include_once SYSTEM_PATH.'/view/home.tpl';
