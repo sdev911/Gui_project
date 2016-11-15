@@ -27,19 +27,19 @@
     <legend>Gender</legend>
     <div class="form-check">
       <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="male">
+        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="male" <?=($userInfo->get('gender') == male)?'checked':''?>>
         Male
       </label>
     </div>
     <div class="form-check">
     <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="female">
+        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="female" <?=($userInfo->get('gender') == female)?'checked':''?>>
         Female
       </label>
     </div>
     <div class="form-check disabled">
     <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="other">
+        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="other" <?=($userInfo->get('gender') == other)?'checked':''?>>
         Other
       </label>
     </div>
@@ -55,7 +55,7 @@
     <h4>Last Name: <?=$userInfo->get('last_name') ?></h4>
     <h4>Username: <?=$userInfo->get('username') ?></h4>
     <h4>Email: <?=$userInfo->get('email') ?></h4>
-    <h4>Gender: </h4>
+    <h4>Gender: <?=$userInfo->get('gender') ?></h4>
     <h4>Bio: <?=$userInfo->get('bio') ?></h4>
 <a href="<?= BASE_URL ?>/profile/<?= $userId ?>/followers/">
 <button type="button" id="viewFollowers" class="btn btn-success">View Followers</button>
