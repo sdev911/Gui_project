@@ -5,7 +5,7 @@
   <script src="<?= BASE_URL ?>/app/view/bootstrap-validator-master/dist/validator.min.js"></script>
   <script src="<?= BASE_URL ?>/public/js/profile.js"></script>
   
-<form class="col-sm-4 col-md-offset-4 form-group" data-toggle="validator" role="form" id="profileForm" method="post" action="<?= BASE_URL ?>/profile/process/">
+<form class="col-sm-4 col-md-offset-4" data-toggle="validator" role="form" id="profileForm" method="post" action="<?= BASE_URL ?>/profile/process/">
   <div class="form-group">
     <label for="exampleInputEmail1">First Name</label>
     <input type="first name" class="form-control" id="inputFName" aria-describedby="fnameHelp" placeholder="Enter first name" name="fname" value="<?=$userInfo->get('first_name') ?>">
