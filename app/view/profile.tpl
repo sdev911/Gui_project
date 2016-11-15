@@ -41,6 +41,7 @@
     <label class="form-check-label">
         <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="other" <?=($userInfo->get('gender') == other)?'checked':''?>>
         Other
+        <div class="help-block with-errors"></div>
       </label>
     </div>
   </fieldset>
