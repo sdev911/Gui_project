@@ -93,7 +93,7 @@ class SiteController {
 				$lastname = $_POST['lname'];
 				$biography = $_POST['bio'];
 				$emailaddress = $_POST['email'];
-				$gender = $_POST['gender'];
+				$gender = $_POST['optionsRadios'];
 
 				$this->profileProcess($userId, $firstname, $lastname, $biography, $emailaddress, $gender);
 				break;
