@@ -7,7 +7,6 @@ class Rating extends DbObject {
   protected $product_id;
   protected $rating;
   protected $creator_id;
-  protected $creator_username;
   protected $date_created;
 
   public function __construct($args = array()) {
@@ -16,7 +15,6 @@ class Rating extends DbObject {
       'product_id' => null,
       'rating' => null,
       'creator_id' => null,
-      'creator_username' => null,
       'date_created' => null
     );
 
@@ -26,8 +24,13 @@ class Rating extends DbObject {
     $this->product_id = $args['product_id'];
     $this->rating = $args['rating'];
     $this->creator_id = $args['creator_id'];
-    $this->creator_username = $args['creator_username'];
     $this->date_created = $args['date_created'];
+    }
+
+    public static function loadById($id) {
+        $db = Db::instance();
+        $obj = $db->fetchById($id, __CLASS__, self::DB_TABLE);
+        return $obj;
     }
 
     public function save() {
@@ -36,8 +39,7 @@ class Rating extends DbObject {
       $db_properties = array(
         'product_id' => $this->product_id,
         'rating' => $this->rating,
-        'creator_id' => $this->creator_id,
-        'creator_username' => $this->creator_username
+        'creator_id' => $this->creator_id
       );
 
       $db->store($this, __CLASS__, self::DB_TABLE, $db_properties);
@@ -45,38 +47,39 @@ class Rating extends DbObject {
 
     // Returns a numeric rating
     public static function ratingByUserId($uid, $pid) {
-      $query = sprintf("SELECT rating from %s WHERE product_id={$pid} AND creator_id={$uid}",
+      $query = sprintf("SELECT * from %s WHERE product_id={$pid} AND creator_id={$uid}",
           self::DB_TABLE);
       $db = Db::instance();
       $result = $db->lookup($query);
-      if(!mysql_num_rows($result)) {
-        return 0;
-      }
+      if(!mysql_num_rows($result))
+          return null;
       else {
-        foreach($result as $num) {
-          return $num->get('rating');
-        }
+        $row = mysql_fetch_assoc($result);
+        return $row['id'];
+          }
       }
-    }
 
     // Returns the average of the ratings
     public static function ratingByProductId($id) {
-      $query = sprintf("SELECT rating FROM %s WHERE product_id={$id}",
+      $query = sprintf("SELECT * FROM %s WHERE product_id={$id}",
           self::DB_TABLE);
       $db = Db::instance();
       $result = $db->lookup($query);
-      $counter = 0;
-      $average = 0;
-      foreach ($result as $num) {
-        $average += $num->get('rating');
-        $counter++;
+      if(!mysql_num_rows($result))
+          return 0;
+      else {
+          $counter = 0;
+          $average = 0;
+          while($row = mysql_fetch_assoc($result)) {
+              $average = $average + self::loadById($row['id'])->get('rating');
+              $counter++;
+          }
+          return $average/$counter;
       }
-      return $average/$counter;
     }
 
     // Adds a rating
     public function addRating($uid, $pid, $rating) {
-        $this->removeRating($uid, $pid);
         $query = sprintf("INSERT INTO %s VALUES (DEFAULT, '{$pid}', '{$rating}', '{$uid}', DEFAULT)",
             self::DB_TABLE);
         $db = Db::instance();
