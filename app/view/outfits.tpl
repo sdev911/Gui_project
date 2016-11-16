@@ -38,7 +38,10 @@
           <div style="text-align: center">
           <h5><?= $product->get("title") ?></h5>
           <h5>$<?= $product->get("price") ?></h5>
+          <?php
+          if(isset($_SESSION['user'])): ?>
           <a href="<?= BASE_URL ?>/outfits/addtocart/<?= $product->get('id') ?>/"><button id="addtocart">Add to Cart</button></a>
+          <?php endif; ?>
           <?php
           if(isset($_SESSION['user'])): ?>
           <?php if((($_SESSION['permissions'])==1) And (($_SESSION['id'])==($product->get('creator_id'))) OR (($_SESSION['permissions'])==2)): ?>

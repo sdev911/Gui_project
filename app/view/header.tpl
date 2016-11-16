@@ -57,7 +57,10 @@ function isSelected($pn, $link) {
 				<li style="float:right"><a href="<?=BASE_URL?>/login">Login</a></li>
 
 			<?php endif; ?>
+			<?php
+			if(isset($_SESSION['user'])): ?>
 	    <li><a href="<?=BASE_URL?>/cart" id="shopping-cart">Shopping Cart</a></li>
+			<?php endif; ?>
 	    <li id="breakFloat"></li>
 	  </ul>
 

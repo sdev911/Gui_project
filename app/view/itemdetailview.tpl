@@ -69,7 +69,7 @@
           <?php else: ?>
             <a href="<?=BASE_URL?>/rating/<?= $product->get('id') ?>/2"><span style="font-size:100%;">&star;</span></a>
           <?php endif; ?>
-          
+
           <?php if($rating >= 1): ?>
             <a href="<?=BASE_URL?>/rating/<?= $product->get('id') ?>/1"><span style="font-size:100%;color:yellow;">&starf;</span></a>
           <?php else: ?>
@@ -86,7 +86,10 @@
         <div id=description>
           <p><?= $product->get("description") ?></p>
         </div>
+        <?php
+        if(isset($_SESSION['user'])): ?>
         <a href="<?= BASE_URL ?>/outfits/addtocart/<?= $product->get('id') ?>/"><button id="add-to-cart">Add to Cart</button></a>
+        <?php endif; ?>
 
         <?php
           if(isset($_SESSION['user'])): ?>
