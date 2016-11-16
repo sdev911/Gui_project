@@ -93,6 +93,9 @@ class ProductController {
 			$myRating->set('rating', $rating);
 			$myRating->save();
 		}
+
+		$title = Product::loadById($pid)->get('title');
+		$this->addAction('rating', ' gave a '.$rating.' star rating to ', $pid, $title);
 		header('Location: '.BASE_URL.'/itemdetailview/'.$pid);
 	}
 
