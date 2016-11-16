@@ -62,7 +62,8 @@ class ProductController {
 				break;
 			case 'addtocart':
 				$productID = $_GET['pid'];
-				$this->addtocart($productID);
+				$uid = $_GET['userId'];
+				$this->addtocart($productID, $uid);
 				break;
 			case 'removefromcart':
 				$productID = $_GET['pid'];
@@ -172,14 +173,14 @@ public function viewcatprocess(){
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
 
-	public function addtocart($id){
-		$product = Product::loadById($id);
-		Cart::addProduct($product->get('title'), $product->get('image_url'), $product->get('price'));
+	public function addtocart($pid, $uid){
+		$product = Product::loadById($pid);
+		Cart::addProduct($product->get('title'), $product->get('image_url'), $product->get('price'), $uid);
 		header('Location: '.BASE_URL.'/cart/');
 	}
 
-	public function removefromcart($id){
-		Cart::removeProduct($id);
+	public function removefromcart($pid){
+		Cart::removeProduct($pid);
 		$_SESSION['msg'] = "You removed the from your cart called ";
 		header('Location: '.BASE_URL.'/cart/');
 	}

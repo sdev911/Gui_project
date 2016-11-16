@@ -76,14 +76,31 @@ class Cart extends DbObject {
     }
 
     //add product issues
-    public function addProduct($title, $price, $img){
+    public function addProduct($title, $price, $img, $uid){
       /**$query = sprintf("INSERT INTO %s (`title`, `description`, `price`, `sizes`, `image_url`)
                          VALUES (%s, %s, %s, %s, %s);",
                          (string)self::DB_TABLE, $title, $desc, $sizes, $price, $img
                        );**/
-      $query = "INSERT INTO cart VALUES (DEFAULT, '$title', '$price', '$img')";
+      $query = "INSERT INTO cart VALUES (DEFAULT, '$uid', '$title', '$price', '$img')";
       $db = Db::instance();
       $db->execute($query);
+    }
+
+    public function getProductsByUser($id) {
+      $query = sprintf(" SELECT id FROM %s WHERE creator_id={$id} ORDER BY id DESC ",
+          self::DB_TABLE
+          );
+      $db = Db::instance();
+      $result = $db->lookup($query);
+      if(!mysql_num_rows($result))
+          return null;
+      else {
+          $objects = array();
+          while($row = mysql_fetch_assoc($result)) {
+              $objects[] = self::loadById($row['id']);
+          }
+          return ($objects);
+      }
     }
 
 }

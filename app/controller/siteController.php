@@ -57,7 +57,8 @@ class SiteController {
 				break;
 
 		 	case 'cart':
-		 		$this->cart();
+				$userId = $_GET['userId'];
+		 		$this->cart($userId);
 				break;
 
 			case 'changeRole':
@@ -157,8 +158,8 @@ class SiteController {
   }
 
 
-	public function cart(){
-		$products = Cart::getAllProducts();
+	public function cart($userId){
+		$products = Cart::getProductsByUser($userId);
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/cart.tpl';
