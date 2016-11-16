@@ -10,7 +10,7 @@
 <?php endif; ?>
 <h2>Sign Up</h2>
 
-<form id="signup" action="<?= BASE_URL ?>/signup/process" method="POST">
+<form id="signup" action="<?= BASE_URL ?>/signup/process" method="POST" data-toggle="validator">
 
   <div class="form-group">
   <label class="required">Username:</label>
