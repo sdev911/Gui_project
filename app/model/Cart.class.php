@@ -81,7 +81,7 @@ class Cart extends DbObject {
                          VALUES (%s, %s, %s, %s, %s);",
                          (string)self::DB_TABLE, $title, $desc, $sizes, $price, $img
                        );**/
-      $query = "INSERT INTO cart VALUES (DEFAULT, '$uid', '$title', '$price', '$img')";
+      $query = "INSERT INTO cart VALUES (DEFAULT, '$uid', '$title', '$img', '$price')";
       $db = Db::instance();
       $db->execute($query);
     }

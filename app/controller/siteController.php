@@ -158,9 +158,7 @@ class SiteController {
 		include_once SYSTEM_PATH.'/view/logout.tpl';
   }
 
-
 	public function cart($userId){
-		echo "user id is ".$userId;
 		$products = Cart::getProductsByUser($userId);
 
 		include_once SYSTEM_PATH.'/view/header.tpl';

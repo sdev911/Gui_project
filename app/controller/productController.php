@@ -62,7 +62,7 @@ class ProductController {
 				break;
 			case 'addtocart':
 				$productID = $_GET['pid'];
-				$uid = $_GET['userId'];
+				$uid = $_SESSION['id'];
 				$this->addtocart($productID, $uid);
 				break;
 			case 'removefromcart':
@@ -175,7 +175,7 @@ public function viewcatprocess(){
 
 	public function addtocart($pid, $uid){
 		$product = Product::loadById($pid);
-		Cart::addProduct($product->get('title'), $product->get('image_url'), $product->get('price'), $uid);
+		Cart::addProduct($product->get('title'), $product->get('price'), $product->get('image_url'), $uid);
 		header('Location: '.BASE_URL.'/cart/');
 	}
 
