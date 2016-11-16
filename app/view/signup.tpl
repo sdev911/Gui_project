@@ -43,7 +43,7 @@
   <div class="help-block with-errors"></div>
   </div>
 
-  <input type="submit" name="createAccount" value="Create Account">
+  <input type="submit" class="btn btn-primary" name="createAccount" value="Create Account">
 
 </form>
 
