@@ -144,6 +144,14 @@ public function viewcatprocess(){
 		// include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 	public function itemdetailview($id) {
+		$rating = 0;
+		if (isset($_SESSION['id']))
+		{
+			$myRatingId = Rating::ratingByUserId($_SESSION['id'], $id);
+			if ($myRatingId != null){
+				$rating = Rating::loadById($myRatingId)->get('rating');
+			}
+		}
 		$product = Product::loadById($id);
 		$comments = Comment::loadByProductId($id);
 		$pageName = '<?= $product->get("title") ?>';
