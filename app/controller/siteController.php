@@ -129,8 +129,8 @@ class SiteController {
 		$pageName = 'Profile';
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
-		include_once SYSTEM_PATH.'/view/feed.tpl';
 		include_once SYSTEM_PATH.'/view/profile.tpl';
+		include_once SYSTEM_PATH.'/view/feed.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
