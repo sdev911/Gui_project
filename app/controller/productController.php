@@ -28,7 +28,7 @@ class ProductController {
 				break;
 
 			case 'additem':
-			 	// $this->additem();
+			 	$this->additem();
 				break;
 
 			case 'additemprocess':
@@ -133,11 +133,11 @@ public function viewcatprocess(){
 		$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
 		      or die ('Error: Could not connect to MySql database');
 		    mysql_select_db(DB_DATABASE);
-		    $title = $_POST['tittle'];
-		    $img_url = $_POST['img_url'];
-		    $description = $_POST['description'];
-		    $price = $_POST['price'];
-				$sizes = $_POST['sizes'];
+		    // $title = $_POST['tittle'];
+		    // $img_url = $_POST['img_url'];
+		    // $description = $_POST['description'];
+		    // $price = $_POST['price'];
+				// $sizes = $_POST['sizes'];
 		  $q = sprintf ("INSERT INTO `products` (`title`, `img_url`, `description`, `price`, 'sizes', `creator_id`) VALUES ('%s', '%s', '%s', '%d', '%s', '%d'); ", $title, $img_url, $description, $price, $size, $_SESSION['id']);
 		  mysql_query($q);
 		  header('Location: '.BASE_URL.'/');
