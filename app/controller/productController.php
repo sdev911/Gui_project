@@ -141,12 +141,6 @@ public function viewcatprocess(){
 		  $q = sprintf ("INSERT INTO `products` (`title`, `img_url`, `description`, `price`, 'sizes', `creator_id`) VALUES ('%s', '%s', '%s', '%d', '%s', '%d'); ", $title, $img_url, $description, $price, $size, $_SESSION['id']);
 		  mysql_query($q);
 		  header('Location: '.BASE_URL.'/');
-
-		// $pageName = 'Add Item';
-		// echo 'additem';
-		// include_once SYSTEM_PATH.'/view/header.tpl';
-		// include_once SYSTEM_PATH.'/view/additem.tpl';
-		// include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 	public function itemdetailview($id) {
 		$rating = 0;
@@ -187,23 +181,6 @@ public function viewcatprocess(){
 	}
 
 	public function additemprocess() {
-		//$title = $_POST['title'];
-		//$description = $_POST['description'];
-		//$sizes = $_POST['size'];
-		//$price = $_POST['price'];
-		//$image_url = $_POST['image_url'];
-
-		//these were put into associative arrays. need to get it working with AJAX
-
-		//$info = $_POST;
-		//foreach($info as $key => $value) {
-  		//$key $value;
-		//}
-		//echo var_dump($info);
-
-		//Product::addProduct($title, $description, $sizes, $price, $image_url);
-		//header('Location: '.BASE_URL.'/blouses/');
-
 		$info = $_POST;
 		$title = "";
 		$description = "";
@@ -257,26 +234,6 @@ public function viewcatprocess(){
 		$p->set('price', $price);
 		$p->set('image_url', $image_url);
 		$p->save();
-
-		//
-		//
-		// // connect to DATABASE FIRST
-		// $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
-		// 	or die ('Error: Could not connect to MySql database');
-		// mysql_select_db(DB_DATABASE);
-		//
-		// $q = sprintf("UPDATE product
-		// 		SET title = '%s', description = '%s', sizes = '%s', price = %d, img_url = '%s'
-		// 		WHERE id = %d ",
-		// 		$title,
-		// 		$description,
-		// 		$sizes,
-		// 		$price,
-		// 		$img_url,
-		// 		$id
-		// 	);
-		// 	echo $q;
-		// 	mysql_query($q);
 
 		$_SESSION['msg'] = "You edited the product called ".$title;
 		header('Location: '.BASE_URL.'/outfits/');

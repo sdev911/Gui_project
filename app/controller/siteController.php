@@ -31,7 +31,6 @@ class SiteController {
 				$this->login();
 				break;
 
-
 			case 'processLogin':
 				$username = $_POST['un'];
 				$password = $_POST['pw'];
