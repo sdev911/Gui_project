@@ -54,6 +54,7 @@
   </div>
     <?php
     if(isset($_SESSION['user'])): ?>
+    <?php if(($_SESSION['permissions']) != 0): ?>
     <form style="margin: 20px 0 20px 0;" id="edit-product" action="<?= BASE_URL ?>/outfits/additem/process/" method="POST">
   <div id="left">
     <h4><label>Item Title:</label></h4><br>
@@ -93,7 +94,7 @@
   <input id="save" type="submit" name="submit" value="Save Changes" >
   <!--action="<?=BASE_URL?>/blouses/additem/process"-->
 </div>
-</form>    <?php endif; ?>
+</form>    <?php endif; ?><?php endif; ?>
 
 
 
