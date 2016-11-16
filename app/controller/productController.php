@@ -73,7 +73,8 @@ class ProductController {
 				break;
 			case 'rateproduct':
 				$productID = $_GET['pid'];
-				$this->rateproduct($productID);
+				$rating = $_GET['rating'];
+				$this->rateproduct($productID, $rating);
 				break;
       // redirect to home page if all else fails
       default:
@@ -83,9 +84,16 @@ class ProductController {
 	}
 
 	public function rateproduct($pid, $rating) {
-		Rating::addRating($_SESSION['id'], $pid, $rating);
-		$name = Product::loadById($pid)->get('title');
-		$this->addAction('rating', ' gave a '.$rating.' star rating to item ', $pid, $name);
+		$myRatingId = Rating::ratingByUserId($_SESSION['id'], $pid);
+		if ($myRatingId == null){
+			Rating::addRating($_SESSION['id'], $pid, $rating);
+		}
+		else{
+			$myRating = Rating::loadById($myRatingId);
+			$myRating->set('rating', $rating);
+			$myRating->save();
+		}
+		header('Location: '.BASE_URL.'/itemdetailview/'.$pid);
 	}
 
 public function viewcatprocess(){
