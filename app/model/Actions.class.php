@@ -103,6 +103,29 @@ class Actions extends DbObject {
     }
   }
 
+  public static function getProductActions($id) {
+    $name = Product::loadById($id)->get('title');
+    $query = sprintf("SELECT id FROM %s WHERE target_name=".'"'.$name.'"'." ORDER BY date_created DESC",
+        self::DB_TABLE
+        );
+    $db = Db::instance();
+    $result = $db->lookup($query);
+    if(!mysql_num_rows($result))
+        return null;
+    else {
+        $objects = array();
+        $counter = 0;
+        while($row = mysql_fetch_assoc($result)) {
+            $objects[] = self::loadById($row['id']);
+            $counter++;
+            if ($counter > 9) {
+              return ($objects);
+            }
+        }
+        return ($objects);
+    }
+  }
+
   public static function getActionsFollowed($id) {
     // Create array of ids
     $followed = Follower::loadByFollowerId($id);

@@ -56,7 +56,6 @@ class SiteController {
 				break;
 
 		 	case 'cart':
-				//$userId = $_GET['userId'];
 				$userId = $_SESSION['id'];
 		 		$this->cart($userId);
 				break;

@@ -154,8 +154,11 @@ public function viewcatprocess(){
 		$product = Product::loadById($id);
 		$comments = Comment::loadByProductId($id);
 		$pageName = '<?= $product->get("title") ?>';
+		$actions = Actions::getProductActions($id);
+
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/itemdetailview.tpl';
+		include_once SYSTEM_PATH.'/view/feed.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
