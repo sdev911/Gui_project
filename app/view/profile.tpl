@@ -1,8 +1,8 @@
-   <link href="<?= BASE_URL ?>/app/view/css/bootstrap.css" rel="stylesheet" type="text/css" />
-  <link href="<?= BASE_URL ?>/app/view/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+   <link href="<?= BASE_URL ?>/public/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+  <link href="<?= BASE_URL ?>/public/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
   <link href="<?= BASE_URL ?>/public/css/profile.css" rel="stylesheet" type="text/css" />
 
-  <script src="<?= BASE_URL ?>/app/view/bootstrap-validator-master/dist/validator.min.js"></script>
+  <script src="<?= BASE_URL ?>/public/bootstrap/bootstrap-validator-master/dist/validator.min.js"></script>
   <script src="<?= BASE_URL ?>/public/js/profile.js"></script>
   
   <h3 class="col-sm-4 col-md-offset-4"><?=$userInfo->get('username') ?>'s Profile</h3>
