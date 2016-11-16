@@ -42,14 +42,45 @@
         </form>
         <br >
         <h3 class="info-heading" id="ratings-header">Ratings</h3>
+        <?php
+          if(isset($_SESSION['user'])): ?>
         <div class="rating" id="item-rating">
-          <span class="star5 star">☆</span>
-          <span class="star4 star">☆</span>
-          <span class="star3 star">☆</span>
-          <span class="star2 star">☆</span>
-          <span class="star1 star">☆</span>
+
+          <?php if($rating == 5): ?>
+            <a href="<?=BASE_URL?>/rating/<?= $product->get('id') ?>/5"><span style="font-size:100%;color:yellow;">&starf;</span></a>
+          <?php else: ?>
+            <a href="<?=BASE_URL?>/rating/<?= $product->get('id') ?>/5"><span style="font-size:100%;">&star;</span></a>
+          <?php endif; ?>
+
+          <?php if($rating >= 4): ?>
+            <a href="<?=BASE_URL?>/rating/<?= $product->get('id') ?>/4"><span style="font-size:100%;color:yellow;">&starf;</span></a>
+          <?php else: ?>
+            <a href="<?=BASE_URL?>/rating/<?= $product->get('id') ?>/4"><span style="font-size:100%;">&star;</span></a>
+          <?php endif; ?>
+
+          <?php if($rating >= 3): ?>
+            <a href="<?=BASE_URL?>/rating/<?= $product->get('id') ?>/3"><span style="font-size:100%;color:yellow;">&starf;</span></a>
+          <?php else: ?>
+            <a href="<?=BASE_URL?>/rating/<?= $product->get('id') ?>/3"><span style="font-size:100%;">&star;</span></a>
+          <?php endif; ?>
+
+          <?php if($rating >= 2): ?>
+            <a href="<?=BASE_URL?>/rating/<?= $product->get('id') ?>/2"><span style="font-size:100%;color:yellow;">&starf;</span></a>
+          <?php else: ?>
+            <a href="<?=BASE_URL?>/rating/<?= $product->get('id') ?>/2"><span style="font-size:100%;">&star;</span></a>
+          <?php endif; ?>
+          
+          <?php if($rating >= 1): ?>
+            <a href="<?=BASE_URL?>/rating/<?= $product->get('id') ?>/1"><span style="font-size:100%;color:yellow;">&starf;</span></a>
+          <?php else: ?>
+            <a href="<?=BASE_URL?>/rating/<?= $product->get('id') ?>/1"><span style="font-size:100%;">&star;</span></a>
+          <?php endif; ?>
+
         </div>
-        <div id="text-rating">text</div>
+
+        <?php endif; ?>
+        <label> Average Rating:  <div id="text-rating"><?=  Rating::ratingByProductId($product->get('id')) ?></div></label>
+
         <h3 class="info-heading">Description</h3>
         <br >
         <div id=description>
