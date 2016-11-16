@@ -10,11 +10,11 @@
 <form class="col-sm-4 col-md-offset-4" data-toggle="validator" role="form" id="profileForm" method="post" action="<?= BASE_URL ?>/profile/process/">
   <div class="form-group">
     <label for="exampleInputEmail1">First Name</label>
-    <input type="first name" class="form-control" id="inputFName" aria-describedby="fnameHelp" placeholder="Enter first name" name="fname" value="<?=$userInfo->get('first_name') ?>">
+    <input type="first name" class="form-control" id="inputFName" aria-describedby="fnameHelp" placeholder="Enter first name" name="fname" value="<?=$userInfo->get('first_name') ?>" required>
   </div>
     <div class="form-group">
     <label for="exampleInputAdress1">Last Name</label>
-    <input type="last name" name="lname" class="form-control" id="inputLName" aria-describedby="lnameHelp" placeholder="Enter last name" value="<?=$userInfo->get('last_name') ?>">
+    <input type="last name" name="lname" class="form-control" id="inputLName" aria-describedby="lnameHelp" placeholder="Enter last name" value="<?=$userInfo->get('last_name') ?>" required>
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Bio</label>
@@ -35,13 +35,13 @@
     </div>
     <div class="form-check">
     <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="female" <?=($userInfo->get('gender') == female)?'checked':''?>>
+        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="female" <?=($userInfo->get('gender') == female)?'checked':''?> required>
         Female
       </label>
     </div>
     <div class="form-check disabled">
     <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="other" <?=($userInfo->get('gender') == other)?'checked':''?>>
+        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="other" <?=($userInfo->get('gender') == other)?'checked':''?> required>
         Other
         <div class="help-block with-errors"></div>
       </label>
