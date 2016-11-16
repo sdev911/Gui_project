@@ -8,12 +8,32 @@
 
 <form id="signup" action="<?= BASE_URL ?>/signup/process" method="POST">
 
-  <label class="required">Username: <input type="text" name="un"></label>
-  <label class="required">Password: <input type="password" name="pw"></label>
-  <label class="required">Confirm Password: <input type="password" name="confirmpw"></label>
-  <label class="required">Email address: <input type="text" name="email"></label>
-  <label>First name: <input type="text" name="fname"></label>
-  <label>Last name: <input type="text" name="lname"></label>
+  <div class="form-group">
+  <label class="required">Username:</label>
+  <input class="form-control" type="text" name="un">
+  <div class="help-block with-errors"></div>
+  </div>
+  <div class="form-group">
+  <label class="required">Password:</label>
+  <input class="form-control" type="password" name="pw">
+  </div>
+  <div class="form-group">
+  <label class="required">Confirm Password:</label>
+  <input class="form-control" type="password" name="confirmpw">
+  </div>
+  <div class="form-group">
+  <label class="required">Email address:</label>
+  <input class="form-control" type="email" name="email" data-error="Please enter a valid email address." required>
+  <div class="help-block with-errors"></div>
+  </div>
+  <div class="form-group">
+  <label>First name:</label>
+  <input type="text" class="form-control" name="fname">
+  </div>
+  <div class="form-group">
+  <label>Last name:</label>
+  <input type="text" class="form-control" name="lname">
+  </div>
 
   <input type="submit" name="createAccount" value="Create Account">
 
