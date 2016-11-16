@@ -47,3 +47,5 @@ RewriteRule ^outfits/remove/(\d+)/process/?$ app/controller/productController.ph
 RewriteRule ^viewcat/process/?$ app/controller/productController.php?action=viewcatprocess [QSA,L]
 
 RewriteRule ^outfits/comment/(\d+)/?$ app/controller/productController.php?action=comment&pid=$1 [QSA,L]
+
+RewriteRule ^rating/(\d+)/(\d+)/?$ app/controller/productController.php?action=rateproduct&pid=$1&rating=$2 [QSA,L]
