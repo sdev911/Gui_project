@@ -28,11 +28,11 @@ class ProductController {
 				break;
 
 			case 'additem':
-			 	$this->additem();
+			 	// $this->additem();
 				break;
 
 			case 'additemprocess':
-				// $this->additemprocess();
+				$this->additemprocess();
 				break;
 
 			case 'comment':
