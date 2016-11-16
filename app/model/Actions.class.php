@@ -110,7 +110,9 @@ class Actions extends DbObject {
       $counter++;
       $ids = $ids.$num->get('following_id');
     }
-    
+
+    $ids = $ids.','.$id;
+
     // Only return correct actions.
     $query = sprintf(" SELECT id FROM %s WHERE creator_id IN ({$ids}) ORDER BY date_created DESC ",
         self::DB_TABLE
