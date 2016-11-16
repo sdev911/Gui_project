@@ -14,16 +14,16 @@
 
   <div class="form-group">
   <label class="required">Username:</label>
-  <input class="form-control" type="text" name="un">
+  <input class="form-control" type="text" name="un" data-error="Please enter a username." required>
   <div class="help-block with-errors"></div>
   </div>
   <div class="form-group">
   <label class="required">Password:</label>
-  <input class="form-control" type="password" name="pw">
+  <input class="form-control" id="inputPassword" type="password" name="pw" data-error="Please enter a password." required>
   </div>
   <div class="form-group">
   <label class="required">Confirm Password:</label>
-  <input class="form-control" type="password" name="confirmpw">
+  <input class="form-control" data-match="#inputPassword" type="password" name="confirmpw" data-error="Passwords do not match." required>
   </div>
   <div class="form-group">
   <label class="required">Email address:</label>
@@ -32,11 +32,11 @@
   </div>
   <div class="form-group">
   <label>First name:</label>
-  <input type="text" class="form-control" name="fname">
+  <input type="text" class="form-control" name="fname" data-error="Please enter your first name." required>
   </div>
   <div class="form-group">
   <label>Last name:</label>
-  <input type="text" class="form-control" name="lname">
+  <input type="text" class="form-control" name="lname" data-error="Please enter your last name." required>
   </div>
 
   <input type="submit" name="createAccount" value="Create Account">
