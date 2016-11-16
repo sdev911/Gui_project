@@ -109,6 +109,7 @@
         <div>
         <h3>Comment from: <a href="<?=BASE_URL?>/profile/<?= $comment->get('creator_id') ?>"><?= $comment->get('creator_username') ?></a>
 
+    <?php if (isset($_SESSION['user'])): ?>
             <?php if($_SESSION['id'] != $comment->get('creator_id')): ?>
                 <?php if(!Follower::isFollowing($_SESSION['id'], $comment->get('creator_id'))): ?> <!-- makes it so that you cannot follow yourself -->
                 <a href="<?= BASE_URL ?>/follow/<?= $comment->get('creator_id') ?>/">
@@ -122,6 +123,7 @@
                   <button id="follow">Unfollow <?= $comment->get('creator_username') ?></button>
 
                 </a>
+                  <?php endif; ?>
                   <?php endif; ?>
                   <?php endif; ?>
         </h3>
