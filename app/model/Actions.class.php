@@ -73,8 +73,13 @@ class Actions extends DbObject {
         return null;
     else {
         $objects = array();
+        $counter = 0;
         while($row = mysql_fetch_assoc($result)) {
             $objects[] = self::loadById($row['id']);
+            $counter++;
+            if ($counter > 9) {
+              return ($objects);
+            }
         }
         return ($objects);
     }
@@ -123,8 +128,13 @@ class Actions extends DbObject {
         return null;
     else {
         $objects = array();
+        $counter = 0;
         while($row = mysql_fetch_assoc($result)) {
             $objects[] = self::loadById($row['id']);
+            $counter++;
+            if ($counter > 9) {
+              return ($objects);
+            }
         }
         return ($objects);
     }
