@@ -37,9 +37,11 @@
       <button>Stop Following </button>
     </a>
     <?php else: ?>
+    <?php if($_SESSION['id'] != $user->get('follower_id')): ?>
        <a href="<?=BASE_URL?>/follow/<?= $user->get('follower_id') ?>">
       <button>Follow </button>
     </a>
+    <?php endif; ?>
     <?php endif; ?>
   </h5>
 
