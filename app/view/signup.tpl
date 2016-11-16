@@ -20,10 +20,12 @@
   <div class="form-group">
   <label class="required">Password:</label>
   <input class="form-control" id="inputPassword" type="password" name="pw" data-error="Please enter a password." required>
+  <div class="help-block with-errors"></div>
   </div>
   <div class="form-group">
   <label class="required">Confirm Password:</label>
   <input class="form-control" data-match="#inputPassword" type="password" name="confirmpw" data-error="Passwords do not match." required>
+  <div class="help-block with-errors"></div>
   </div>
   <div class="form-group">
   <label class="required">Email address:</label>
@@ -33,10 +35,12 @@
   <div class="form-group">
   <label>First name:</label>
   <input type="text" class="form-control" name="fname" data-error="Please enter your first name." required>
+  <div class="help-block with-errors"></div>
   </div>
   <div class="form-group">
   <label>Last name:</label>
   <input type="text" class="form-control" name="lname" data-error="Please enter your last name." required>
+  <div class="help-block with-errors"></div>
   </div>
 
   <input type="submit" name="createAccount" value="Create Account">
