@@ -66,9 +66,9 @@ class Cart extends DbObject {
     }
 
     //remove product issues
-    public function removeProduct($id){
+    public function removeProduct($id, $uid){
       $query = sprintf(" DELETE FROM %s
-                          WHERE id=$id; ",
+                          WHERE id=$id AND creator_id=$uid; ",
           (string)self::DB_TABLE
           );
       $db = Db::instance();

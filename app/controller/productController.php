@@ -67,7 +67,8 @@ class ProductController {
 				break;
 			case 'removefromcart':
 				$productID = $_GET['pid'];
-				$this->removefromcart($productID);
+				$uid = $_SESSION['id'];
+				$this->removefromcart($productID, $uid);
 				break;
 			case 'viewcatprocess':
 				$this->viewcatprocess($_GET);
@@ -179,8 +180,8 @@ public function viewcatprocess(){
 		header('Location: '.BASE_URL.'/cart/');
 	}
 
-	public function removefromcart($pid){
-		Cart::removeProduct($pid);
+	public function removefromcart($pid, $uid){
+		Cart::removeProduct($pid, $uid);
 		$_SESSION['msg'] = "You removed the from your cart called ";
 		header('Location: '.BASE_URL.'/cart/');
 	}
