@@ -134,7 +134,6 @@ class SiteController {
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
-
 	public function contact() {
 		$pageName = 'Contact';
 		include_once SYSTEM_PATH.'/view/header.tpl';

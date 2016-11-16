@@ -32,7 +32,7 @@ class ProductController {
 				break;
 
 			case 'additemprocess':
-				$this->additemprocess();
+				// $this->additemprocess();
 				break;
 
 			case 'comment':
