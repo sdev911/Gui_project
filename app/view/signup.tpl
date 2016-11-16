@@ -1,4 +1,8 @@
 <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/signup.css">
+ <link href="<?= BASE_URL ?>/public/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+  <link href="<?= BASE_URL ?>/public/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+  <script src="<?= BASE_URL ?>/public/bootstrap/bootstrap-validator-master/dist/validator.min.js"></script>
 
 <div id="content">
 <?php	if(isset($_SESSION['msg'])): ?>
