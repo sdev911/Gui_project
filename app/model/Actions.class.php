@@ -172,7 +172,7 @@ class Actions extends DbObject {
                        VALUES (%s, %s, %s, %s, %s);",
                        (string)self::DB_TABLE, $title, $desc, $sizes, $price, $img
                      );**/
-    $query = "INSERT INTO comments VALUES (DEFAULT, '$action', '$url_mod', '$description', '$target_id','$target_name','$creator_id', '$creator_username', DEFAULT)";
+    $query = "INSERT INTO actions VALUES (DEFAULT, '$action', '$url_mod', '$description', '$target_id','$target_name','$creator_id', '$creator_username', DEFAULT)";
     $db = Db::instance();
     $db->execute($query);
   }
