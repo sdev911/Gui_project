@@ -101,7 +101,7 @@ class SiteController {
 
 			// redirect to home page if all else fails
       default:
-        header('Location: http://ec2-54-191-243-249.us-west-2.compute.amazonaws.com/');
+        header('Location: '.BASE_URL.'/');
         exit();
 
 		}
@@ -212,36 +212,13 @@ class SiteController {
 	}
 
 	public function processSignup($u, $p, $c, $e, $f, $l) {
-		if ($p != $c)
+		if (User::loadByUsername($u)!=null)
 		{
-			$_SESSION['msg'] = "Your password selections do not match";
+			$_SESSION['msg'] = "That username is taken. Please try another";
 			header('Location: '.BASE_URL.'/signup/');
 			exit();
 		}
-		$host     = DB_HOST;
-		$database = DB_DATABASE;
-		$username = DB_USER;
-		$password = DB_PASS;
-
-		$conn = mysql_connect($host, $username, $password)
-			or die ('Error: Could not connect to MySql database');
-
-		mysql_select_db($database);
-		$q = sprintf("SELECT * FROM user");  //WHERE username LIKE (%s)", $u);
-		$result = mysql_query($q);
-		while($row = mysql_fetch_assoc($result))
-		{
-			if ($u == $row['username'])
-			{
-				$_SESSION['msg'] = "That username is already in use.";
-				header('Location: '.BASE_URL.'/signup/');
-				exit();
-			}
-		}
-		$inserts = array('first_name' => $f,'last_name' => $l,'username' => $u,'password' => $p,'email' => $e, 'user_type' => 0);
-		$values = array_map('mysql_real_escape_string', array_values($inserts));
-		$keys = array_keys($inserts);
-		mysql_query('INSERT INTO `user` (`'.implode('`,`', $keys).'`) VALUES (\''.implode('\',\'', $values).'\')');
+		User::addUser($u, $p, $f, $l, $e);
 		$_SESSION['msg'] = null;
 		$this->processLogin($u, $p);
 		exit();
@@ -249,30 +226,13 @@ class SiteController {
 
 	public function follow($followingID)
 	{
-		$host     = DB_HOST;
-		$database = DB_DATABASE;
-		$username = DB_USER;
-		$password = DB_PASS;
-
-		$conn = mysql_connect($host, $username, $password)
-			or die ('Error: Could not connect to MySql database');
-
-		mysql_select_db($database);
-		$inserts = array('follower_id' => $_SESSION['id'],'following_id' => $followingID);
-		$values = array_map('mysql_real_escape_string', array_values($inserts));
-		$keys = array_keys($inserts);
-		$query = mysql_query('INSERT INTO `followers` (`'.implode('`,`', $keys).'`) VALUES (\''.implode('\',\'', $values).'\')');
-		echo $query;
-
-
+		Follower::addFollow($_SESSION['id'],$followingID);
 		$action = 'follow';
 		$description = ' followed ';
 		$name = User::loadById($followingID)->get('username');
 		$url_mod = 'profile';
-		$q = sprintf("INSERT INTO `actions` (`url_mod`, `target_id`, `target_name`, `action`, `description`, `creator_id`, `creator_username`) VALUES ('%s', '%d', '%s', '%s', '%s', '%d', '%s'); ", $url_mod, $followingID, $name, $action, $description, $_SESSION['id'], $_SESSION['user']);
-		mysql_query($q);
-
-		header('Location: http://ec2-54-191-243-249.us-west-2.compute.amazonaws.com/');
+		Actions::addAction($url_mod, $followingID, $name, $action, $description, $_SESSION['id'], $_SESSION['user']);
+		header('Location: '.BASE_URL.'/');
 		exit();
 	}
 
