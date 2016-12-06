@@ -106,4 +106,15 @@ class User extends DbObject {
         }
     }
 
+    public function addUser($username, $password, $first_name, $last_name, $email){
+      echo $username,"<br>", $password, "<br>",$first_name, "<br>",$last_name, "<br>",$email, "<br>";
+      /**$query = sprintf("INSERT INTO %s (`title`, `description`, `price`, `sizes`, `image_url`)
+                         VALUES (%s, %s, %s, %s, %s);",
+                         (string)self::DB_TABLE, $title, $desc, $sizes, $price, $img
+                       );**/
+      $query = "INSERT INTO user VALUES (DEFAULT, '$first_name', '$last_name', '$username', '$password', '$email', 0, DEFAULT, DEFAULT, DEFAULT)";
+      $db = Db::instance();
+      $db->execute($query);
+    
+    
 }
