@@ -27,10 +27,6 @@ class ProductController {
 				$this->checkout();
 				break;
 
-			case 'additem':
-			 	$this->additem();
-				break;
-
 			case 'additemprocess':
 				$this->additemprocess();
 				break;
@@ -127,20 +123,6 @@ public function viewcatprocess(){
 		include_once SYSTEM_PATH.'/view/outfits.tpl';
 		//include_once SYSTEM_PATH.'/view/additem.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
-  }
-
-	public function additem() {
-		$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
-		      or die ('Error: Could not connect to MySql database');
-		    mysql_select_db(DB_DATABASE);
-		    $title = $_POST['tittle'];
-		    $img_url = $_POST['img_url'];
-		    $description = $_POST['description'];
-		    $price = $_POST['price'];
-				$sizes = $_POST['sizes'];
-		  $q = sprintf ("INSERT INTO `products` (`title`, `img_url`, `description`, `price`, 'sizes', `creator_id`) VALUES ('%s', '%s', '%s', '%d', '%s', '%d'); ", $title, $img_url, $description, $price, $size, $_SESSION['id']);
-		  mysql_query($q);
-		  header('Location: '.BASE_URL.'/');
   }
 	public function itemdetailview($id) {
 		$rating = 0;
@@ -260,32 +242,22 @@ public function viewcatprocess(){
 	}
 
 	public function comment($pid){
-		$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
-		      or die ('Error: Could not connect to MySql database');
-		    mysql_select_db(DB_DATABASE);
-		    $myComment = $_POST['commentText'];
-		  $q = sprintf ("INSERT INTO `comments` (`product_id`, `comment`, `creator_id`, `creator_username`) VALUES ('%d', '%s', '%d', '%s'); ", $pid, $myComment, $_SESSION['id'], $_SESSION['user']);
-		  mysql_query($q);
-			header('Location: '.BASE_URL.'/');
+		$myComment = $_POST['commentText'];
+		Comment::addComment($pid, $myComment, $_SESSION['id'], $_SESSION['user']);
+		header('Location: '.BASE_URL.'/');
 
-			$name = Product::loadById($pid)->get('title');
-			$this->addAction('comment', ' added the comment "'.$myComment.'" to item ', $pid, $name);
+		$name = Product::loadById($pid)->get('title');
+		$this->addAction('comment', ' added the comment "'.$myComment.'" to item ', $pid, $name);
 	}
 
 	public function addAction($action, $description, $id, $target_name) {
-		$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
-		      or die ('Error: Could not connect to MySql database');
-		mysql_select_db(DB_DATABASE);
-
 		if ($action == 'follow') {
 			$url_mod = 'profile';
 		}
 		else {
 			$url_mod = 'itemdetailview';
 		}
-
-		$q = sprintf("INSERT INTO `actions` (`url_mod`, `target_id`, `target_name`, `action`, `description`, `creator_id`, `creator_username`) VALUES ('%s', '%d', '%s', '%s', '%s', '%d', '%s'); ", $url_mod, $id, $target_name, $action, $description, $_SESSION['id'], $_SESSION['user']);
-		mysql_query($q);
+		Actions::AddAction($url_mod, $id, $target_name, $action, $description, $_SESSION['id'], $_SESSION['user']);
 		header('Location: '.BASE_URL.'/');
 	}
 }
