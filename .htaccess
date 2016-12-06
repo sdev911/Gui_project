@@ -28,8 +28,6 @@ RewriteRule ^itemdetailview/(\d+)/?$ app/controller/productController.php?action
 
 RewriteRule ^outfits/?$ app/controller/productController.php?action=products&ptype=outfits [QSA,L]
 
-RewriteRule ^outfits/additem/?$ app/controller/productController.php?action=additem [QSA,L]
-
 RewriteRule ^outfits/addtocart/(\d+)/?$ app/controller/productController.php?action=addtocart&pid=$1 [QSA,L]
 
 RewriteRule ^outfits/removefromcart/(\d+)/?$ app/controller/productController.php?action=removefromcart&pid=$1 [QSA,L]
