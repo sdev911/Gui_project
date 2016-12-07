@@ -115,6 +115,6 @@ class User extends DbObject {
       $query = "INSERT INTO user VALUES (DEFAULT, '$first_name', '$last_name', '$username', '$password', '$email', 0, DEFAULT, DEFAULT, DEFAULT)";
       $db = Db::instance();
       $db->execute($query);
-    
+    }
     
 }
