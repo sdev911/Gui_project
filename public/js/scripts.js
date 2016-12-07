@@ -50,36 +50,36 @@ $(document).ready(function()    {
   source of the image will change and a heading will be added with the name
   of the item in it.
   **/
-  $( "#mainImage1" ).mouseover(function() {
+   $( "#mainImage1" ).mouseover(function() {
     document.getElementById("mainImage1").src=baseURL+"/public/img/cat8_2.png";
-    $("#shopthislook ul").prepend("<h2>Elegant in Pink</h2>");
+    $("#shopthislook ul").prepend("<div class='container'><div class='row'><div class='col-xs-10 col-xs-offset-1'><h2>Elegant in Pink</h2></div></div></div>");
   });
   $( "#mainImage1" ).mouseout(function() {
     document.getElementById("mainImage1").src=baseURL+"/public/img/cat8.jpg";
-    $("#shopthislook ul h2").remove();
+    $("#shopthislook ul .container").remove();
   });
   $( "#mainImage2" ).mouseover(function() {
     document.getElementById("mainImage2").src=baseURL+"/public/img/cat4_2.jpg";
-    $("#shopthislook ul").prepend("<h2>Flower Power</h2>");
+    $("#shopthislook ul").prepend("<div class='container'><div class='row'><div class='col-xs-10 col-xs-offset-1'><h2>Flower Power</h2></div></div></div>");
   });
   $( "#mainImage2" ).mouseout(function() {
     document.getElementById("mainImage2").src=baseURL+"/public/img/cat4.jpg";
-    $("#shopthislook ul h2").remove();
+    $("#shopthislook ul .container").remove();
   });
   $( "#mainImage3" ).mouseover(function() {
     document.getElementById("mainImage3").src=baseURL+"/public/img/cat5_2.jpg";
-    $("#shopthislook ul").prepend("<h2>Tulle We Meet Again</h2>");
+    $("#shopthislook ul").prepend("<div class='container'><div class='row'><div class='col-xs-10 col-xs-offset-1'><h2>Tulle We Meet Again</h2></div></div></div>");
   });
   $( "#mainImage3" ).mouseout(function() {
     document.getElementById("mainImage3").src=baseURL+"/public/img/cat5.jpg";
-    $("#shopthislook ul h2").remove();
+    $("#shopthislook ul .container").remove();
   });
   $( "#mainImage4" ).mouseover(function() {
     document.getElementById("mainImage4").src=baseURL+"/public/img/cat6_2.jpg";
-    $("#shopthislook ul").prepend("<h2>Patriotic Pussy</h2>");
+    $("#shopthislook ul").prepend("<div class='container'><div class='row'><div class='col-xs-10 col-xs-offset-1'><h2>Patriotic Pussy</h2></div></div></div>");
   });
   $( "#mainImage4" ).mouseout(function() {
     document.getElementById("mainImage4").src=baseURL+"/public/img/cat6.jpg";
-    $("#shopthislook ul h2").remove();
+    $("#shopthislook ul .container").remove();
   });
 });
