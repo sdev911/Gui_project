@@ -12,6 +12,8 @@ class Actions extends DbObject {
   protected $creator_id;
   protected $creator_username;
   protected $date_created;
+  protected $url_mod;
+  protected $target_name;
 
   // constructor
   public function __construct($args = array()) {
@@ -161,6 +163,18 @@ class Actions extends DbObject {
         }
         return ($objects);
     }
+  }
+  
+  //add product issues
+  public function addAction($url_mod, $target_id, $target_name, $action, $description, $creator_id, $creator_username){
+    echo $action, "<br>", $url_mod, "<br>", $description, "<br>", $target_id, "<br>", $target_name, "<br>", $creator_id, "<br>", $creator_username, "<br>";
+    /**$query = sprintf("INSERT INTO %s (`title`, `description`, `price`, `sizes`, `image_url`)
+                       VALUES (%s, %s, %s, %s, %s);",
+                       (string)self::DB_TABLE, $title, $desc, $sizes, $price, $img
+                     );**/
+    $query = "INSERT INTO actions VALUES (DEFAULT, '$action', '$url_mod', '$description', '$target_id','$target_name','$creator_id', '$creator_username', DEFAULT)";
+    $db = Db::instance();
+    $db->execute($query);
   }
 
 }

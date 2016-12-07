@@ -21,6 +21,8 @@ function isSelected($pn, $link) {
 	</script>
   <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/style.css">
   <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/Outfits.css">
+	<link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>public/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>public/bootstrap/js/bootstrap.min.js">
   <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
   <script type="text/javascript" src="<?=BASE_URL?>/public/js/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="<?=BASE_URL?>/public/js/scripts.js"></script>
@@ -37,55 +39,38 @@ function isSelected($pn, $link) {
 
 		<div id="header">
 
-	  <h1><a href="/">Dream Aloud</a></h1>
+			<nav class="navbar navbar-default" style="margin-bottom: 0px; background-color: rgba(0,0,0,0); border-color: rgba(0,0,0,0);">
+			  <div class="container-fluid">
+			    <div class="navbar-header">
+			      <a class="navbar-brand" href="<?=BASE_URL?>">
+							<img alt="Brand" src="<?=BASE_URL?>public/img/logo.png">
+						</a>
+			    </div>
+			    <ul class="nav navbar-nav">
+			      <li><a href="<?=BASE_URL?>/outfits">Outfits</a></li>
+			      <li><a href="#">About Us</a></li>
+			      <li><a href="#">Contact Us</a></li>
+			    </ul>
+					<ul class="nav navbar-nav navbar-right">
+						<?php
+						if(isset($_SESSION['user'])): ?>
+						<li><a href="<?=BASE_URL?>/cart">Shopping Cart</a></li>
+						<?php endif; ?>
+						<?php	if(isset($_SESSION['user'])): ?>
+							<li><a href="<?=BASE_URL?>/logout">Logout</a></li>
+							<li><a href="<?=BASE_URL?>/profile/<?= $_SESSION['id'] ?>"><?= $_SESSION['user'] ?></a></li>
+							<?php if(($_SESSION['permissions'])==2): ?>
+								<li><a href="<?=BASE_URL?>/users">Set User Roles</a></li>
+							<?php endif; ?>
+					 <?php	else: ?>
+							<li><a href="<?=BASE_URL?>/login">Login</a></li>
+							<li><a href="<?=BASE_URL?>/signup">Signup</a></li>
+						<?php endif; ?>
+					</ul>
 
-	  <ul id="primary-nav">
-	  	<li><a href="<?=BASE_URL?>/outfits">Outfits</a></li>
-	  	<li><a href="<?=BASE_URL?>/accessories">Accessories</a></li>
-	  	<li><a href="contact.php">Contact</a></li>
-	    <li id="search2">
-	      <input type="text" value="Search products" /> <button>Go</button>
-	    </li>
-			<?php	if(isset($_SESSION['user'])): ?>
-				<li style="float:right"><a href="<?=BASE_URL?>/logout">Logout</a></li>
-				<li style="float:right"><a href="<?=BASE_URL?>/profile/<?= $_SESSION['id'] ?>"><?= $_SESSION['user'] ?></a></li>
-				<?php if(($_SESSION['permissions'])==2): ?>
-					<li style="float:right"><a href="<?=BASE_URL?>/users">Set User Roles</a></li>
-				<?php endif; ?>
-		 <?php	else: ?>
-		 		<li style="float:right"><a href="<?=BASE_URL?>/signup">Sign Up</a></li>
-				<li style="float:right"><a href="<?=BASE_URL?>/login">Login</a></li>
+			  </div>
+			</nav>
 
-			<?php endif; ?>
-			<?php
-			if(isset($_SESSION['user'])): ?>
-	    <li><a href="<?=BASE_URL?>/cart" id="shopping-cart">Shopping Cart</a></li>
-			<?php endif; ?>
-	    <li id="breakFloat"></li>
-	  </ul>
 
-		<div style="background-color: lightblue;">
-			<p>Cat Fact: <?=$this->getCatFact() ?></p>
-		</div>
-
-	  </div>
-
-<!--
-// Unset all of the session variables.
-$_SESSION = array();
-
-// If it's desired to kill the session, also delete the session cookie.
-// Note: This will destroy the session, and not just the session data!
-if (ini_get("session.use_cookies")) {
-    $params = session_get_cookie_params();
-    setcookie(session_name(), '', time() - 42000,
-        $params["path"], $params["domain"],
-        $params["secure"], $params["httponly"]
-    );
-}
-
-// Finally, destroy the session.
-session_destroy();
-?>
-
--->
+</div>
+</div>
