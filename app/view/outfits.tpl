@@ -2,6 +2,8 @@
 
   <div id="content">
 
+
+
     <img id="banner" src="<?=BASE_URL?>/public/img/homepage_cat.jpg" alt="Outfits">
 
     <div id="filterbar">
@@ -99,11 +101,11 @@
 </div>
 </form>    <?php endif; ?><?php endif; ?>
 
-
-
 <div id="base-url" data-base="<?=BASE_URL?>">
     <img id="catscroll" src="<?= BASE_URL ?>/public/img/<?= $product->get('image_url') ?>" alt="Cat">
   </div>
 
   <button id="catPic">Cats Up For Adoption</button>
+
+
 </div>
