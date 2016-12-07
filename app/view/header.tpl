@@ -43,6 +43,7 @@ function isSelected($pn, $link) {
 			  <div class="container-fluid">
 			    <div class="navbar-header">
 			      <a class="navbar-brand" href="/">
+
 							<img alt="Brand" src="<?=BASE_URL?>/public/img/logo.png">
 						</a>
 			    </div>
