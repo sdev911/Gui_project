@@ -21,8 +21,8 @@ function isSelected($pn, $link) {
 	</script>
   <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/style.css">
   <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/Outfits.css">
-	<link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>public/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>public/bootstrap/js/bootstrap.min.js">
+	<link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/bootstrap/js/bootstrap.min.js">
   <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
   <script type="text/javascript" src="<?=BASE_URL?>/public/js/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="<?=BASE_URL?>/public/js/scripts.js"></script>
@@ -42,7 +42,7 @@ function isSelected($pn, $link) {
 			<nav class="navbar navbar-default" style="margin-bottom: 0px; background-color: rgba(0,0,0,0); border-color: rgba(0,0,0,0);">
 			  <div class="container-fluid">
 			    <div class="navbar-header">
-			      <a class="navbar-brand" href="<?=BASE_URL?>">
+			      <a class="navbar-brand" href="/">
 							<img alt="Brand" src="<?=BASE_URL?>public/img/logo.png">
 						</a>
 			    </div>
