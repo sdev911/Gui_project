@@ -19,7 +19,7 @@ function isSelected($pn, $link) {
 	<script>
 		var baseURL = "<?=BASE_URL?>";
 	</script>
-  <!--<link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/style.css">-->
+  <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/style.css">
   <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/Outfits.css">
 	<link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>public/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>public/bootstrap/js/bootstrap.min.js">

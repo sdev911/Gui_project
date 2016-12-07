@@ -1,7 +1,20 @@
 <div id="content">
 
   <!--shorten the banner -->
-  <img id="banner" src="<?=$this->getCatPic() ?>" alt="Dresses">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+        <img src="<?= BASE_URL ?>public/img/mainimg.png" alt="main image" class="img-fluid" style="max-width: 100%; height: auto;">
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info col-xs-10 col-xs-offset-1" role="alert" style="margin-top: 20px;">
+    <p><b>Cat Fact:</b> <?=$this->getCatFact() ?></p>
+  </div>
+
+
 
   <!--src="<?= BASE_URL ?>/public/img/DreamAloud.png"-->
 
