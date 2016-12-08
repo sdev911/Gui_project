@@ -87,7 +87,7 @@ class SiteController {
 				$this->profile($userId);
 				break;
 
-			case 'profileProcess':				
+			case 'profileProcess':
 				$userId = $_SESSION['id'];
 				$firstname = $_POST['fname'];
 				$lastname = $_POST['lname'];
@@ -188,7 +188,7 @@ class SiteController {
 		$q = sprintf("SELECT * FROM user");
 		$result = mysql_query($q);
 		while($row = mysql_fetch_assoc($result)) {
-			if ($p == $row['password'] && $u ==$row['username'])
+			if ($p == $row['password'] && $u ==$row['username'] && password_verify($p, $row['password_hash']))
 				{
 					$_SESSION['user'] = $row['username'];
 					$_SESSION['id'] = $row['id'];
