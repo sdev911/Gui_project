@@ -76,7 +76,6 @@ class SiteController {
 				$this->followers($userId);
 				break;
 
-
 			case 'removefollowers':
 				$userId = $_GET['userId'];
 				$this->removeFollowers($userId);
@@ -98,6 +97,9 @@ class SiteController {
 				$this->profileProcess($userId, $firstname, $lastname, $biography, $emailaddress, $gender);
 				break;
 
+			case 'messages':
+				$this->messages();
+				break;
 
 			// redirect to home page if all else fails
       default:

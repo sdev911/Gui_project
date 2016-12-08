@@ -15,12 +15,7 @@ class ProductController {
 	public function route($action) {
 		switch($action) {
 			case 'products':
-        $productType = $_GET['ptype'];
-        if($productType == 'outfits') {
-				    $this->outfits();
-        } elseif($productType == 'accessories') {
-            $this->accessories();
-        }
+				$this->outfits();
 				break;
 
 			case 'checkout':
