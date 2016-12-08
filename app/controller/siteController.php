@@ -196,6 +196,7 @@ class SiteController {
 					$_SESSION['msg'] = null;
 					header('Location: '.BASE_URL.'/');
 					User::set('password_hash', password_hash($p, PASSWORD_DEFAULT));
+					User::save();
 					exit();
 				}
 		}
