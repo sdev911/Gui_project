@@ -118,6 +118,7 @@ public function viewcatprocess(){
   public function outfits() {
 		$pageName = 'Outfits';
 		$products = Product::getAllProducts();
+		//$recent = Product::getMostRecent();
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/outfits.tpl';

@@ -85,6 +85,27 @@ class Product extends DbObject {
         }
     }
 
+/** gets 3 most recently added products
+    public static function getMostRecent($limit=null) {
+        $query = sprintf(" SELECT id FROM %s ORDER BY creation_date DESC ",
+            self::DB_TABLE
+            );
+        $db = Db::instance();
+        $result = $db->lookup($query);
+        if(!mysql_num_rows($result))
+            return null;
+        else {
+            $objects = array();
+	    $count = 0;
+            while($row = mysql_fetch_assoc($result) && $count < 3) {
+                $objects[] = self::loadById($row['id']);
+		$count++;
+            }
+
+            return ($objects);
+        }
+    }**/
+
     //remove product
     public function removeProduct($id){
       $query = sprintf(" DELETE FROM %s

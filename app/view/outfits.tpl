@@ -6,6 +6,23 @@
 
     <img id="banner" src="<?=BASE_URL?>/public/img/homepage_cat.jpg" alt="Outfits">
 
+<!--<div class=outfits>
+      <ul>
+        <?php foreach($recent as $recentitem) : ?>
+        <li>
+          <div style="display: inline-block; width: 250px; height=271px;">
+	<?=$recentitem ?>
+          <a href="<?=BASE_URL?>/itemdetailview/<?= $recentitem->get('id') ?>"><img src="<?=BASE_URL?>/public/img/<?= $recentitem->get('image_url') ?>" alt="Shop This Style" class="productImage"></a>
+          <div style="text-align: center">
+          <h5><?= $recentitem->get("title") ?></h5>
+          <h5>$<?= $recentitem->get("price") ?></h5>
+        </div></div>
+        </li>
+      <?php endforeach; ?>
+      </ul>
+    </div>-->
+
+
     <div id="filterbar">
 
 

@@ -87,7 +87,7 @@ class SiteController {
 				$this->profile($userId);
 				break;
 
-			case 'profileProcess':
+			case 'profileProcess':				
 				$userId = $_SESSION['id'];
 				$firstname = $_POST['fname'];
 				$lastname = $_POST['lname'];
