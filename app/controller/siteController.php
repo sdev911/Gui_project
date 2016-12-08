@@ -76,7 +76,6 @@ class SiteController {
 				$this->followers($userId);
 				break;
 
-
 			case 'removefollowers':
 				$userId = $_GET['userId'];
 				$this->removeFollowers($userId);
@@ -97,7 +96,7 @@ class SiteController {
 
 				$this->profileProcess($userId, $firstname, $lastname, $biography, $emailaddress, $gender);
 				break;
-			
+
 			case 'getColorData':
 				$this->getColorData();
 				break;
@@ -292,7 +291,7 @@ class SiteController {
 		$user->save();
 		header('Location: '.BASE_URL.'/profile/'.$userId);
 	}
-	
+
 	public function getColorData()
 	{
 		$colorArray = User::getColorArray();

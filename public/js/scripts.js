@@ -1,27 +1,6 @@
 $(document).ready(function()    {
 
   /**
-  Adding a new other-options div to the color-options div
-  to allow admin to add multiple colors and sizes for item.
-  **/
-  $("button#add-color-option").click(function(){
-    $("div#color-options").append('<ul class=other-option>' +
-    '<li class="product-and-info"> <div id="info"> <form> ' +
-    '<label class="color-label">Color: </label> <input type="text" class="item-color"/> '+
-    '</form> <ul id="options-list"> <li id="first-option"> '+
-    '<form> <label>Size Options: </label> ' +
-    '<input type="text" class="size-options" /> <br> <label>Quantity Options: </label>  ' +
-    '<input type="text" class="quantity-options" /> </form> </li> ' +
-    '<li class="size-and-quantity"> <form> <input type="text" class="size-options" />  '+
-    '<br> <input type="text" class="quantity-options" /> </form> </li> ' +
-    '<li class="size-and-quantity"> <form> <input type="text" class="size-options" /> ' +
-    '<br> <input type="text" class="quantity-options" /> </form> </li> <li class="size-and-quantity"> ' +
-    '<form> <input type="text" class="size-options" /> <br> <input type="text" class="quantity-options" /> ' +
-    '</form> </li> </ul> <!--<button id="add-option">Add Option</button> ' +
-    '<button id="remove-option">Remove Option</button>--> </div> </li> </ul>');
-  });
-
-  /**
   USER INTERATION 1: Creates shaking animation when user tries to remove the only
   color option in the div and gives error message that fades away.
   **/
