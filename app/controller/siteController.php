@@ -97,8 +97,12 @@ class SiteController {
 				$this->profileProcess($userId, $firstname, $lastname, $biography, $emailaddress, $gender);
 				break;
 
-			case 'messages':
-				$this->messages();
+			case 'getColorData':
+				$this->getColorData();
+				break;
+
+			case 'getFollowData':
+				$this->getFollowData();
 				break;
 
 			// redirect to home page if all else fails
@@ -245,6 +249,7 @@ class SiteController {
 
 	public function followers($followingID)
 	{
+	$pageName = 'followers';
 	$followers = Follower::loadByFollowerId($followingID);
 	$following = Follower::loadByFollowingId($followingID);
 
@@ -287,5 +292,33 @@ class SiteController {
 		header('Location: '.BASE_URL.'/profile/'.$userId);
 	}
 
+	public function getColorData()
+	{
+		$colorArray = User::getColorArray();
+		header('Content-Type: application/json');
+		echo json_encode($colorArray);
+	}
 
+	public function getFollowData()
+	{
+		$userArray = array();
+		$users1 = User::getAllUsers();
+		$users2 = User::getAllUsers();
+		foreach($users1 as $user1){
+			$id1 = $user1->get("id");
+			$row_array = array();
+			foreach($users2 as $user2){
+				$id2 = $user2->get("id");
+				if ($id1 != $id2 && Follower::isFollowing($id1, $id2)){
+					array_push($row_array, 1);
+				}
+				else {
+					array_push($row_array, 0);
+				}
+			}
+			array_push($userArray,$row_array);
+		}
+		header('Content-Type: application/json');
+		echo json_encode($userArray);
+	}
 }

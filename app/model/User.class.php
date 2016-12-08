@@ -5,7 +5,7 @@ class User extends DbObject {
     const DB_TABLE = 'user';
 
     // database fields
-    protected $id;
+     protected $id;
     protected $username;
     protected $password_hash;
     protected $first_name;
@@ -14,6 +14,8 @@ class User extends DbObject {
     protected $user_type;
     protected $bio;
     protected $gender;
+    protected $color;
+
 
     // constructor
     public function __construct($args = array()) {
@@ -26,8 +28,9 @@ class User extends DbObject {
             'last_name' => null,
             'user_type' => null,
             'creation_date' => null,
-            '$bio' => null,
-            '$gender' => null
+            'bio' => null,
+            'gender' => null,
+            'color' => ''
             );
 
         $args += $defaultArgs;
@@ -42,6 +45,7 @@ class User extends DbObject {
         $this->bio = $args['bio'];
         $this->creation_date = $args['creation_date'];
         $this->gender = $args['gender'];
+        $this->color = $args['color'];
     }
 
     // save changes to object
@@ -57,7 +61,8 @@ class User extends DbObject {
             'user_type' => $this->user_type,
             'bio' => $this->bio,
             'creation_date' => $this->creation_date,
-            'gender' => $this->gender
+            'gender' => $this->gender,
+            'color' => $this->color
             );
         $db->store($this, __CLASS__, self::DB_TABLE, $db_properties);
     }
@@ -105,16 +110,30 @@ class User extends DbObject {
             return ($objects);
         }
     }
-
-    public function addUser($username, $password_hash, $first_name, $last_name, $email){
-      echo $username,"<br>",$first_name, "<br>",$last_name, "<br>",$email, "<br>";
-      /**$query = sprintf("INSERT INTO %s (`title`, `description`, `price`, `sizes`, `image_url`)
-                         VALUES (%s, %s, %s, %s, %s);",
-                         (string)self::DB_TABLE, $title, $desc, $sizes, $price, $img
-                       );**/
-      $query = "INSERT INTO user VALUES (DEFAULT, '$first_name', '$last_name', '$username', '$password_hash', '$email', 0, DEFAULT, DEFAULT, DEFAULT)";
+    
+     public function addUser($username, $password_hash, $first_name, $last_name, $email){
+        $color = "#".dechex(rand(128,255)) . dechex(rand(128,255)) . dechex(rand(128,255));
+        echo $username,"<br>",$first_name, "<br>",$last_name, "<br>",$email, "<br>";
+        $query = "INSERT INTO user VALUES (DEFAULT, '$first_name', '$last_name', '$username', '$password_hash', '$email', 0, DEFAULT, DEFAULT, DEFAULT, '$color')";
+        $db = Db::instance();
+        $db->execute($query);
+    }
+    
+    public function getColorArray($limit=null){
+      $return_arr = array();
+      $query = sprintf(" SELECT * FROM %s ORDER BY creation_date DESC ",self::DB_TABLE);
       $db = Db::instance();
-      $db->execute($query);
+      $result = $db->lookup($query);
+      if(!mysql_num_rows($result))
+          return null;
+      else {
+        while($row = mysql_fetch_assoc($result)) {
+          $row_array['username'] = $row['username'];
+          $row_array['color'] = $row['color'];
+          array_push($return_arr,$row_array);
+        }
+        return $return_arr;
+      }
     }
 
 }
