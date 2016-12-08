@@ -7,7 +7,6 @@ class User extends DbObject {
     // database fields
     protected $id;
     protected $username;
-    protected $password;
     protected $password_hash;
     protected $first_name;
     protected $last_name;
@@ -21,7 +20,6 @@ class User extends DbObject {
         $defaultArgs = array(
             'id' => null,
             'username' => '',
-            'password' => '',
             'password_hash' => '',
             'email' => null,
             'first_name' => null,
@@ -36,7 +34,6 @@ class User extends DbObject {
 
         $this->id = $args['id'];
         $this->username = $args['username'];
-        $this->password = $args['password'];
         $this->password_hash = $args['password_hash'];
         $this->email = $args['email'];
         $this->first_name = $args['first_name'];
@@ -53,7 +50,6 @@ class User extends DbObject {
         // omit id and any timestamps
         $db_properties = array(
             'username' => $this->username,
-            'password' => $this->password,
             'password_hash' => $this->password_hash,
             'email' => $this->email,
             'first_name' => $this->first_name,
@@ -110,13 +106,13 @@ class User extends DbObject {
         }
     }
 
-    public function addUser($username, $password, $password_hash, $first_name, $last_name, $email){
-      echo $username,"<br>", $password, "<br>",$first_name, "<br>",$last_name, "<br>",$email, "<br>";
+    public function addUser($username, $password_hash, $first_name, $last_name, $email){
+      echo $username,"<br>",$first_name, "<br>",$last_name, "<br>",$email, "<br>";
       /**$query = sprintf("INSERT INTO %s (`title`, `description`, `price`, `sizes`, `image_url`)
                          VALUES (%s, %s, %s, %s, %s);",
                          (string)self::DB_TABLE, $title, $desc, $sizes, $price, $img
                        );**/
-      $query = "INSERT INTO user VALUES (DEFAULT, '$first_name', '$last_name', '$username', '$password', '$password_hash', '$email', 0, DEFAULT, DEFAULT, DEFAULT)";
+      $query = "INSERT INTO user VALUES (DEFAULT, '$first_name', '$last_name', '$username', '$password_hash', '$email', 0, DEFAULT, DEFAULT, DEFAULT)";
       $db = Db::instance();
       $db->execute($query);
     }

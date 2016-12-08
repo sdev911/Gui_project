@@ -222,7 +222,7 @@ class SiteController {
 
 		$password_hash = password_hash($p, PASSWORD_DEFAULT);
 
-		User::addUser($u, $p, $password_hash, $f, $l, $e);
+		User::addUser($u, $password_hash, $f, $l, $e);
 		$_SESSION['msg'] = null;
 		$this->processLogin($u, $p);
 		exit();
