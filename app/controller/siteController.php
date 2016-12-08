@@ -218,7 +218,10 @@ class SiteController {
 			header('Location: '.BASE_URL.'/signup/');
 			exit();
 		}
-		User::addUser($u, $p, $f, $l, $e);
+
+		$password_hash = password_hash($p, PASSWORD_DEFAULT);
+
+		User::addUser($u, $p, $password_hash, $f, $l, $e);
 		$_SESSION['msg'] = null;
 		$this->processLogin($u, $p);
 		exit();
