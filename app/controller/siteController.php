@@ -188,13 +188,14 @@ class SiteController {
 		$q = sprintf("SELECT * FROM user");
 		$result = mysql_query($q);
 		while($row = mysql_fetch_assoc($result)) {
-			if ($p == $row['password'] && $u ==$row['username'] && password_verify($p, $row['password_hash']))
+			if ($p == $row['password'] && $u ==$row['username'] /*&& password_verify($p, $row['password_hash'])*/)
 				{
 					$_SESSION['user'] = $row['username'];
 					$_SESSION['id'] = $row['id'];
 					$_SESSION['permissions']= $row['user_type'];
 					$_SESSION['msg'] = null;
 					header('Location: '.BASE_URL.'/');
+					User::set('password_hash', password_hash($p, PASSWORD_DEFAULT));
 					exit();
 				}
 		}
