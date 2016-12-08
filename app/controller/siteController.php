@@ -195,8 +195,11 @@ class SiteController {
 					$_SESSION['permissions']= $row['user_type'];
 					$_SESSION['msg'] = null;
 					header('Location: '.BASE_URL.'/');
-					User::set('password_hash', password_hash($p, PASSWORD_DEFAULT));
-					User::save();
+
+					$user = User::loadById($row['id']);
+					$user->set('password_hash', password_hash($p, PASSWORD_DEFAULT));
+					$user->save();
+
 					exit();
 				}
 		}
