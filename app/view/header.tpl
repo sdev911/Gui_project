@@ -30,6 +30,7 @@ function isSelected($pn, $link) {
 <?php if ($pageName == 'followers'): ?>
 	<script src="http://d3js.org/d3.v2.min.js?2.8.1"></script>
 	<script type="text/javascript" src="<?= BASE_URL ?>/public/js/chart.js"></script>
+	<link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/chart.css">
 <?php endif; ?>
   <meta name="viewport" content="initial-scale=1">
   <!--All photos come from modcloth.com / http://fashiontasty.com/pastel-dresses-style-ideas/ and rosegal.com-->
