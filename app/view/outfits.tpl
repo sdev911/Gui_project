@@ -23,6 +23,7 @@
     </div>-->
 
 
+
     <div id="filterbar">
 
 
@@ -110,6 +111,8 @@
   </ul>
   </div>
 
+
+
   <!--<button id="add-color-option">Add Option</button>
   <button id="remove-color-option">Remove Option</button>-->
   <br>
@@ -118,11 +121,11 @@
 </div>
 </form>    <?php endif; ?><?php endif; ?>
 
-<div id="base-url" data-base="<?=BASE_URL?>">
+<!--<div id="base-url" data-base="<?=BASE_URL?>">
     <img id="catscroll" src="<?= BASE_URL ?>/public/img/<?= $product->get('image_url') ?>" alt="Cat">
   </div>
 
-  <button id="catPic">Cats Up For Adoption</button>
+  <button id="catPic">Cats Up For Adoption</button>-->
 
 
 </div>

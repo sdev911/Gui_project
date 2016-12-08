@@ -85,7 +85,7 @@ class Product extends DbObject {
         }
     }
 
-/** gets 3 most recently added products
+// gets 3 most recently added products
     public static function getMostRecent($limit=null) {
         $query = sprintf(" SELECT id FROM %s ORDER BY creation_date DESC ",
             self::DB_TABLE
@@ -102,9 +102,9 @@ class Product extends DbObject {
 		$count++;
             }
 
-            return ($objects);
+            return ($recentobjects);
         }
-    }**/
+    }
 
     //remove product
     public function removeProduct($id){

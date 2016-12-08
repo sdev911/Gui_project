@@ -4,6 +4,7 @@
 
   <script src="<?= BASE_URL ?>/public/bootstrap/bootstrap-validator/dist/validator.min.js"></script>
   <script src="<?= BASE_URL ?>/public/js/profile.js"></script>
+<div id="content">
   
   <h3 class="col-sm-4 col-md-offset-4"><?=$userInfo->get('username') ?>'s Profile</h3>
   
@@ -67,4 +68,5 @@
 <button type="button" id="editProfile" class="btn btn-warning">Edit Profile</button>
 <?php endif; ?>
   </div>
+</div>
 </div>

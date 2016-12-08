@@ -285,5 +285,26 @@ class SiteController {
 		header('Location: '.BASE_URL.'/profile/'.$userId);
 	}
 
-
+	public function getFollowerArray()
+	{
+		$userArray = array();
+		$users1 = User::getAllUsers();
+		$users2 = User::getAllUsers();
+		foreach($users1 as $user1){
+			$id1 = $user1->get("id");
+			$row_array = array();
+			foreach($users2 as $user2){
+				$id2 = $user2->get("id");
+				if ($id1 != $id2 && Follower::isFollowing($id1, $id2)){
+					array_push($row_array, 1);
+				}
+				else {
+					array_push($row_array, 0);
+				}
+			}
+			array_push($userArray,$row_array);
+		}
+		$json_follows = json_encode($userArray);
+		echo $json_follows;
+	}
 }
