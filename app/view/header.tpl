@@ -27,6 +27,10 @@ function isSelected($pn, $link) {
   <script type="text/javascript" src="<?=BASE_URL?>/public/js/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="<?=BASE_URL?>/public/js/scripts.js"></script>
 <script type="text/javascript" src="<?= BASE_URL ?>/public/js/catFact.js"></script>
+<?php if ($pageName == 'followers'): ?>
+	<script src="http://d3js.org/d3.v2.min.js?2.8.1"></script>
+	<script type="text/javascript" src="<?= BASE_URL ?>/public/js/chart.js"></script>
+<?php endif; ?>
   <meta name="viewport" content="initial-scale=1">
   <!--All photos come from modcloth.com / http://fashiontasty.com/pastel-dresses-style-ideas/ and rosegal.com-->
 	<!--Some code referenced from Piazza and Class slides (especially in the model)-->

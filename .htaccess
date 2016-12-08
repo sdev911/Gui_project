@@ -21,6 +21,8 @@ RewriteRule ^users/?$ app/controller/siteController.php?action=editUserRoles [QS
 RewriteRule ^changePermission/(\d+)/(\d+)/?$ app/controller/siteController.php?action=changeRole&userId=$1&newRole=$2 [QSA,L]
 RewriteRule ^profile/(\d+)/followers/?$ app/controller/siteController.php?action=followers&userId=$1 [QSA,L]
 RewriteRule ^removeFollow/(\d+)/?$ app/controller/siteController.php?action=removefollowers&userId=$1 [QSA,L]
+RewriteRule ^users/followData/?$ app/controller/siteController.php?action=getFollowData [QSA,L]
+RewriteRule ^users/colorData/?$ app/controller/siteController.php?action=getColorData [QSA,L]
 
 
 

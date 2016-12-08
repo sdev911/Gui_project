@@ -97,7 +97,14 @@ class SiteController {
 
 				$this->profileProcess($userId, $firstname, $lastname, $biography, $emailaddress, $gender);
 				break;
+			
+			case 'getColorData':
+				$this->getColorData();
+				break;
 
+			case 'getFollowData':
+				$this->getFollowData();
+				break;
 
 			// redirect to home page if all else fails
       default:
@@ -243,6 +250,7 @@ class SiteController {
 
 	public function followers($followingID)
 	{
+	$pageName = 'followers';
 	$followers = Follower::loadByFollowerId($followingID);
 	$following = Follower::loadByFollowingId($followingID);
 
@@ -284,8 +292,15 @@ class SiteController {
 		$user->save();
 		header('Location: '.BASE_URL.'/profile/'.$userId);
 	}
+	
+	public function getColorData()
+	{
+		$colorArray = User::getColorArray();
+		header('Content-Type: application/json');
+		echo json_encode($colorArray);
+	}
 
-	public function getFollowerArray()
+	public function getFollowData()
 	{
 		$userArray = array();
 		$users1 = User::getAllUsers();
@@ -304,7 +319,7 @@ class SiteController {
 			}
 			array_push($userArray,$row_array);
 		}
-		$json_follows = json_encode($userArray);
-		echo $json_follows;
+		header('Content-Type: application/json');
+		echo json_encode($userArray);
 	}
 }
