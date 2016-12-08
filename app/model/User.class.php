@@ -135,22 +135,4 @@ class User extends DbObject {
         return $return_arr;
       }
     }
-
-    public function getColorArray($limit=null){
-      $return_arr = array();
-
-      $query = sprintf(" SELECT * FROM %s ORDER BY creation_date DESC ",self::DB_TABLE);
-      $db = Db::instance();
-      $result = $db->lookup($query);
-      if(!mysql_num_rows($result))
-          return null;
-      else {
-        while($row = mysql_fetch_assoc($result)) {
-            $row_array['username'] = $row['username'];
-            $row_array['color'] = $row['color'];
-          array_push($return_arr,$row_array);
-        }
-        return $return_arr;
-      }
-    }
 }
