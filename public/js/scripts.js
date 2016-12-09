@@ -1,7 +1,7 @@
 $(document).ready(function()    {
 
-  $("#about").click(function(){
-	$('#myModal').modal('show'); 
+$("#about").click(function(){
+	$('#aboutModal').modal('show'); 
 });
 
 $("#contact").click(function(){
