@@ -2,7 +2,7 @@
 
   <div id="content" style="padding-bottom:0px;">
 
-<ul class="list-group">
+<ul class="list-group" id="activityfeed">
     <li class="list-group-item" style="text-align:center;"><h4 id="activityfeed-header">Activity Feed</h4></li>
 
     <div id="feed">

@@ -117,6 +117,6 @@ function isSelected($pn, $link) {
 			  </div>
 			</nav>
 
-
+<div id="base-url" data-base="<?=BASE_URL?>"></div>
 </div>
 </div>

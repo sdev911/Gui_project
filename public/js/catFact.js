@@ -19,20 +19,21 @@ $('#myModal').modal('show');
      });
     });
 
-$('#edit-product').submit(function(e){
-      //e.preventDefault();
-      var formData = JSON.stringify(jQuery('#edit-product').serializeArray());
+$("#save").click(function(){
+    var formData = {title: $("#f1").val(),
+    image_url: $("#imageToUpload").val(),
+    description: $("#f2").val(),
+    price: $("#f3").val(),
+    size: $("#f4").val()}
     $.ajax({
-          url: $("#base-url").attr("data-base")+"/outfits/additem/process",
-          type: "POST", //request type
-          contentType: 'application/json',
-          data: formData,//$("#edit-product").serialize();
-
-          success:function(result){
-           //get this flipping image to change the source only, delete child stuff for div then put image in
-           console.log(result);
-         }
+      type: "POST",
+      url: baseURL + "/outfits/additem/process/",
+      data: formData,
+      success: function(blah){
+        console.log(blah);
+      }
        });
-      });
+       alert("You have added the item to the database, refresh the page to see the item appear on this page");
+});
 
 });

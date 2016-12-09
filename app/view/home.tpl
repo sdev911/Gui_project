@@ -11,7 +11,7 @@
 
   <!-- Calls catFact from catFact.js which returns a random catfact string -->
   <div class="alert alert-info col-xs-10 col-xs-offset-1" role="alert" style="margin-top: 20px;">
-    <p><b>Cat Fact:</b> <?=$this->getCatFact() ?></p>
+    <b>Cat Fact: </b><p id="catBlurb"> </p> <button type="button" class="btn btn-primary" id="catFactButton">Click for Cat Fact</button>
   </div>
 
   <!-- These are the original images. They are changed in scripts.js on
