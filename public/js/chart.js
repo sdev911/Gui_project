@@ -37,7 +37,7 @@ $(document).ready(function(){
 
 // source: http://bl.ocks.org/mbostock/4063570
 function drawChart(jsonUrl1, jsonUrl2) {
-	$('svg').empty(); // clear any previous graphics elements
+	$('svg').remove(); // clear any previous graphics elements
   var width = 720,
   height = 720,
   outerRadius = Math.min(width, height) / 2 - 10,
