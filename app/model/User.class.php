@@ -128,6 +128,7 @@ class User extends DbObject {
           return null;
       else {
         while($row = mysql_fetch_assoc($result)) {
+          $row_array['id'] = $row['id'];
           $row_array['username'] = $row['username'];
           $row_array['color'] = $row['color'];
           array_push($return_arr,$row_array);
