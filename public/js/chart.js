@@ -89,7 +89,7 @@ function drawChart(jsonUrl1, jsonUrl2) {
 
   groupText.append("textPath")
   .attr("xlink:href", function(d, i) { return "#group" + i; })
-  .text(function(d, i) { return users[i].name; });
+  .text(function(d, i) { return users[i].username; });
 
   // Remove the labels that don't fit. :(
   groupText.filter(function(d, i) { return groupPath[0][i].getTotalLength() / 2 - 16 < this.getComputedTextLength(); })
@@ -105,11 +105,11 @@ function drawChart(jsonUrl1, jsonUrl2) {
 
   // Add an elaborate mouseover title for each chord.
    chord.append("title").text(function(d) {
-   return users[d.source.index].name
-   + " → " + users[d.target.index].name
+   return users[d.source.index].username
+   + " → " + users[d.target.index].username
    + ": " + formatPercent(d.source.value)
-   + "\n" + users[d.target.index].name
-   + " → " + users[d.source.index].name
+   + "\n" + users[d.target.index].username
+   + " → " + users[d.source.index].username
    + ": " + formatPercent(d.target.value);
    });
 
