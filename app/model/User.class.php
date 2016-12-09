@@ -78,11 +78,7 @@ class User extends DbObject {
     public static function loadByUsername($username=null) {
         if($username === null)
             return null;
-
-        $query = sprintf(" SELECT id FROM %s WHERE username = '%s' ",
-            self::DB_TABLE,
-            $username
-            );
+        $query = sprintf(" SELECT id FROM %s WHERE username = '%s' ", self::DB_TABLE, $username);
         $db = Db::instance();
         $result = $db->lookup($query);
         if(!mysql_num_rows($result))
@@ -94,10 +90,9 @@ class User extends DbObject {
         }
     }
 
+    // returns all users in the database by date created
     public static function getAllUsers($limit=null) {
-        $query = sprintf(" SELECT id FROM %s ORDER BY creation_date DESC ",
-            self::DB_TABLE
-            );
+        $query = sprintf(" SELECT id FROM %s ORDER BY creation_date DESC ", self::DB_TABLE);
         $db = Db::instance();
         $result = $db->lookup($query);
         if(!mysql_num_rows($result))
@@ -111,14 +106,15 @@ class User extends DbObject {
         }
     }
 
+    //adds a user to the database
     public function addUser($username, $password_hash, $first_name, $last_name, $email){
-        $color = "#".dechex(rand(128,255)) . dechex(rand(128,255)) . dechex(rand(128,255));
-        echo $username,"<br>",$first_name, "<br>",$last_name, "<br>",$email, "<br>";
+        $color = "#".dechex(rand(128,255)) . dechex(rand(128,255)) . dechex(rand(128,255)); //generates a random color for them
         $query = "INSERT INTO user VALUES (DEFAULT, '$first_name', '$last_name', '$username', '$password_hash', '$email', 0, DEFAULT, DEFAULT, DEFAULT, '$color')";
         $db = Db::instance();
         $db->execute($query);
     }
-    
+
+    //gets the id, user, color array for the d3 graphics
     public function getColorArray($limit=null){
       $return_arr = array();
       $query = sprintf(" SELECT * FROM %s ORDER BY creation_date DESC ",self::DB_TABLE);
@@ -128,10 +124,10 @@ class User extends DbObject {
           return null;
       else {
         while($row = mysql_fetch_assoc($result)) {
-          $row_array['id'] = $row['id'];
-          $row_array['username'] = $row['username'];
-          $row_array['color'] = $row['color'];
-          array_push($return_arr,$row_array);
+          $row_array['id'] = $row['id']; //add id to row
+          $row_array['username'] = $row['username']; //add username to the row
+          $row_array['color'] = $row['color']; //add color to the row
+          array_push($return_arr,$row_array); //push to the array
         }
         return $return_arr;
       }

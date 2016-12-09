@@ -161,5 +161,4 @@ class Db {
 		$row = mysql_fetch_assoc($result);
 		return ($row['id']);
 	}
-
 }

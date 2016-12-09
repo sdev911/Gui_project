@@ -45,7 +45,6 @@ class Actions extends DbObject {
   // save changes to object
   public function save() {
     $db = Db::instance();
-
     $db_properties = array(
       'action' => $this->action,
       'url_mod' => $this->url_mod,
@@ -65,21 +64,20 @@ class Actions extends DbObject {
     return $obj;
   }
 
+ //get 10 most recent actions by id (for profile pages)
   public static function getUserActions($id) {
-    $query = sprintf(" SELECT id FROM %s WHERE creator_id=".$id." ORDER BY date_created DESC",
-        self::DB_TABLE
-        );
+    $query = sprintf(" SELECT id FROM %s WHERE creator_id=".$id." ORDER BY date_created DESC", self::DB_TABLE);
     $db = Db::instance();
     $result = $db->lookup($query);
     if(!mysql_num_rows($result))
         return null;
     else {
         $objects = array();
-        $counter = 0;
+        $counter = 0; //instantiate counter
         while($row = mysql_fetch_assoc($result)) {
             $objects[] = self::loadById($row['id']);
-            $counter++;
-            if ($counter > 9) {
+            $counter++; // increment counter
+            if ($counter > 9) { //return first 10 objects
               return ($objects);
             }
         }
@@ -89,9 +87,7 @@ class Actions extends DbObject {
 
   // Load all actions
   public static function getAllActions($limit=null) {
-    $query = sprintf(" SELECT id FROM %s ORDER BY date_created DESC ",
-        self::DB_TABLE
-        );
+    $query = sprintf(" SELECT id FROM %s ORDER BY date_created DESC ",self::DB_TABLE);
     $db = Db::instance();
     $result = $db->lookup($query);
     if(!mysql_num_rows($result))
@@ -105,34 +101,34 @@ class Actions extends DbObject {
     }
   }
 
+// get 10 most recent actions belonging to a particular product (for itemdetailview feeds)
   public static function getProductActions($id) {
-    $name = Product::loadById($id)->get('title');
+    $name = Product::loadById($id)->get('title'); //load product
     $query = sprintf("SELECT id FROM %s WHERE target_name=".'"'.$name.'"'." ORDER BY date_created DESC",
-        self::DB_TABLE
-        );
+        self::DB_TABLE); //get all items that refer to changes to that product
     $db = Db::instance();
     $result = $db->lookup($query);
     if(!mysql_num_rows($result))
         return null;
     else {
-        $objects = array();
-        $counter = 0;
+        $objects = array(); //create an array
+        $counter = 0; // initialize counter to 0
         while($row = mysql_fetch_assoc($result)) {
             $objects[] = self::loadById($row['id']);
-            $counter++;
+            $counter++; //increment counter
             if ($counter > 9) {
-              return ($objects);
+              return ($objects); //return 10 objects
             }
         }
         return ($objects);
     }
   }
 
+// get 10 most recent actions that one user follows
   public static function getActionsFollowed($id) {
     // Create array of ids
-    $followed = Follower::loadByFollowerId($id);
+    $followed = Follower::loadByFollowerId($id); // load the users followed
     if ($followed == NULL) return null;
-
     $ids = '';
     $counter = 0;
     foreach ($followed as $num) {
@@ -140,13 +136,9 @@ class Actions extends DbObject {
       $counter++;
       $ids = $ids.$num->get('following_id');
     }
-
     $ids = $ids.','.$id;
-
     // Only return correct actions.
-    $query = sprintf(" SELECT id FROM %s WHERE creator_id IN ({$ids}) ORDER BY date_created DESC ",
-        self::DB_TABLE
-        );
+    $query = sprintf(" SELECT id FROM %s WHERE creator_id IN ({$ids}) ORDER BY date_created DESC ", self::DB_TABLE);
     $db = Db::instance();
     $result = $db->lookup($query);
     if(!mysql_num_rows($result))
@@ -158,23 +150,17 @@ class Actions extends DbObject {
             $objects[] = self::loadById($row['id']);
             $counter++;
             if ($counter > 9) {
-              return ($objects);
+              return ($objects); // return 10 most recent items
             }
         }
         return ($objects);
     }
   }
-  
-  //add product issues
+
+  //add action to db
   public function addAction($url_mod, $target_id, $target_name, $action, $description, $creator_id, $creator_username){
-    echo $action, "<br>", $url_mod, "<br>", $description, "<br>", $target_id, "<br>", $target_name, "<br>", $creator_id, "<br>", $creator_username, "<br>";
-    /**$query = sprintf("INSERT INTO %s (`title`, `description`, `price`, `sizes`, `image_url`)
-                       VALUES (%s, %s, %s, %s, %s);",
-                       (string)self::DB_TABLE, $title, $desc, $sizes, $price, $img
-                     );**/
     $query = "INSERT INTO actions VALUES (DEFAULT, '$action', '$url_mod', '$description', '$target_id','$target_name','$creator_id', '$creator_username', DEFAULT)";
     $db = Db::instance();
     $db->execute($query);
   }
-
 }
