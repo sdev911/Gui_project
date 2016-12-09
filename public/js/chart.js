@@ -4,31 +4,35 @@ $(document).ready(function(){
 	// calling this method draws the dendrogram viz using this JSON file
 	drawChart(baseURL+'/users/colorData/', baseURL+'/users/followData/');
 
-// 	$('#editShirtTitleForm').submit(function(e){ // update on sign-up or follow
-// 		e.preventDefault(); // don't submit the form
-//
-// 		var title = $('#editShirtTitle').val();
-// 		var id = $('#editShirtID').val();
-//
-// 		$.post(
-// 			baseURL+'/shirts/editTitle/process/',
-// 			{
-// 				'title': title,
-// 				'id': id
-// 			},
-// 			function(data) {
-// 				if(data.success == 'success') {
-// 					// Edit successful
-// 					$('#editShirtTitleForm').hide(); // hide edit panel
-// 					drawChart(baseURL+'/users/colorData/', baseURL+'/users/followData/'); // redraw viz
-// 				} else if (data.error != '') {
-// 					alert(data.error); // show error as popup
-// 				}
-// 			},
-// 			'json'
-// 		);
-// 	});
-//
+// 	$('#changeColorForm').submit(function(e){
+		e.preventDefault(); // don't submit the form
+
+		var color = $('#changeColor').val();
+		var id = $('#changeColorId').val();
+		console.log("new color is "+color);
+
+		$.post(
+			baseURL+'/users/changeColor/',
+			{
+
+				'color': color,
+				'id': id
+
+			},
+			function(data) {
+				if(data.success == 'success') {
+					// Edit successful
+					$('#changeColorForm').hide(); // hide edit panel
+					console.log("redrawing chart");
+					drawChart(baseURL+'/users/colorData/', baseURL+'/users/followData/'); // redraw viz
+				} else if (data.error != '') {
+					alert(data.error); // show error as popup
+				}
+			},
+			'json'
+		);
+	});
+
 });
 
 // source: http://bl.ocks.org/mbostock/4063570
@@ -85,7 +89,17 @@ function drawChart(jsonUrl1, jsonUrl2) {
   // Add a text label.
   var groupText = group.append("text")
   .attr("x", 6)
-  .attr("dy", 15);
+  .attr("dy", 15)
+  .on("click", function(d, i) {
+	if($('#changeColorForm').is(':visible')) {
+		$('#changeColorForm').hide();
+	} else {
+		$('#changeColor').val(users[i].color);
+		$('#changeColorId').val(users[i].id);
+		$('#changeColorForm').show();
+		$('#changeColor').focus();
+	}
+});
 
   groupText.append("textPath")
   .attr("xlink:href", function(d, i) { return "#group" + i; })
