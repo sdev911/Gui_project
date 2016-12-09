@@ -170,35 +170,52 @@ public function viewcatprocess(){
 
 	//The process for adding an item
 	public function additemprocess() {
-		$info = $_POST;
-		$title = "";
-		$description = "";
-		$price = "";
-		$sizes = "";
-		$image_url = "";
-		foreach($info as $key => $value) { //goes through all information and sorts it
-			if ($key == 'title'){
-				$title = $value;
-			}
-			if ($key == 'description'){
-				$description = $value;
-			}
-			if ($key == 'price'){
-				$price = $value;
-			}
-			if ($key == 'sizes'){
-				$sizes = $value;
-			}
-			if ($key == 'image_url'){
-				$image_url = $value;
-			}
-		}
-		Product::addProduct($title, $description, $sizes, $price, $image_url); // adds the product
+// 		$info = $_POST;
+// 		$title = "";
+// 		$description = "";
+// 		$price = "";
+// 		$sizes = "";
+// 		$image_url = "";
+// 		foreach($info as $key => $value) { //goes through all information and sorts it
+// 			if ($key == 'title'){
+// 				$title = $value;
+// 			}
+// 			if ($key == 'description'){
+// 				$description = $value;
+// 			}
+// 			if ($key == 'price'){
+// 				$price = $value;
+// 			}
+// 			if ($key == 'sizes'){
+// 				$sizes = $value;
+// 			}
+// 			if ($key == 'image_url'){
+// 				$image_url = $value;
+// 			}
+// 		}
+// 		Product::addProduct($title, $description, $sizes, $price, $image_url); // adds the product
 
-		if ($title != null) {
-			$id = Product::getId();
-			$this->addAction('add', ' added the product ', $id, $title); // creates an action for adding a product
-		}
+// 		if ($title != null) {
+// 			$id = Product::getId();
+// 			$this->addAction('add', ' added the product ', $id, $title); // creates an action for adding a product
+		$args = array(
+		'title' => $_POST['title'],
+		'description' => $_POST['description'],
+		'price' => $_POST['price'],
+		'sizes' => $_POST['size'],
+		'image_url' => $_POST['image_url'],
+	);
+
+	if ($args['title'] != NULL)
+	{
+				$P = new Product($args);
+				$P -> save();
+				echo json_encode($args);
+				$id = Product::getId();
+				$this->addAction('add', ' added the product ', $id, $args['title']);
+}
+header('Location: '.BASE_URL.'/outfits/');
+		
   }
 
 // displays a catfact from the catfacts-api
