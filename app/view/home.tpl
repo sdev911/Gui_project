@@ -1,7 +1,6 @@
 <div id="content">
 
-  <!--shorten the banner -->
-
+  <!-- Main banner image -->
   <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12">
@@ -10,15 +9,13 @@
     </div>
   </div>
 
+  <!-- Calls catFact from catFact.js which returns a random catfact string -->
   <div class="alert alert-info col-xs-10 col-xs-offset-1" role="alert" style="margin-top: 20px;">
     <p><b>Cat Fact:</b> <?=$this->getCatFact() ?></p>
   </div>
 
-
-
-  <!--src="<?= BASE_URL ?>/public/img/DreamAloud.png"-->
-
-  <!-- change these images -->
+  <!-- These are the original images. They are changed in scripts.js on
+       hover by user. -->
   <div id=shopthislook>
     <ul>
       <li><img src="<?=BASE_URL?>/public/img/cat8.jpg" id="mainImage1" alt="Shop This Style"></li>

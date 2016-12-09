@@ -63,6 +63,6 @@
   <button type="button" name="cancel">Cancel</button>
 </form>
 
-<!--<form id="followPerson" method="POST" action="">
-  <-->
+<form id="followPerson" method="POST" action="">
+
 </div>

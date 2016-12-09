@@ -1,3 +1,5 @@
+<!-- Accepts and sends the login information to the siteController -->
+
 <div id="content" style="width: 100px; margin: 0 auto; display:block;">
 
 <h2>Login</h2>
@@ -9,11 +11,5 @@
   <input type="submit" name="submit" value="Submit"><br>
 
 </form>
-
-</div>
-
-<div id="sidebar">
-
-
 
 </div>
