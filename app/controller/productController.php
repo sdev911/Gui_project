@@ -204,18 +204,15 @@ public function viewcatprocess(){
 		'price' => $_POST['price'],
 		'sizes' => $_POST['size'],
 		'image_url' => $_POST['image_url'],
-	);
+		);
 
 	if ($args['title'] != NULL)
 	{
-				$P = new Product($args);
-				$P -> save();
-				echo json_encode($args);
-				$id = Product::getId();
-				$this->addAction('add', ' added the product ', $id, $args['title']);
-}
-header('Location: '.BASE_URL.'/outfits/');
-		
+		$P = new Product($args);
+		$P -> save();
+		$id = $P -> getId();
+		$this->addAction('add', ' added the product ', $id, $args['title']);
+	}		
   }
 
 // displays a catfact from the catfacts-api

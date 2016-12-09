@@ -25,7 +25,7 @@ RewriteRule ^users/followData/?$ app/controller/siteController.php?action=getFol
 RewriteRule ^users/colorData/?$ app/controller/siteController.php?action=getColorData [QSA,L]
 RewriteRule ^users/changeColor/?$ app/controller/siteController.php?action=changeColor [QSA,L]
 RewriteRule ^nextCatFact/?$ app/controller/siteController.php?action=nextCatFact [QSA,L]
-
+RewriteRule ^users/followers/?$ app/controller/siteController.php?action=buildFollowArray [QSA,L]
 
 
 # Product

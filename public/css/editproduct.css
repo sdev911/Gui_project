@@ -1,13 +1,15 @@
+<!-- Makes the labels have a certain font (bold)  -->
 label{
   display: block;
   margin: 10px;
   font-weight: bold;
 }
 
+<!-- It makes the button blue with white font used to submit the form -->
 #save{
   padding: 10px;
   margin: 10px;
   border: none;
-  background-color: #008CBA;
+  background-color: #008CBA; 
   color: white;
 }

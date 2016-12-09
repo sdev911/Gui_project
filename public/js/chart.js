@@ -91,10 +91,27 @@ function drawChart(jsonUrl1, jsonUrl2) {
 	if($('#followPerson').is(':visible')) {
 		$('#followPerson').hide();
 	} else {
-		//$('#changeColor').val(users[i].username);
-	  //$('#changeColorId').val(users[i].id);
 		$('#followPerson').show();
-		//$('#changeColor').focus();
+		var follow = false;
+		$.getJSON(baseURL+'/users/followers/', function(response) {
+			$.each(response, function(index, element){
+				if (response[index].id === users[i].id){
+				follow = true;
+				}
+			})
+			if (follow){
+				$('#unfollowButton').show();
+				$('#followButton').hide();
+			}
+			else {
+				$('#unfollowButton').hide();
+				$('#followButton').show();
+			}
+			document.getElementById('followButton').innerHTML ="Follow "+users[i].username;
+			document.getElementById('unfollowButton').innerHTML ="Unfollow "+users[i].username;
+			document.getElementById('unfollowLink').href = baseURL+"/removeFollow/"+users[i].id;
+			document.getElementById('followLink').href = baseURL+"/follow/"+users[i].id;
+    })
 	}
 });
 
