@@ -119,7 +119,7 @@ function drawChart(jsonUrl1, jsonUrl2) {
 	} else {
 		$('#changeColor').val(users[i].color);
 		$('#changeColorId').val(users[i].id);
-		$('#changeColorForm').display();
+		$('#changeColorForm').show();
 		$('#changeColor').focus();
 	}
 });
