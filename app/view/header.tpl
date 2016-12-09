@@ -41,7 +41,7 @@ function isSelected($pn, $link) {
 <body>
 
 <!-- About Us Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -94,8 +94,8 @@ function isSelected($pn, $link) {
 			    </div>
 			    <ul class="nav navbar-nav">
 			      <li><a href="<?=BASE_URL?>/outfits">Outfits</a></li>
-			      <li><a data-toggle="modal" data-target="#myModal" href="#" id="about">About Us</a></li>
-			      <li><a data-toggle="modal" data-target="#contactModal" id="contact" href="#">Contact Us</a></li>
+			      <li><a data-target="#aboutModal" id="about" href="#aboutModal">About Us</a></li>
+			      <li><a data-target="#contactModal" id="contact" href="#contactModal">Contact Us</a></li>
 			    </ul>
 					<ul class="nav navbar-nav navbar-right">
 						<?php
