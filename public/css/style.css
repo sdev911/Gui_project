@@ -11,6 +11,10 @@ html, body {
   color: #fff;
 }
 
+div.modalbody < p{
+display: block;
+}
+
 h2{
   font-family: 'David Libre', serif;
   color:#cc6699;
@@ -151,6 +155,10 @@ p{
   display: inline;
   width: 20%;
   margin: 30px;
+}
+
+div.modal-body p{
+  display: block;
 }
 
 h4{

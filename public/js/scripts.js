@@ -1,5 +1,14 @@
 $(document).ready(function()    {
 
+$("#about").click(function(){
+	$('#aboutModal').modal('show'); 
+});
+
+$("#contact").click(function(){
+	$('#contactModal').modal('show'); 
+});
+
+
   /**
   USER INTERATION 1: Creates shaking animation when user tries to remove the only
   color option in the div and gives error message that fades away.
