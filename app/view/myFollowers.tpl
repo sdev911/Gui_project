@@ -54,6 +54,7 @@
 <?php else: ?>
   <h5> No one is following you</h5>
 <?php endif; ?>
+<div id="follow_graphic"></div>
 </div>
 
 <form id="changeColorForm" method="POST" action="<?= BASE_URL ?>/users/changeColor/">
