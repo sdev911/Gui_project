@@ -80,9 +80,6 @@ $("#catFactButton").click(function(){
 }
 });
 
-//remove innerhtml
-//add innerhtml
-
 });
 
 });
