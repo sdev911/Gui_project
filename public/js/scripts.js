@@ -72,20 +72,13 @@ $("#contact").click(function(){
 
 $("#catFactButton").click(function(){
   $.ajax({
-  url: $("#base-url")+"/nextCatFact",
+  url: $("#base-url").attr("data-base")+"/nextCatFact",
   type: 'GET',
   success: function (resp) {
         console.log(resp);
-  },
-error: function (xhr, status, errorThrown) {
-        //Here the status code is can be retrieved like;
-        console.log(xhr.status);
-	console.log('Did not work');
-    }
+	document.getElementById("catBlurb").innerHTML = resp;
+}
 });
-
-//remove innerhtml
-//add innerhtml
 
 });
 
