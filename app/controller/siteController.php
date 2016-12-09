@@ -103,6 +103,10 @@ class SiteController {
 			case 'getFollowData':
 				$this->getFollowData();
 				break;
+				
+			case 'buildFollowArray':
+				$this->buildFollowArray();
+				break;
 
 			case 'changeColor':
 				$id = $_POST['id'];
@@ -335,5 +339,23 @@ class SiteController {
 		$json = array('success' => 'success'); //set up success json
 		echo json_encode($json); //send success json to js
 		exit();
+	}
+	
+	
+	// parses and displays a following array
+	public function buildFollowArray(){
+		$userArray = array(); // instantiate an array
+		$users = User::getAllUsers(); //get all users
+		$id1 = $_SESSION['id']; // get the id
+		foreach($users as $user){ // cycle through all users
+			$id2 = $user->get("id"); // get the id
+				if ($id1 != $id2 && Follower::isFollowing($id1, $id2)){ //if the users arent the same and 1 is following 2
+					$rowArray['id'] = $id2;
+					$rowArray['username'] = $user->get("username");
+					array_push($userArray, $rowArray); // put the following id in the array
+				}
+			}
+		header('Content-Type: application/json'); //set content type
+		echo json_encode($userArray); //write to the page
 	}
 }
