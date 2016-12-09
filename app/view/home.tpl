@@ -11,8 +11,7 @@
   </div>
 
   <div class="alert alert-info col-xs-10 col-xs-offset-1" role="alert" style="margin-top: 20px;">
-    <p><b>Cat Fact:</b></p>
-    <button type="button" class="btn btn-primary" id="catFactButton">Next Cat Fact</button>
+    <b>Cat Fact: </b><p id="catBlurb"> </p> <button type="button" class="btn btn-primary" id="catFactButton">Next Cat Fact</button>
   </div>
 
 
