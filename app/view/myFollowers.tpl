@@ -55,10 +55,14 @@
   <h5> No one is following you</h5>
 <?php endif; ?>
 </div>
-
+<div id="buttons">
 <form id="changeColorForm" method="POST" action="<?= BASE_URL ?>/users/changeColor/">
   <label>Edit Color: <input type="text" id="changeColor" name="color" value=""></label>
   <input type="hidden" id="changeColorId" name="id" value="">
   <input type="submit" name="submit" value="Edit">
   <button type="button" name="cancel">Cancel</button>
 </form>
+
+<!--<form id="followPerson" method="POST" action="">
+  <-->
+</div>
