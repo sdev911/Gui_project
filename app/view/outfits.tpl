@@ -78,17 +78,17 @@
     <?php
     if(isset($_SESSION['user'])): ?>
     <?php if(($_SESSION['permissions']) != 0): ?>
-    <form style="margin: 20px 0 20px 0;" id="edit-product" action="<?= BASE_URL ?>/outfits/additem/process/" method="POST">
+    <div id="add-product" style="margin: 20px 0 20px 0;">
   <div id="left">
     <h4><label>Item Title:</label></h4><br>
-    <input type="text" name="title"><br>
+    <input type="text" name="title" id = "f1"><br>
     <h4><label class="image">Item Image:</label></h4><br>
     <input type="file" name="image_url" id="imageToUpload"><br>
     <h4><label class="description">Item Description:</label></h4><br>
-    <textarea name="description" cols="65" rows="10"></textarea>
+    <textarea name="description" cols="65" rows="10" id = "f2"></textarea>
   <br>
     <h4><label>Price:</label></h4><br>
-    <input type="text" name="price">
+    <input type="text" name="price" id = "f3">
   <br>
   <br>
   <h4>Size Options</h4>
@@ -100,7 +100,7 @@
     <ul id="options-list">
       <li id="first-option">
           <label>Size Options: </label>
-          <input type="text" name="size" class="size-options" />
+          <input type="text" name="size" class="size-options" id = "f4" />
           <br>
           <!--<input type="text" name="quantity" class="quantity-options" />-->
       </li>
@@ -110,16 +110,11 @@
   </li>
   </ul>
   </div>
-
-
-
-  <!--<button id="add-color-option">Add Option</button>
-  <button id="remove-color-option">Remove Option</button>-->
   <br>
   <input id="save" type="submit" name="submit" value="Save Changes" >
   <!--action="<?=BASE_URL?>/blouses/additem/process"-->
 </div>
-</form>    <?php endif; ?><?php endif; ?>
+</div>    <?php endif; ?><?php endif; ?>
 
 <!--<div id="base-url" data-base="<?=BASE_URL?>">
     <img id="catscroll" src="<?= BASE_URL ?>/public/img/<?= $product->get('image_url') ?>" alt="Cat">
