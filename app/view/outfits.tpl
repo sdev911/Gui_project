@@ -2,20 +2,17 @@
 
   <div id="content">
 
-
     <img id="banner" src="<?=BASE_URL?>/public/img/homepage_cat.jpg" alt="Outfits">
+
+  </div>
 
     <div id=items>
     <div class=outfits>
       <ul>
-      <!-- Loops through each of the products from the database populating the page -->
-        <?php foreach($products as $product) : ?> 
+        <?php foreach($products as $product) : ?> <!-- Loops through each of the products from the database populating the page -->
         <li>
           <div style="display: inline-block; width: 250px; height=271px;">
-	  <!-- Clicking on the picture of a product will take you to it's detailed view -->
-          <a href="<?=BASE_URL?>/itemdetailview/<?= $product->get('id') ?>">
-	  <img src="<?=BASE_URL?>/public/img/<?= $product->get('image_url') ?>" alt="Shop This Style" class="productImage">
-	  </a> 
+          <a href="<?=BASE_URL?>/itemdetailview/<?= $product->get('id') ?>"><img src="<?=BASE_URL?>/public/img/<?= $product->get('image_url') ?>" alt="Shop This Style" class="productImage"></a> <!-- Clicking on the picture of a product will take you to it's detailed view -->
           <div style="text-align: center">
           <h5><?= $product->get("title") ?></h5>
           <h5>$<?= $product->get("price") ?></h5>
@@ -24,15 +21,10 @@
           <a href="<?= BASE_URL ?>/outfits/addtocart/<?= $product->get('id') ?>/"><button id="addtocart">Add to Cart</button></a>
           <?php endif; ?>
           <?php
-	  <!-- if the user is logged in and has certain permissions (seller or admin) set they will be able to add and delete items -->
-          if(isset($_SESSION['user'])): ?> 
+          if(isset($_SESSION['user'])): ?> <!-- if the user is logged in and has certain permissions (seller or admin) set they will be able to add and delete items -->
           <?php if((($_SESSION['permissions'])==1) And (($_SESSION['id'])==($product->get('creator_id'))) OR (($_SESSION['permissions'])==2)): ?>
-          <a href="<?=BASE_URL?>/outfits/edit/<?= $product->get('id') ?>">
-	  	<button id="edit">Edit Item</button><!-- Will take the user to the page where they can edit a product -->
-		</a>
-          <a href="<?=BASE_URL?>/outfits/remove/<?= $product->get('id') ?>/process" onClick="return confirm('Delete This Product?')">
-	  <button id="delete">Delete Item</button>
-	  </a> <!-- After clicking the delete button an alert will appear making sure the user wants to continue -->
+          <a href="<?=BASE_URL?>/outfits/edit/<?= $product->get('id') ?>"><button id="edit">Edit Item</button></a><!-- Will take the user to the page where they can edit a product -->
+          <a href="<?=BASE_URL?>/outfits/remove/<?= $product->get('id') ?>/process" onClick="return confirm('Delete This Product?')"><button id="delete">Delete Item</button></a> <!-- After clicking the delete button an alert will appear making sure the user wants to continue -->
           <?php endif; ?>
           <?php endif; ?>
         </div></div>
