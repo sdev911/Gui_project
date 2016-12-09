@@ -1,11 +1,13 @@
+<!-- Makes it so that the 4 images on the home page are all of equal width -->
 img#mainImage1, img#mainImage2, img#mainImage3, img#mainImage4{
   width: 100%;
 }
-
+<!-- Centers the main image on the home page -->
 #main-page-pics{
   text-align: center;
 }
 
+<!-- Makes cat fact label a nice blue and the font bold  -->
 p {
   margin: 0;
   color: #008CBA;
