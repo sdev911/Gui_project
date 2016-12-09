@@ -104,6 +104,12 @@ class SiteController {
 			case 'getFollowData':
 				$this->getFollowData();
 				break;
+				
+			case 'changeColor':
+				$id = $_POST['id'];
+				$color = $_POST['color'];
+				$this->changeColor($id, $color);
+				break;
 
 			// redirect to home page if all else fails
       default:
@@ -320,5 +326,25 @@ class SiteController {
 		}
 		header('Content-Type: application/json');
 		echo json_encode($userArray);
+	}
+	
+	public function changeColor($id, $color)
+	{
+		header('Content-Type: application/json');
+
+		// title can't be blank
+		if($color == '') {
+			$json = array('error' => 'Color cannot be blank.');
+			echo json_encode($json);
+			exit();
+		}
+
+		$user = User::loadById($id);
+		$user->set('color', $color);
+		$user->save();
+
+		$json = array('success' => 'success');
+		echo json_encode($json);
+		exit();
 	}
 }
