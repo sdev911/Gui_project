@@ -1,10 +1,12 @@
 $( document ).ready(function() {
     $('#profileForm').hide();
     $('#profileInfo').show();
+    $('#activityfeed').show();
     
     $('#editProfile').click(function(){
       $('#profileInfo').hide();
       $('#profileForm').show();
+      $('#activityfeed').hide();
     });
 
     /**var path = window.location.pathname;
