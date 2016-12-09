@@ -134,8 +134,8 @@ function drawChart(jsonUrl1, jsonUrl2) {
 	if($('#changeColorForm').is(':visible')) {
 		$('#changeColorForm').hide();
 	} else {
-		$('#changeColor').val(users[i].color);
-		$('#changeColorId').val(users[i].id);
+		$('#changeColor').val(users[d.source.index].color);
+		$('#changeColorId').val(users[d.source.index].id);
 		$('#changeColorForm').show();
 		$('#changeColor').focus();
 	}
