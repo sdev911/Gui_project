@@ -1,13 +1,16 @@
+<!-- Each of the images are a consistent and same width -->
 .outfits img{
   width: 100%;
   padding-left: 2%;
   padding-right: 2%;
 }
 
+<!-- everything is displayed in block format -->
 .outfits {
   display: block;
 }
 
+<!--  -->
 .outfits li{
   display: inline;
   list-style: none;
