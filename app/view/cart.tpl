@@ -1,3 +1,4 @@
+<!-- Style for the submit order button -->
 <style>
 button#submit-order{
   display: inline;
@@ -11,9 +12,13 @@ button#submit-order{
 
 <h2 style="text-align:center">Shopping Cart</h2>
 
+<!-- Contains everything between Shopping Cart and the footer.
+     Includes call to the item name, image, and remove from cart.
+     Also includes Submit Order. -->
 <div class=outfits>
       <ul>
-
+        <!-- If the cart is empty, text says so, and submit order button doesn't
+             work -->
         <?php if(empty($products)) : ?>
           <p>Your cart is empty</p>
           <script>
@@ -21,7 +26,9 @@ button#submit-order{
             $("button#submit-order").attr('disabled', true);
           });
           </script>
-          <?php else : ?>
+        <?php else : ?>
+        <!-- If the cart is not empty, it displays each item in the user's cart.
+             This includes: title, price, image, and remove from cart button -->
         <?php foreach($products as $product) : ?>
         <li style="display: block">
           <div style="display: inline-block; width: 250px; height=271px;">
@@ -34,6 +41,7 @@ button#submit-order{
         </div>
         </li>
       <?php endforeach; ?>
+      <!-- Enables the submit ordre button-->
       <script>
       $(document).ready(function()    {
         $("button#submit-order").attr('enabled', true);

@@ -1,8 +1,11 @@
 label {
+  /* To ensure labels are not directly above form elements */
   display: block;
   margin: 10px;
 }
 
 #content {
-  padding-left: 35%;
+  /* Added padding to center the form */
+  padding-left: 35%; 
+  padding-right: 35%;
 }

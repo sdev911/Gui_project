@@ -20,50 +20,6 @@ h2{
   color:#cc6699;
 }
 
-#search2 {
-  float: right;
-  text-align: right;
-  display: inline-block;
-}
-
-#search2 input{
-  border-radius: 10px;
-  text-align: center;
-}
-
-#search2 button{
-  padding: 3px 5px;
-  border: none;
-  background-color: #cc6699;
-  border: 1px solid grey;
-  color: white;
-}
-
-#primary-nav {
-  clear: both;
-  background-color: #008CBA;
-  padding: 5px;
-}
-
-#primary-nav li {
-  display: inline;
-  margin: 0 5px;
-  padding: 0;
-}
-
-#primary-nav li a {
-  text-decoration: none;
-  color: #fff;
-  padding-right: 5px;
-}
-
-#footer {
-  background-color: pink;
-  color: #fff;
-  clear: both;
-  padding: 10px;
-  text-align: center;
-}
 
 #footer ul{
   padding: 10px;
@@ -105,38 +61,6 @@ div.footer-links li{
   list-style: none;
 }
 
-div.footer-links-mid li{
-  padding: 1%;
-  text-align: center;
-  list-style: none;
-}
-
-div.footer-links {
-  background-color: pink;
-  float: left;
-  width: 30%;
-  font-weight: bold;
-  /*padding-bottom: 2%;*/
-}
-
-div.footer-links-mid {
-  background-color: pink;
-  float: left;
-  width: 40%;
-  font-weight: bold;
-  /*padding-bottom: 2%;*/
-}
-
-div.footer-links-mid a{
-  color: white;
-  text-decoration: none;
-}
-
-div.footer-links a{
-  color: white;
-  text-decoration: none;
-}
-
 label {
   display: inline;
 }
@@ -163,28 +87,6 @@ div.modal-body p{
 
 h4{
   display: inline;
-}
-
-@media screen and (max-width: 800px) {
-  div.footer-links, div.footer-links-mid, div.footer-links {
-    width: 100%;
-  }
-
-  ul#primary-nav li{
-    width: 100%;
-    display: block;
-    text-align: center;
-    padding: 5px 0 5px 0;
-    float: none;
-  }
-
-  ul#primary-nav li a{
-    float: none;
-  }
-}
-
-#breakFloat{
-  clear: both;
 }
 
 #circle circle {

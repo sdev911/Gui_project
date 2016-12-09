@@ -1,50 +1,15 @@
+<!-- Makes the content of the page fill the entire page and puts a small padding around it -->
 #content{
   display: block;
     width: 100%;
   padding: 30px;
 }
-
-#image{
-  display: block;
-}
-
-#info{
-  display: inline-block;
-  width: 30%;
-  min-width: 470px;
-}
-
-.info{
-  display:inline-block;
-  min-width: 440px;
-}
-
-#description{
-}
-
-.rating {
-  unicode-bidi: bidi-override;
-  direction: rtl;
-  font-size: 2em;
-
-  margin: 0;
-}
-.rating > span {
-  display: inline-block;
-  position: relative;
-  width: 1.1em;
-}
-.rating > span:hover:before,
-.rating > span:hover ~ span:before {
-   content: "\2605";
-   position: absolute;
-   color: gold;
-}
-
+<!-- Puts a small margin around the ratings -->
 #ratings-header{
   margin: 10px 0 0 0;
 }
 
+<!-- Adds styling to the button add to cart. Makes it a blue button with white font. The padding makes it a pretty large button -->
 #add-to-cart{
   width: 50%;
   background-color: #008CBA;
@@ -56,58 +21,46 @@
   font-size: 16px;
   margin: 20px 0 20px 0;
 }
-
+<!-- Makes it so that the image only occupies 50% of the screen -->
 #item-image{
   width:50%;
   max-width: 450px;
 }
-
+<!-- Makes the header in line instead of in bullet form -->
 ul#breadcrumbs{
   list-style: none;
   display: block;
   padding: 0 !important;
 }
-
+<!-- Changes the font of the header to be in cursive -->
 #breadcrumbs li{
   display: inline-block;
   font-size: 13px;
   font-family: 'Lobster', cursive;
 }
+<!-- Changes the links of the header to be a pink color and to not be underlined -->
 #breadcrumbs li, a{
   text-decoration: none;
   color:#cc6699;
 }
+
 
 .info-heading{
   display: inline-block;
 
 }
 
-#sizing{
-  display: inline;
-  font-size: 15px;
-  padding-left: 10px;
-}
-
-#sizing a{
-  color: #008CBA;
-}
-
-.product-and-info{
-  display: inline;
-}
-
+<!-- displays the fields of the form inline -->
 form{
   display: inline-block;
 }
 
+<!-- The input boxes of the form are surrounded by a thin grey line -->
 input{
   border: .5px solid grey;
 }
 
-h2{
-}
-
+<!-- Makes the all of the information on the page only take up 50% of the screen  -->
 #boxes{
   width: 50%;
   margin: 0 auto;
