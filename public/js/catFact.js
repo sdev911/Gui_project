@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+$('#myModal').modal('show'); 
+
   $('#catPic').click(function(){
   $.ajax({
         url: $("#base-url").attr("data-base")+"/viewcat/process/",
