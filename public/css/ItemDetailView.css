@@ -21,6 +21,21 @@
   font-size: 16px;
   margin: 20px 0 20px 0;
 }
+#image{
+ -  display: block;
+ -}
+ -
+ -#info{
+ -  display: inline-block;
+ -  width: 30%;
+ -  min-width: 470px;
+ -}
+ -
+ -.info{
+ -  display:inline-block;
+ -  min-width: 440px;
+ -}
+
 <!-- Makes it so that the image only occupies 50% of the screen -->
 #item-image{
   width:50%;
