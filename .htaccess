@@ -23,6 +23,7 @@ RewriteRule ^profile/(\d+)/followers/?$ app/controller/siteController.php?action
 RewriteRule ^removeFollow/(\d+)/?$ app/controller/siteController.php?action=removefollowers&userId=$1 [QSA,L]
 RewriteRule ^users/followData/?$ app/controller/siteController.php?action=getFollowData [QSA,L]
 RewriteRule ^users/colorData/?$ app/controller/siteController.php?action=getColorData [QSA,L]
+RewriteRule ^users/changeColor/?$ app/controller/siteController.php?action=changeColor [QSA,L]
 
 
 
