@@ -25,9 +25,6 @@
           <option value="purple">Purple</option>
         </select>
         <br >
-        <h3 class="info-heading">Size</h3>
-        <h5 id="sizing"><a href="sizing.html">Sizing Chart </a></h5>
-        <br >
         <select>
           <option value="s">Small</option>
           <option value="m">Medium</option>
