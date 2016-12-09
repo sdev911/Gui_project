@@ -14,32 +14,38 @@
 
   <div class="form-group">
   <label class="required">Username:</label>
-  <input class="form-control" type="text" name="un" data-error="Please enter a username." required><!-- If the username field is left blank a message will appear notifying the user it is missing -->
+  <!-- If the username field is left blank a message will appear notifying the user it is missing -->
+  <input class="form-control" type="text" name="un" data-error="Please enter a username." required>
   <div class="help-block with-errors"></div>
   </div>
   <div class="form-group">
   <label class="required">Password:</label>
-  <input class="form-control" id="inputPassword" type="password" name="pw" data-error="Please enter a password." required> <!-- If the password field is left blank a message will appear notifying the user it is missing -->
+  <!-- If the password field is left blank a message will appear notifying the user it is missing -->
+  <input class="form-control" id="inputPassword" type="password" name="pw" data-error="Please enter a password." required> 
   <div class="help-block with-errors"></div>
   </div>
   <div class="form-group">
   <label class="required">Confirm Password:</label> <!-- Make sure the passwords match -->
-  <input class="form-control" data-match="#inputPassword" type="password" name="confirmpw" data-error="Passwords do not match." required> <!--If the passwords do not match a message will appear notifying the user -->
+  <!--If the passwords do not match a message will appear notifying the user -->
+  <input class="form-control" data-match="#inputPassword" type="password" name="confirmpw" data-error="Passwords do not match." required> 
   <div class="help-block with-errors"></div>
   </div>
   <div class="form-group">
   <label class="required">Email address:</label>
-  <input class="form-control" type="email" name="email" data-error="Please enter a valid email address." required> <!-- If the email field is left blank or it does not contain an @ symbol a message will appear notifying the user it is missing/invalid -->
+  <!-- If the email field is left blank or does not have an @ symbol a message will appear notifying the user it is missing/invalid -->
+  <input class="form-control" type="email" name="email" data-error="Please enter a valid email address." required> 
   <div class="help-block with-errors"></div>
   </div>
   <div class="form-group">
   <label>First name:</label>
-  <input type="text" class="form-control" name="fname" data-error="Please enter your first name." required> <!-- If the first name field is left blank a message will appear notifying the user it is missing -->
+  <!-- If the first name field is left blank a message will appear notifying the user it is missing -->
+  <input type="text" class="form-control" name="fname" data-error="Please enter your first name." required> 
   <div class="help-block with-errors"></div>
   </div>
   <div class="form-group">
   <label>Last name:</label>
-  <input type="text" class="form-control" name="lname" data-error="Please enter your last name." required> <!-- If the last name field is left blank a message will appear notifying the user it is missing -->
+  <!-- If the last name field is left blank a message will appear notifying the user it is missing -->
+  <input type="text" class="form-control" name="lname" data-error="Please enter your last name." required> 
   <div class="help-block with-errors"></div>
   </div>
 
