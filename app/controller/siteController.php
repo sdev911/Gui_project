@@ -110,6 +110,10 @@ class SiteController {
 				$this->changeColor($id, $color);
 				break;
 
+			case 'nextCatFact':
+				$this->nextCatFact();
+				break;
+
 			// redirect to home page if all else fails
       default:
         header('Location: '.BASE_URL.'/');
@@ -173,14 +177,23 @@ class SiteController {
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
 
-// gets a cat fact from the cat fact api
+/** gets a cat fact from the cat fact api
 	private function getCatFact() {
 		$endpoint = 'http://catfacts-api.appspot.com/api/facts'; //sets up endpoint
 		$contents = file_get_contents($endpoint); // calls endpoint
 		$json = json_decode($contents); //decodes
 		$fact = $json->{'facts'}; //gets fact
 		return implode($fact); // returns fact
-	}
+	}**/
+
+private function nextCatFact(){
+	$endpoint = 'http://catfacts-api.appspot.com/api/facts'; //sets up endpoint
+		$contents = file_get_contents($endpoint); // calls endpoint
+		$json = json_decode($contents); //decodes
+		$fact = $json->{'facts'}; //gets fact
+		echo implode($fact); // returns fact;
+}
+
 
 // gets a cat picture from the random cat api
 	private function getCatPic() {

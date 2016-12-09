@@ -68,4 +68,25 @@ $("#contact").click(function(){
     document.getElementById("mainImage4").src=baseURL+"/public/img/cat6.jpg";
     $("#shopthislook ul .container").remove();
   });
+
+
+$("#catFactButton").click(function(){
+  $.ajax({
+  url: $("#base-url")+"/nextCatFact",
+  type: 'GET',
+  success: function (resp) {
+        console.log(resp);
+  },
+error: function (xhr, status, errorThrown) {
+        //Here the status code is can be retrieved like;
+        console.log(xhr.status);
+	console.log('Did not work');
+    }
+});
+
+//remove innerhtml
+//add innerhtml
+
+});
+
 });
