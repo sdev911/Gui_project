@@ -57,7 +57,7 @@ function drawChart(jsonUrl1, jsonUrl2) {
   var path = d3.svg.chord()
   .radius(innerRadius);
 
-  var svg = d3.select("#footer").append("svg")
+  var svg = d3.select("#content").append("svg")
   .attr("width", width)
   .attr("height", height)
   .append("g")
