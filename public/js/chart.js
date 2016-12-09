@@ -4,7 +4,7 @@ $(document).ready(function(){
 	// calling this method draws the dendrogram viz using this JSON file
 	drawChart(baseURL+'/users/colorData/', baseURL+'/users/followData/');
 
-// 	$('#changeColorForm').submit(function(e){
+	$('#changeColorForm').submit(function(e){
 		e.preventDefault(); // don't submit the form
 
 		var color = $('#changeColor').val();
