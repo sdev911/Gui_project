@@ -9,5 +9,5 @@ button#start{
   color: white;
 }
 #buttons{
-  display: none;
+  visibility: hidden;
 }
