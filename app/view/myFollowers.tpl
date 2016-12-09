@@ -1,3 +1,4 @@
+<link href="<?= BASE_URL ?>/public/css/myFollowers.css" rel="stylesheet" type="text/css" />
 <div id="content">
 
 <h2><?= User::loadById($followingID)->get('username') ?> is Following:</h2>

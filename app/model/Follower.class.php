@@ -28,7 +28,7 @@ class Follower extends DbObject {
 
     // save changes to object
     public function save() {
-        //instanciates new database object
+        //instantiates new database object
         $db = Db::instance();
         // omit id and any timestamps
         $db_properties = array(
@@ -45,6 +45,7 @@ class Follower extends DbObject {
         return $obj;
     }
 
+    //load relationship by the follower id (returns all people being followed by the id passed in)
     public static function loadByFollowerId($id, $limit=null) {
         $query = sprintf(" SELECT id FROM %s WHERE follower_id=%d ORDER BY date_created DESC ", self::DB_TABLE, $id);
         $db = Db::instance();
@@ -60,6 +61,7 @@ class Follower extends DbObject {
         }
     }
 
+//load relationship by the following id (returns all people following the id passed in)
     public static function loadByFollowingId($id, $limit=null) {
         $query = sprintf(" SELECT id FROM %s WHERE following_id=%d ORDER BY date_created DESC ", self::DB_TABLE, $id);
         $db = Db::instance();
@@ -75,30 +77,23 @@ class Follower extends DbObject {
         }
     }
 
-    //remove product
+    //removes the follow (unfollows)
       public function removeFollow($following_id, $follower_id){
-      $query = sprintf(" DELETE FROM %s
-                          WHERE following_id=$following_id AND follower_id=$follower_id; ",
-          (string)self::DB_TABLE
-          );
+      $query = sprintf(" DELETE FROM %s WHERE following_id=$following_id AND follower_id=$follower_id; ",
+          (string)self::DB_TABLE);
       $db = Db::instance();
       $db->execute($query);
     }
 
-    //add product issues
+    //adds a follow to the db
     public function addFollow($follower_id, $following_id){
-      echo $follower_id, "<br>", $following_id, "<br>";
-      /**$query = sprintf("INSERT INTO %s (`title`, `description`, `price`, `sizes`, `image_url`)
-                         VALUES (%s, %s, %s, %s, %s);",
-                         (string)self::DB_TABLE, $title, $desc, $sizes, $price, $img
-                       );**/
       $query = "INSERT INTO followers VALUES (DEFAULT, '$follower_id', '$following_id', DEFAULT)";
       $db = Db::instance();
       $db->execute($query);
     }
-    
-    public function isFollowing($follower_id, $following_id)
-    {
+
+    // returns true if the 2nd param is following the first param
+    public function isFollowing($follower_id, $following_id){
       $query = sprintf(" SELECT id FROM %s WHERE follower_id=%d AND following_id=%d ORDER BY date_created DESC ", self::DB_TABLE, $follower_id, $following_id);
       $db = Db::instance();
       $result = $db->lookup($query);
@@ -108,5 +103,4 @@ class Follower extends DbObject {
           return true;
           }
     }
-
 }

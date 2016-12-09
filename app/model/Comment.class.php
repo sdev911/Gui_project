@@ -35,7 +35,7 @@ class Comment extends DbObject {
 
     // save changes to object
     public function save() {
-        //instanciates new database object
+        //instantiates new database object
         $db = Db::instance();
         // omit id and any timestamps
         $db_properties = array(
@@ -54,6 +54,7 @@ class Comment extends DbObject {
         return $obj;
     }
 
+    //load comment by the product it was written for
     public static function loadByProductId($pid, $limit=null) {
         $query = sprintf(" SELECT id FROM %s WHERE product_id=%d ORDER BY date_created DESC ", self::DB_TABLE, $pid);
         $db = Db::instance();
@@ -69,11 +70,9 @@ class Comment extends DbObject {
         }
     }
 
-    // load all products
+    // load all comments
     public static function getAllComments($limit=null) {
-        $query = sprintf(" SELECT id FROM %s ORDER BY date_created DESC ",
-            self::DB_TABLE
-            );
+        $query = sprintf(" SELECT id FROM %s ORDER BY date_created DESC ", self::DB_TABLE);
         $db = Db::instance();
         $result = $db->lookup($query);
         if(!mysql_num_rows($result))
@@ -87,26 +86,17 @@ class Comment extends DbObject {
         }
     }
 
-    //remove product
+    //remove a comment
     public function removeComment($id){
-      $query = sprintf(" DELETE FROM %s
-                          WHERE id=$id; ",
-          (string)self::DB_TABLE
-          );
+      $query = sprintf(" DELETE FROM %s WHERE id=$id; ", (string)self::DB_TABLE);
       $db = Db::instance();
       $db->execute($query);
     }
 
-    //add product issues
+    //add a comment to the db
     public function addComment($product_id, $comment, $creator_id, $creator_username){
-      echo $product_id, "<br>", $comment, "<br>", $creator_id, "<br>", $creator_username, "<br>";
-      /**$query = sprintf("INSERT INTO %s (`title`, `description`, `price`, `sizes`, `image_url`)
-                         VALUES (%s, %s, %s, %s, %s);",
-                         (string)self::DB_TABLE, $title, $desc, $sizes, $price, $img
-                       );**/
       $query = "INSERT INTO comments VALUES (DEFAULT, '$product_id', '$comment', '$creator_id', '$creator_username', DEFAULT)";
       $db = Db::instance();
       $db->execute($query);
     }
-
 }

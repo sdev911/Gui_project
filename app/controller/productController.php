@@ -35,40 +35,49 @@ class ProductController {
 				$productID = $_GET['pid'];
 				$this->itemdetailview($productID);
 				break;
+
 			case 'editProduct':
 				$productID = $_GET['pid'];
 				$this->editProduct($productID);
 				break;
+
 			case 'editProductProcess':
 				$productID = $_GET['pid'];
 				$this->editProductProcess($productID);
 				break;
+
 			case 'removeProduct':
 				$productID = $_GET['pid'];
 				$this->removeProductCheck($productID);
 				break;
+
 			case 'removeProductProcess':
 				$productID = $_GET['pid'];
 				$this->removeProductProcess($productID);
 				break;
+
 			case 'addtocart':
 				$productID = $_GET['pid'];
 				$uid = $_SESSION['id'];
 				$this->addtocart($productID, $uid);
 				break;
+
 			case 'removefromcart':
 				$productID = $_GET['pid'];
 				$uid = $_SESSION['id'];
 				$this->removefromcart($productID, $uid);
 				break;
+
 			case 'viewcatprocess':
 				$this->viewcatprocess($_GET);
 				break;
+
 			case 'rateproduct':
 				$productID = $_GET['pid'];
 				$rating = $_GET['rating'];
 				$this->rateproduct($productID, $rating);
 				break;
+
       // redirect to home page if all else fails
       default:
         header('Location: '.BASE_URL);
@@ -76,63 +85,58 @@ class ProductController {
 		}
 	}
 
+	// rates the product
 	public function rateproduct($pid, $rating) {
-		$myRatingId = Rating::ratingByUserId($_SESSION['id'], $pid);
-		if ($myRatingId == null){
-			Rating::addRating($_SESSION['id'], $pid, $rating);
+		$myRatingId = Rating::ratingByUserId($_SESSION['id'], $pid); // pulls a rating from the database
+		if ($myRatingId == null){ // if there is no rating
+			Rating::addRating($_SESSION['id'], $pid, $rating); // adds a rating to the database
 		}
-		else{
-			$myRating = Rating::loadById($myRatingId);
-			$myRating->set('rating', $rating);
-			$myRating->save();
+		else{ // if there is a rating
+			$myRating = Rating::loadById($myRatingId); // loads the rating
+			$myRating->set('rating', $rating); // resets the rating
+			$myRating->save(); // saves the rating
 		}
-
-		$title = Product::loadById($pid)->get('title');
-		$this->addAction('rating', ' gave a '.$rating.' star rating to ', $pid, $title);
-		header('Location: '.BASE_URL.'/itemdetailview/'.$pid);
+		$title = Product::loadById($pid)->get('title');		// loads the product title
+		$this->addAction('rating', ' gave a '.$rating.' star rating to ', $pid, $title); // adds the rating to the action table
+		header('Location: '.BASE_URL.'/itemdetailview/'.$pid); // navigates back to the item you were on
 	}
 
+// this shows images of cats
 public function viewcatprocess(){
-	  $id = rand(1, 11);
+	  $id = rand(1, 11); // picks a random cat image from img folder
 	while (Product::loadById($id) == null){
 			$id = rand(1, 11);
 		}
 		$cat = Product::loadById($id);
-		$catpicture = $cat->get('image_url');
-		$catarr = array('catimageurl' => $catpicture);
-		echo json_encode($catarr);
+		$catpicture = $cat->get('image_url'); //gets the cat image
+		$catarr = array('catimageurl' => $catpicture); // displays images in an array
+		echo json_encode($catarr);		// encodes in json for ajax
 	}
 
-  public function accessories() {
-		$pageName = 'Accessories';
-		include_once SYSTEM_PATH.'/view/header.tpl';
-		include_once SYSTEM_PATH.'/view/accessories.tpl';
-		include_once SYSTEM_PATH.'/view/footer.tpl';
-  }
-
+// displays the outfits page
   public function outfits() {
 		$pageName = 'Outfits';
-		$products = Product::getAllProducts();
-		//$recent = Product::getMostRecent();
+		$products = Product::getAllProducts(); // loads products for the tpl
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/outfits.tpl';
-		//include_once SYSTEM_PATH.'/view/additem.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
+
+	// displays one detailed item
 	public function itemdetailview($id) {
-		$rating = 0;
+		$rating = 0;		// rating is default 0
 		if (isset($_SESSION['id']))
 		{
-			$myRatingId = Rating::ratingByUserId($_SESSION['id'], $id);
+			$myRatingId = Rating::ratingByUserId($_SESSION['id'], $id);	//checks the users rating of the product
 			if ($myRatingId != null){
-				$rating = Rating::loadById($myRatingId)->get('rating');
+				$rating = Rating::loadById($myRatingId)->get('rating');		//displays the user rating
 			}
 		}
-		$product = Product::loadById($id);
-		$comments = Comment::loadByProductId($id);
-		$pageName = '<?= $product->get("title") ?>';
-		$actions = Actions::getProductActions($id);
+		$product = Product::loadById($id);	// loads the product
+		$comments = Comment::loadByProductId($id); // loads all associated comments
+		$pageName = '<?= $product->get("title") ?>';		// displays the page name
+		$actions = Actions::getProductActions($id);		// gets all associated actions
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/itemdetailview.tpl';
@@ -140,120 +144,148 @@ public function viewcatprocess(){
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
+	// shows the edit product page
 	public function editProduct($id) {
 		$pageName = 'Edit Product';
-		$product = Product::loadById($id);
+		$product = Product::loadById($id); // loads the product
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/editProduct.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
 
+	// adds an item to the cart
 	public function addtocart($pid, $uid){
-		$product = Product::loadById($pid);
-		Cart::addProduct($product->get('title'), $product->get('price'), $product->get('image_url'), $uid);
-		header('Location: '.BASE_URL.'/cart/');
+		$product = Product::loadById($pid); // loads the product
+		Cart::addProduct($product->get('title'), $product->get('price'), $product->get('image_url'), $uid); // adds the product
+		header('Location: '.BASE_URL.'/cart/'); // navigates to cart
 	}
 
+// removes an item from the cart
 	public function removefromcart($pid, $uid){
-		Cart::removeProduct($pid, $uid);
-		$_SESSION['msg'] = "You removed the from your cart called ";
-		header('Location: '.BASE_URL.'/cart/');
+		Cart::removeProduct($pid, $uid); // removes the item
+		$_SESSION['msg'] = "You removed the from your cart called "; // informs the user
+		header('Location: '.BASE_URL.'/cart/'); // navigates back to cart
 	}
 
+	//The process for adding an item
 	public function additemprocess() {
-		$info = $_POST;
-		$title = "";
-		$description = "";
-		$price = "";
-		$sizes = "";
-		$image_url = "";
-		foreach($info as $key => $value) {
-			if ($key == 'title'){
-				$title = $value;
-			}
-			if ($key == 'description'){
-				$description = $value;
-			}
-			if ($key == 'price'){
-				$price = $value;
-			}
-			if ($key == 'sizes'){
-				$sizes = $value;
-			}
-			if ($key == 'image_url'){
-				$image_url = $value;
-			}
-		}
-		Product::addProduct($title, $description, $sizes, $price, $image_url);
+// 		$info = $_POST;
+// 		$title = "";
+// 		$description = "";
+// 		$price = "";
+// 		$sizes = "";
+// 		$image_url = "";
+// 		foreach($info as $key => $value) { //goes through all information and sorts it
+// 			if ($key == 'title'){
+// 				$title = $value;
+// 			}
+// 			if ($key == 'description'){
+// 				$description = $value;
+// 			}
+// 			if ($key == 'price'){
+// 				$price = $value;
+// 			}
+// 			if ($key == 'sizes'){
+// 				$sizes = $value;
+// 			}
+// 			if ($key == 'image_url'){
+// 				$image_url = $value;
+// 			}
+// 		}
+// 		Product::addProduct($title, $description, $sizes, $price, $image_url); // adds the product
 
-		if ($title != null) {
-			$id = Product::getId();
-			$this->addAction('add', ' added the product ', $id, $title);
-		}
+// 		if ($title != null) {
+// 			$id = Product::getId();
+// 			$this->addAction('add', ' added the product ', $id, $title); // creates an action for adding a product
+		$args = array(
+		'title' => $_POST['title'],
+		'description' => $_POST['description'],
+		'price' => $_POST['price'],
+		'sizes' => $_POST['size'],
+		'image_url' => $_POST['image_url'],
+	);
+
+	if ($args['title'] != NULL)
+	{
+				$P = new Product($args);
+				$P -> save();
+				echo json_encode($args);
+				$id = Product::getId();
+				$this->addAction('add', ' added the product ', $id, $args['title']);
+}
+header('Location: '.BASE_URL.'/outfits/');
+		
   }
 
+// displays a catfact from the catfacts-api
 	private function getCatFact() {
-		$endpoint = 'http://catfacts-api.appspot.com/api/facts';
-		$contents = file_get_contents($endpoint);
-		$json = json_decode($contents);
-		$fact = $json->{'facts'};
-		return implode($fact);
+		$endpoint = 'http://catfacts-api.appspot.com/api/facts'; //sets up endpoint
+		$contents = file_get_contents($endpoint);		//calls the endpoint
+		$json = json_decode($contents);	//decodes
+		$fact = $json->{'facts'}; //gets the fact
+		return implode($fact); // returns the fact
 	}
 
+	// the process for editing a product
 	public function editProductProcess($id) {
-		$title = $_POST['title'];
+		$title = $_POST['title']; //gets information posted from form
 		$description = $_POST['description'];
 		$sizes = $_POST['sizes'];
 		$price = $_POST['price'];
 		$image_url = $_POST['image_url'];
 
-		$p = Product::loadById($id);
-		$p->set('title', $title);
+		$p = Product::loadById($id); // loads the product
+		$p->set('title', $title); // edits the fields
 		$p->set('description', $description);
 		$p->set('sizes', $sizes);
 		$p->set('price', $price);
 		$p->set('image_url', $image_url);
-		$p->save();
+		$p->save(); // saves the product
 
-		$_SESSION['msg'] = "You edited the product called ".$title;
-		header('Location: '.BASE_URL.'/outfits/');
+		$_SESSION['msg'] = "You edited the product called ".$title; // informs the user
+		header('Location: '.BASE_URL.'/outfits/'); // navigates back to the outfits page
 
-		$this->addAction('edit', ' edited the item ', $id, $title);
+		$this->addAction('edit', ' edited the item ', $id, $title); // adds and action for editing an item
 	}
 
+// checks with user before removing a product
 	public function removeProductCheck($id){
 		$p = Product::loadById($id);
 		$title = $p->get('title');
-		include_once SYSTEM_PATH.'/view/removeProductCheck.tpl';
+		include_once SYSTEM_PATH.'/view/removeProductCheck.tpl'; // checks with user to confirm
 	}
 
+// the process for removing a product
 	public function removeProductProcess($id){
 		$name = Product::loadById($id)->get('title');
-		Product::removeProduct($id);
-		$_SESSION['msg'] = "You deleted the product called ";
-		header('Location: '.BASE_URL.'/outfits/');
+		Product::removeProduct($id); // removes the product
+		$_SESSION['msg'] = "You deleted the product called "; // informs the user they have removed the product
+		header('Location: '.BASE_URL.'/outfits/'); //navigates back to outfits page
 
-		$this->addAction('remove', ' removed ', $id, $name);
+		$this->addAction('remove', ' removed ', $id, $name); // adds the action to the feed
 	}
 
+// the method for creating a comment
 	public function comment($pid){
 		$myComment = $_POST['commentText'];
-		Comment::addComment($pid, $myComment, $_SESSION['id'], $_SESSION['user']);
-		header('Location: '.BASE_URL.'/');
+		Comment::addComment($pid, $myComment, $_SESSION['id'], $_SESSION['user']); // adds the comment to the db
+		header('Location: '.BASE_URL.'/itemdetailview/'.$pid); // navigates back to item commented on
 
 		$name = Product::loadById($pid)->get('title');
-		$this->addAction('comment', ' added the comment "'.$myComment.'" to item ', $pid, $name);
+		$this->addAction('comment', ' added the comment "'.$myComment.'" to item ', $pid, $name); // adds the action to the feed
 	}
 
+
+// the method for adding actions to the action db (used for the activity feed)
 	public function addAction($action, $description, $id, $target_name) {
 		if ($action == 'follow') {
-			$url_mod = 'profile';
+			$url_mod = 'profile'; //specifies it should redirect to a user if clicked
 		}
 		else {
-			$url_mod = 'itemdetailview';
+			$url_mod = 'itemdetailview'; // specifies it should redirect to a product if clicked
 		}
-		Actions::AddAction($url_mod, $id, $target_name, $action, $description, $_SESSION['id'], $_SESSION['user']);
+		Actions::AddAction($url_mod, $id, $target_name, $action, $description, $_SESSION['id'], $_SESSION['user']); // adds the action to the db
 		header('Location: '.BASE_URL.'/');
 	}
 }

@@ -40,7 +40,7 @@ class Product extends DbObject {
 
     // save changes to object
     public function save() {
-        //instanciates new database object
+        //instantiates new database object
         $db = Db::instance();
         // omit id and any timestamps
         $db_properties = array(
@@ -61,17 +61,15 @@ class Product extends DbObject {
         return $obj;
     }
 
-    // Returns the last id created
-    public function getId() {
-      $id = mysql_insert_id();
-      return $id;
-    }
+//     // Returns the last id created
+//     public function getId() {
+//       $id = mysql_insert_id();
+//       return $id;
+//     }
 
     // load all products
     public static function getAllProducts($limit=null) {
-        $query = sprintf(" SELECT id FROM %s ORDER BY creation_date DESC ",
-            self::DB_TABLE
-            );
+        $query = sprintf(" SELECT id FROM %s ORDER BY creation_date DESC ", self::DB_TABLE);
         $db = Db::instance();
         $result = $db->lookup($query);
         if(!mysql_num_rows($result))
@@ -87,45 +85,33 @@ class Product extends DbObject {
 
 // gets 3 most recently added products
     public static function getMostRecent($limit=null) {
-        $query = sprintf(" SELECT id FROM %s ORDER BY creation_date DESC ",
-            self::DB_TABLE
-            );
+        $query = sprintf(" SELECT id FROM %s ORDER BY creation_date DESC ", self::DB_TABLE);
         $db = Db::instance();
         $result = $db->lookup($query);
         if(!mysql_num_rows($result))
             return null;
         else {
             $objects = array();
-	    $count = 0;
-            while($row = mysql_fetch_assoc($result) && $count < 3) {
+	          $count = 0;
+            while($row = mysql_fetch_assoc($result) && $count < 3) { //stops after 3 items
                 $objects[] = self::loadById($row['id']);
-		$count++;
+		              $count++;
             }
-
             return ($recentobjects);
         }
     }
 
     //remove product
     public function removeProduct($id){
-      $query = sprintf(" DELETE FROM %s
-                          WHERE id=$id; ",
-          (string)self::DB_TABLE
-          );
+      $query = sprintf(" DELETE FROM %s WHERE id=$id; ", (string)self::DB_TABLE);
       $db = Db::instance();
       $db->execute($query);
     }
 
-    //add product issues
+    //add product to db
     public function addProduct($title, $desc, $sizes, $price, $img){
-      echo $title, "<br>", $desc, "<br>", $sizes, "<br>", $price, "<br>", $img, "<br>";
-      /**$query = sprintf("INSERT INTO %s (`title`, `description`, `price`, `sizes`, `image_url`)
-                         VALUES (%s, %s, %s, %s, %s);",
-                         (string)self::DB_TABLE, $title, $desc, $sizes, $price, $img
-                       );**/
       $query = "INSERT INTO product VALUES (DEFAULT, '$title', '$desc', '$sizes', '$price', '$img', DEFAULT, DEFAULT)";
       $db = Db::instance();
       $db->execute($query);
     }
-
 }
