@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
 
-	// calling this method draws the dendrogram viz using this JSON file
+	// calling this method draws the chord layout chart using these two JSON files
 	drawChart(baseURL+'/users/colorData/', baseURL+'/users/followData/');
 
 	$('#changeColorForm').submit(function(e){
@@ -14,10 +14,8 @@ $(document).ready(function(){
 		$.post(
 			baseURL+'/users/changeColor/',
 			{
-
 				'color': color,
 				'id': id
-
 			},
 			function(data) {
 				if(data.success == 'success') {
@@ -32,7 +30,6 @@ $(document).ready(function(){
 			'json'
 		);
 	});
-
 });
 
 // source: http://bl.ocks.org/mbostock/4063570
@@ -91,13 +88,13 @@ function drawChart(jsonUrl1, jsonUrl2) {
   .attr("x", 6)
   .attr("dy", 15)
   .on("click", function(d, i) {
-	if($('#changeColorForm').is(':visible')) {
-		$('#changeColorForm').hide();
+	if($('#followPerson').is(':visible')) {
+		$('#followPerson').hide();
 	} else {
-		$('#changeColor').val(users[i].color);
-		$('#changeColorId').val(users[i].id);
-		$('#changeColorForm').show();
-		$('#changeColor').focus();
+		//$('#changeColor').val(users[i].username);
+	  //$('#changeColorId').val(users[i].id);
+		$('#followPerson').show();
+		//$('#changeColor').focus();
 	}
 });
 
@@ -115,7 +112,17 @@ function drawChart(jsonUrl1, jsonUrl2) {
   .enter().append("path")
   .attr("class", "chord")
   .style("fill", function(d) { return users[d.source.index].color; })
-  .attr("d", path);
+  .attr("d", path)
+	.on("click", function(d, i) {
+	if($('#changeColorForm').is(':visible')) {
+		$('#changeColorForm').hide();
+	} else {
+		$('#changeColor').val(users[i].color);
+		$('#changeColorId').val(users[i].id);
+		$('#changeColorForm').show();
+		$('#changeColor').focus();
+	}
+});
 
   // Add an elaborate mouseover title for each chord.
    chord.append("title").text(function(d) {
@@ -135,6 +142,4 @@ function drawChart(jsonUrl1, jsonUrl2) {
   }
   });
   });
-
-
 	};
