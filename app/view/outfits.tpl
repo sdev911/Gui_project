@@ -9,6 +9,7 @@
     <div id=items>
     <div class=outfits>
       <ul>
+      <!-- All of the photos are from Luna the Fashion Kitty https://www.facebook.com/the.fashion.kitty/?fref=ts -->
         <?php foreach($products as $product) : ?> <!-- Loops through each of the products from the database populating the page -->
         <li>
           <div style="display: inline-block; width: 250px; height=271px;">
