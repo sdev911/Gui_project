@@ -13,7 +13,7 @@
   <div class="alert alert-info col-xs-10 col-xs-offset-1" role="alert" style="margin-top: 20px;">
     <b>Cat Fact: </b><p id="catBlurb"> </p> 
   </div>
-<div class = "col-xs-6 col-xs-offset-3">
+<div class = "col-xs-10 col-xs-offset-1">
   <button type="button" class="btn btn-primary" id="catFactButton">
   Click for Cat Fact
   </button>
@@ -21,7 +21,7 @@
 
   <!-- These are the original images. They are changed in scripts.js on
        hover by user. -->
-  <div id=shopthislook>
+  <div id=shopthislook class = "col-xs-12">
     <ul>
       <li><img src="<?=BASE_URL?>/public/img/cat8.jpg" id="mainImage1" alt="Shop This Style"></li>
       <li><img src="<?=BASE_URL?>/public/img/cat4.jpg" id="mainImage2" alt="Shop This Style"></li>
