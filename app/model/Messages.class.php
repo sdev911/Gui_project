@@ -52,12 +52,13 @@ class Messages extends DbObject {
   // Get the messages between two users
   public static function getMessages($idOfSender, $userOfReceiver) {
     $idOfReceiver = User::loadByUsername($userOfReceiver)->('id'); // Get idOfReceiver
-
+    echo $idOfReceiver;
     $query = sprintf(" SELECT id FROM messages WHERE (receiver_id=%d AND sender_id=%d)
       OR (receiver_id=%d AND sender_id=%d) ORDER BY date_created DESC",
       $idOfReceiver, $idOfSender, $idOfSender, $idOfReceiver);
     $db = Db::instance();
     $result = $db->lookup($query);
+    echo $result;
     if(!mysql_num_rows($result))
         return null;
     else {
