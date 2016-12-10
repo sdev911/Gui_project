@@ -19,12 +19,15 @@
     <tr>
       <td><?= $user->get('username') ?></label> <!-- Prints the username of each user  --></th>
       <?php if(($user->get('user_type'))==0): ?> <!-- Has an account but is not a seller or an admin -->
+      <td>Non-seller</td>
       <td><a href="<?=BASE_URL?>/changePermission/<?= $user->get('id') ?>/1"><button >Make Seller</button></a> 
       <a href="<?=BASE_URL?>/changePermission/<?= $user->get('id') ?>/2"><button >Make Admin</button></a></td>
       <?php elseif(($user->get('user_type'))==1): ?> <!-- If the user is currently a seller -->
+      <td>Seller</td>
       <td><a href="<?=BASE_URL?>/changePermission/<?= $user->get('id') ?>/0"><button >Make non-seller</button></a>
       <a href="<?=BASE_URL?>/changePermission/<?= $user->get('id') ?>/2"><button >Make Admin</button></a></td>
       <?php else: ?> <!-- If user is not a seller or a non-seller they must be an admin -->
+      <td>Admin</td>
       <td><a href="<?=BASE_URL?>/changePermission/<?= $user->get('id') ?>/0"><button >Make non-seller</button></a>
       <a href="<?=BASE_URL?>/changePermission/<?= $user->get('id') ?>/1"><button >Make Seller</button></a></td>
       </td>
