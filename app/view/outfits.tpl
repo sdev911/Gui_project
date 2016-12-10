@@ -1,8 +1,17 @@
 <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/AddItem.css">
 
   <div id="content">
+  
+   <!-- Main banner image -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+        <img id="banner" src="<?=BASE_URL?>/public/img/outfitimg" alt="Outfits" class="img-fluid" style="max-width: 100%; height: auto;">
+      </div>
+    </div>
+  </div>
 
-    <img id="banner" src="<?=BASE_URL?>/public/img/homepage_cat.jpg" alt="Outfits">
+    
 
   </div>
   
