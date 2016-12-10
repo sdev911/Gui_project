@@ -6,10 +6,10 @@ text-align: center;
 </style>
 
 <h2> User Information & Set User Roles </h2>
-
-    <h3>Total Users: <?= $userCount ?></h3>
+<h3>Total Users: <?= $userCount ?></h3>
 <h3>Total Products: <?= $productCount ?></h3>
 <h3>Total Comments: <?= $commentCount ?></h3>
+<br>
 
 <div class="col-xs-8 col-xs-offset-2">
     <table class="table table table-hover table-bordered">
