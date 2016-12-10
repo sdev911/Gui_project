@@ -54,22 +54,14 @@
   <ul>
     <li class="product-and-info">
   <div id="info">
-      <!--<input type="text" class="item-color"/>-->
-    <ul id="options-list">
-      <li id="first-option">
-          <label>Size Options: </label>
-          <input type="text" name="size" class="size-options" id = "f4" /> <!-- Input a size for the item being added -->
-          <br>
-          <!--<input type="text" name="quantity" class="quantity-options" />-->
-      </li>
-    </ul>
+    
 
   </div>
   </li>
   </ul>
   </div>
   <br>
-  <input id="save" type="submit" name="submit" value="Save Changes" > <!-- Submit the information for adding an item -->
+  <input id="save" type="submit" name="submit" value="Add Item" > <!-- Submit the information for adding an item -->
 </div>
 </div>    <?php endif; ?><?php endif; ?>
 

@@ -7,6 +7,14 @@ $("#about").click(function(){
 $("#contact").click(function(){
 	$('#contactModal').modal('show'); 
 });
+	
+$("#aboutFooter").click(function(){
+	$('#aboutModal').modal('show'); 
+});
+
+$("#contactFooter").click(function(){
+	$('#contactModal').modal('show'); 
+});
   /**
   USER INTERATION 1: Creates shaking animation when user tries to remove the only
   color option in the div and gives error message that fades away.
@@ -68,6 +76,23 @@ $("#contact").click(function(){
     document.getElementById("mainImage4").src=baseURL+"/public/img/cat6.jpg";
     $("#shopthislook ul .container").remove();
   });
+	
+$.ajax({
+  url: $("#base-url").attr("data-base")+"/nextCatFact",
+  type: 'GET',
+  success: function (resp) {
+	document.getElementById("catBlurb").innerHTML = resp;
+}
+});
+
+  $.ajax({
+  url: $("#base-url").attr("data-base")+"/nextCatFact",
+  type: 'GET',
+  success: function (resp) {
+        console.log(resp);
+	document.getElementById("catBlurb").innerHTML = resp;
+}
+});
 
 
 $("#catFactButton").click(function(){
@@ -75,7 +100,6 @@ $("#catFactButton").click(function(){
   url: $("#base-url").attr("data-base")+"/nextCatFact",
   type: 'GET',
   success: function (resp) {
-        console.log(resp);
 	document.getElementById("catBlurb").innerHTML = resp;
 }
 });

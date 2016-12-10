@@ -174,7 +174,6 @@ public function viewcatprocess(){
 		'title' => $_POST['title'],
 		'description' => $_POST['description'],
 		'price' => $_POST['price'],
-		'sizes' => $_POST['size'],
 		'image_url' => $_POST['image_url'],
 		'creator_id' => $_SESSION['id']	
 		);

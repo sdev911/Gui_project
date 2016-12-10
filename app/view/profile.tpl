@@ -7,7 +7,8 @@
 <div id="content">
   
   <h3 class="col-sm-4 col-md-offset-4"><?=$userInfo->get('username') ?>'s Profile</h3>
-  
+ <!-- For each field there is a required tag so it can't be left blank -->
+ <!-- If the field is left blank a message will appear notifying the user -->
 <form class="col-sm-4 col-md-offset-4" data-toggle="validator" role="form" id="profileForm" method="post" action="<?= BASE_URL ?>/profile/process/">
   <div class="form-group">
     <label for="exampleInputEmail1">First Name</label>

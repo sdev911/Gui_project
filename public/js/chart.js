@@ -6,12 +6,9 @@ $(document).ready(function(){
 
 	$('#changeColorForm').submit(function(e){
 		e.preventDefault(); // don't submit the form
-
 		var color = $('#changeColor').val();
 		var id = $('#changeColorId').val();
-		console.log("new color is "+color);
-
-		$.post(
+		$.post(					//post new color
 			baseURL+'/users/changeColor/',
 			{
 				'color': color,
@@ -32,7 +29,7 @@ $(document).ready(function(){
 	});
 });
 
-// source: http://bl.ocks.org/mbostock/4063570
+// source: http://bl.ocks.org/AndrewRP/7468330
 function drawChart(jsonUrl1, jsonUrl2) {
 	$('svg').remove(); // clear any previous graphics elements
   var width = 720,
@@ -90,30 +87,30 @@ function drawChart(jsonUrl1, jsonUrl2) {
   var groupText = group.append("text")
   .attr("x", 6)
   .attr("dy", 15)
-  .on("click", function(d, i) {
-	if($('#followPerson').is(':visible')) {
+  .on("click", function(d, i) {			//when the text is clicked
+	if($('#followPerson').is(':visible')) {  //the follow div becomes hidden if visible
 		$('#followPerson').hide();
 	} else {
-		$('#followPerson').show();
-		var follow = false;
-		$.getJSON(baseURL+'/users/followers/', function(response) {
+		$('#followPerson').show();	//if hidden, become visible
+		var follow = false;		//boolean to check if following person clicked
+		$.getJSON(baseURL+'/users/followers/', function(response) { //check json list of followers
 			$.each(response, function(index, element){
-				if (response[index].id === users[i].id){
-				follow = true;
+				if (response[index].id === users[i].id){ //if following person clicked
+				follow = true;		//follow
 				}
 			})
 			if (follow){
-				$('#unfollowButton').show();
+				$('#unfollowButton').show();  //if following show just the unfollow button
 				$('#followButton').hide();
 			}
 			else {
-				$('#unfollowButton').hide();
+				$('#unfollowButton').hide(); //if not following show just the follow button
 				$('#followButton').show();
 			}
-			document.getElementById('followButton').innerHTML ="Follow "+users[i].username;
-			document.getElementById('unfollowButton').innerHTML ="Unfollow "+users[i].username;
-			document.getElementById('unfollowLink').href = baseURL+"/removeFollow/"+users[i].id;
-			document.getElementById('followLink').href = baseURL+"/follow/"+users[i].id;
+			document.getElementById('followButton').innerHTML ="Follow "+users[i].username; //edit button title
+			document.getElementById('unfollowButton').innerHTML ="Unfollow "+users[i].username; //edit button title
+			document.getElementById('unfollowLink').href = baseURL+"/removeFollow/"+users[i].id; //link the button
+			document.getElementById('followLink').href = baseURL+"/follow/"+users[i].id; //link the button
     })
 	}
 });
@@ -133,13 +130,13 @@ function drawChart(jsonUrl1, jsonUrl2) {
   .attr("class", "chord")
   .style("fill", function(d) { return users[d.source.index].color; })
   .attr("d", path)
-	.on("click", function(d, i) {
-	if($('#changeColorForm').is(':visible')) {
+	.on("click", function(d, i) { //if you click a chord
+	if($('#changeColorForm').is(':visible')) { // makes the form hidden if visible
 		$('#changeColorForm').hide();
-	} else {
-		$('#changeColor').val(users[d.source.index].color);
-		$('#changeColorId').val(users[d.source.index].id);
-		$('#changeColorForm').show();
+	} else { 
+		$('#changeColor').val(users[d.source.index].color); //pushes color clicked to edit button
+		$('#changeColorId').val(users[d.source.index].id); //pushes id
+		$('#changeColorForm').show(); // shows form if hidden
 		$('#changeColor').focus();
 	}
 });
@@ -153,7 +150,8 @@ function drawChart(jsonUrl1, jsonUrl2) {
    + " → " + users[d.source.index].username
    + ": " + formatPercent(d.target.value);
    });
-
+ 
+// fades when mousedover
   function mouseover(d, i) {
   chord.classed("fade", function(p) {
   return p.source.index != i

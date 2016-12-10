@@ -5,7 +5,7 @@
     <!-- This shows the hierarchy at the item which is "Home -> Outfits -> Item" -->
     <div>
       <ul id=breadcrumbs>
-        <li><a href="<?= BASE_URL ?>">Home</a> > </li>
+        <li><a href="/">Home</a> > </li>
         <li><a href="<?= BASE_URL ?>/outfits">Outfits</a> > </li>
         <li><?= $product->get("title") ?></li>
       </ul>
@@ -18,20 +18,6 @@
         <br>
         <h3 class="info-heading">Price</h3>
         <h4 style="display:block; margin: 0; font-weight:normal;"><?= $product->get("price") ?></h4>
-        <h3 class="info-heading">Color</h3>
-        <br >
-        <select>
-          <option value="blue">Blue</option>
-          <option value="purple">Purple</option>
-        </select>
-        <br >
-        <select>
-          <option value="s">Small</option>
-          <option value="m">Medium</option>
-          <option value="l">Large</option>
-          <option value="xl">Extra-Large</option>
-        </select>
-        <br >
         <h3 class="info-heading">Quantity</h3>
         <br >
         <form>
@@ -77,7 +63,7 @@
 
         <?php endif; ?>
         <label> Average Rating:  <div id="text-rating"><?=  Rating::ratingByProductId($product->get('id')) ?></div></label>
-
+        <br>
         <h3 class="info-heading">Description</h3>
         <br >
         <div id=description>

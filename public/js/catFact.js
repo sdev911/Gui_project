@@ -23,8 +23,7 @@ $("#save").click(function(){
     var formData = {title: $("#f1").val(),
     image_url: $("#imageToUpload").val(),
     description: $("#f2").val(),
-    price: $("#f3").val(),
-    size: $("#f4").val()}
+    price: $("#f3").val()}
     $.ajax({
       type: "POST",
       url: baseURL + "/outfits/additem/process/",
