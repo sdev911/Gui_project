@@ -5,7 +5,7 @@
     <!-- This shows the hierarchy at the item which is "Home -> Outfits -> Item" -->
     <div>
       <ul id=breadcrumbs>
-        <li><a href="<?= BASE_URL ?>">Home</a> > </li>
+        <li><a href="/">Home</a> > </li>
         <li><a href="<?= BASE_URL ?>/outfits">Outfits</a> > </li>
         <li><?= $product->get("title") ?></li>
       </ul>
