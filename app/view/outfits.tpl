@@ -5,6 +5,26 @@
     <img id="banner" src="<?=BASE_URL?>/public/img/homepage_cat.jpg" alt="Outfits">
 
   </div>
+  
+  <!-- About Us Modal -->
+<div class="modal fade" id="signupBlurb" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+      </div>
+      <div class="modal-body">
+        You must make an account or login to shop.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" href="<?=BASE_URL ?>/signup" role="button">Make an Account</button>
+        <button type="button" class="btn btn-success" href="<?=BASE_URL ?>/login" role="button">Login</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <div id=items>
     <div class=outfits>
