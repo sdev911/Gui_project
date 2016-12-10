@@ -1,10 +1,10 @@
-<div id="content">
+<div id="content" style = "margin: 10px;">
 
   <!-- Main banner image -->
   <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12">
-        <img src="<?= BASE_URL ?>public/img/outfitimg.png" alt="main image" class="img-fluid" style="max-width: 100%; height: auto;">
+        <img src="<?= BASE_URL ?>public/img/mainimg.png" alt="main image" class="img-fluid" style="max-width: 100%; height: auto;">
       </div>
     </div>
   </div>
