@@ -59,7 +59,7 @@ button#submit-order{
         </div>
         </li>
       <?php endforeach; ?>
-      <!-- Enables the submit ordre button-->
+      <!-- Enables the submit order button-->
       <script>
       $(document).ready(function()    {
         $("button#submit-order").attr('enabled', true);
@@ -68,5 +68,5 @@ button#submit-order{
 
   <?php endif ?>
       </ul>
-      <button id="submit-order" style="margin: 0 auto; display: block;">Submit Order</button>
+      <button id="submit-order" data-target="#aboutModal" style="margin: 0 auto; display: block;">Submit Order</button>
     </div>
