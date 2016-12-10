@@ -139,11 +139,11 @@ class SiteController {
   public function home() {
 		$pageName = 'Home';
 		include_once SYSTEM_PATH.'/view/header.tpl'; //include header
+	  include_once SYSTEM_PATH.'/view/home.tpl'; // include homepage
 		if ($_SESSION['user'] != NULL) { // if there is a user signed in
 			$actions = Actions::getActionsFollowed($_SESSION['id']); // pull their action feed items
 			include_once SYSTEM_PATH.'/view/feed.tpl'; // display the feeed
 		}
-		include_once SYSTEM_PATH.'/view/home.tpl'; // include homepage
 		include_once SYSTEM_PATH.'/view/footer.tpl'; //include footer
   }
 
