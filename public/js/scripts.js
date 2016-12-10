@@ -89,6 +89,7 @@ $.ajax({
 }
 });
 
+$( window ).load(function() {
   $.ajax({
   url: $("#base-url").attr("data-base")+"/nextCatFact",
   type: 'GET',
@@ -97,6 +98,8 @@ $.ajax({
 	document.getElementById("catBlurb").innerHTML = resp;
 }
 });
+});
+
 
 
 $("#catFactButton").click(function(){
