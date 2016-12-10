@@ -67,6 +67,7 @@
 
         </div>
         <?php endif; ?>
+        <br>
         <!-- Shows average rating -->
         <label> Average Rating:  <div id="text-rating"><?=  Rating::ratingByProductId($product->get('id')) ?></div></label>
         <br>
