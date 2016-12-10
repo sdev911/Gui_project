@@ -6,7 +6,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12">
-        <img id="banner" src="<?=BASE_URL?>/public/img/outfitimg.png" alt="Outfits" class="img-fluid" style="max-width: 100%; height: auto;">
+        <img id="banner" src="<?=BASE_URL?>/public/img/outfitimg.png" alt="Outfits" class="img-fluid" style="max-width: 100%; height: auto; border: 10px solid lightblue;">
       </div>
     </div>
   </div>
