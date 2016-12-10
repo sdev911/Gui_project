@@ -21,7 +21,7 @@
       <div class="modal-footer">
         <a type="button" class="btn btn-warning" href="<?=BASE_URL ?>/signup" role="button">Make an Account</a>
         <a type="button" class="btn btn-success" href="<?=BASE_URL ?>/login" role="button">Login</a>
-        <a type="button" class="btn btn-default" data-dismiss="modal">Close</a>
+        <a type="button" class="btn btn-danger" data-dismiss="modal">Close</a>
       </div>
     </div>
   </div>
