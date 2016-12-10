@@ -62,6 +62,7 @@ function drawChart(jsonUrl1, jsonUrl2) {
   .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
 	$('#followPerson').hide(); // Hide buttons
+	$('#changeColorForm').hide();
 
   svg.append("circle")
   .attr("r", outerRadius);
