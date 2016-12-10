@@ -29,7 +29,7 @@ $("#save").click(function(){
       url: baseURL + "/outfits/additem/process/",
       data: formData,
       success: function(blah){
-        console.log(blah);
+        //console.log(blah);
       }
        });
        alert("You have added the item to the database, refresh the page to see the item appear on this page");
