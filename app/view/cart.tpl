@@ -16,7 +16,7 @@ button#submit-order{
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">About Us</h4>
+        <h4 class="modal-title" id="myModalLabel">Order Submitted</h4>
       </div>
       <div class="modal-body">
         Your order has been submitted. Thank you for your patronage.
