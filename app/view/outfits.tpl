@@ -59,7 +59,7 @@
     <?php
     if(isset($_SESSION['user'])): ?>
     <?php if(($_SESSION['permissions']) != 0): ?> <!-- if the user is a seller or an admin they can add items -->
-    <div id="add-product" style="margin: 20px 0 20px 0;">
+    <div id="add-product" class="col-xs-6 col-xs-offset-3">
   <div id="left">
     <h4><label>Item Title:</label></h4><br>
     <input type="text" name="title" id = "f1"><br> <!-- Input a title for the item that is being added -->
