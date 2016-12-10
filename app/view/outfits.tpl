@@ -69,7 +69,7 @@
   </ul>
   </div>
   <br>
-  <input id="save" type="submit" name="submit" value="Save Changes" > <!-- Submit the information for adding an item -->
+  <input id="save" type="submit" name="submit" value="Add Item" > <!-- Submit the information for adding an item -->
 </div>
 </div>    <?php endif; ?><?php endif; ?>
 
