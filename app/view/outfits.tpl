@@ -6,7 +6,8 @@
 
   </div>
   
-  <!-- About Us Modal -->
+  <!-- Signup Modal -->
+  <?php if(!isset($_SESSION['user'])): ?>
 <div class="modal fade" id="signupBlurb" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -25,6 +26,7 @@
     </div>
   </div>
 </div>
+<?php endif; ?>
 
     <div id=items>
     <div class=outfits>
