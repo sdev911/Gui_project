@@ -54,15 +54,7 @@
   <ul>
     <li class="product-and-info">
   <div id="info">
-      <!--<input type="text" class="item-color"/>-->
-    <ul id="options-list">
-      <li id="first-option">
-          <label>Size Options: </label>
-          <input type="text" name="size" class="size-options" id = "f4" /> <!-- Input a size for the item being added -->
-          <br>
-          <!--<input type="text" name="quantity" class="quantity-options" />-->
-      </li>
-    </ul>
+    
 
   </div>
   </li>
