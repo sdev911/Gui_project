@@ -8,7 +8,7 @@
 <h3>Total Comments: <?= $commentCount ?></h3>
 </div>
 <div class="col-xs-8 col-xs-offset-2">
-    <table class="table table table-hover">
+    <table class="table table table-hover table-bordered">
   <thead>
     <tr>
       <th>Username</th>
