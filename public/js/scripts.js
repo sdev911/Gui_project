@@ -19,29 +19,8 @@ $("#contactFooter").click(function(){
 $("#submit-order").click(function(){
 	$('#submitBlurb').modal('show'); 
 });
-  /**
-  USER INTERATION 1: Creates shaking animation when user tries to remove the only
-  color option in the div and gives error message that fades away.
-  **/
-  $("button#remove-color-option").click(function(){
-    if($( "div#color-options > ul.other-option").length == 0){
-      $("button#remove-color-option").animate({marginLeft: '5%'}, 'fast', function(){
-        $("div#color-options").append("<h4 id='error' style='color:red; font-weight:bold'>There must be at least one color option for item.</h4>");
-        $("button#remove-color-option").attr('disabled', true);
-      $("button#remove-color-option").animate({marginLeft: '0'}, 'fast', function(){
-        $("button#remove-color-option").animate({marginLeft: '5%'}, 'fast', function(){
-          $("button#remove-color-option").animate({marginLeft: '0'}, 'fast');
-          $("#error").delay(1500).fadeOut('slow', function(){
-            $("#error").remove();
-            $("button#remove-color-option").attr('disabled', false);
-          });
 
-        });
-      });
-      });
-    }
-    $( "div#color-options > ul.other-option").last().remove();
-  });
+	
 
   /**
   USER INTERACTION 2: When user hovers over pictures on the home page, the
@@ -98,6 +77,12 @@ $( window ).load(function() {
 }
 });
 });
+	
+	if (window.location.pathname == '/outfits'){
+		$( window ).load(function() {
+			$('#signupBlurb').modal('show'); 
+		});
+	}
 
 
 
