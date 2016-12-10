@@ -18,7 +18,6 @@
         <br>
         <h3 class="info-heading">Price</h3>
         <h4 style="display:block; margin: 0; font-weight:normal;"><?= $product->get("price") ?></h4>
-        <br >
         <h3 class="info-heading">Quantity</h3>
         <br >
         <form>
@@ -64,7 +63,7 @@
 
         <?php endif; ?>
         <label> Average Rating:  <div id="text-rating"><?=  Rating::ratingByProductId($product->get('id')) ?></div></label>
-
+        <br>
         <h3 class="info-heading">Description</h3>
         <br >
         <div id=description>
