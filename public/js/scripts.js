@@ -68,14 +68,12 @@ $.ajax({
 }
 });
 
-$( window ).load(function() {
   $.ajax({
   url: $("#base-url").attr("data-base")+"/nextCatFact",
   type: 'GET',
   success: function (resp) {
 	document.getElementById("catBlurb").innerHTML = resp;
 }
-});
 });
 	
 	if (window.location.pathname == '/outfits'){
