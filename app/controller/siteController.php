@@ -282,6 +282,20 @@ private function nextCatFact(){
  // displays the edit user roles page
 	public function editUserRoles(){
 		$users = User::getAllUsers(); // displays all users
+		$userCount = 0;
+		foreach($users as $user){
+			$userCount++; //counts all users
+		}
+		$products = Product::getAllProducts(); 
+		$productCount = 0;
+		foreach($products as $product){
+			$productCount++; // counts all products
+		}
+		$comments = Comment::getAllComments();
+		$commentCount = 0;
+		foreach($comments as $comment){
+			$commentCount++; //counts all comments
+		}
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/users.tpl'; // the tpl for editing user roles
 		include_once SYSTEM_PATH.'/view/footer.tpl';
