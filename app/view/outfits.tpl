@@ -19,9 +19,9 @@
         You must make an account or login to shop.
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-warning" href="<?=BASE_URL ?>/signup" role="button">Make an Account</button>
-        <button type="button" class="btn btn-success" href="<?=BASE_URL ?>/login" role="button">Login</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <a type="button" class="btn btn-warning" href="<?=BASE_URL ?>/signup" role="button">Make an Account</a>
+        <a type="button" class="btn btn-success" href="<?=BASE_URL ?>/login" role="button">Login</a>
+        <a type="button" class="btn btn-default" data-dismiss="modal">Close</a>
       </div>
     </div>
   </div>
