@@ -396,7 +396,9 @@ private function nextCatFact(){
 	}
 
 	public function conversation($userId){
+		echo 'here first';
 		$messages = Messages::getMessages($_SESSION['id'], $userId); // loads all associated messages
+		echo 'here';
 		echo $messages;
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/messages.tpl';
