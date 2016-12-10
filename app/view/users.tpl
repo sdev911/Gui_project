@@ -1,12 +1,16 @@
 <div id="content">
+<style>
+h2, h3 {
+text-align: center;
+}
+</style>
 
-<div style-"text-align: center;">
 <h2> User Information & Set User Roles </h2>
 
     <h3>Total Users: <?= $userCount ?></h3>
 <h3>Total Products: <?= $productCount ?></h3>
 <h3>Total Comments: <?= $commentCount ?></h3>
-</div>
+
 <div class="col-xs-8 col-xs-offset-2">
     <table class="table table table-hover table-bordered">
   <thead>
