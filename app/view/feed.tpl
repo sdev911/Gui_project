@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/ItemDetailView.css">
 
-  <div id="content" style="padding-bottom:0px;">
+  <div id="content" class = "col-xs-12" style="padding-bottom:0px;">
 
 <ul class="list-group" id="activityfeed">
     <li class="list-group-item" style="text-align:center;"><h4 id="activityfeed-header">Activity Feed</h4></li>
