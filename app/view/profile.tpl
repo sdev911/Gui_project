@@ -56,7 +56,7 @@
 
 <div class="container" id="profileInfo">
   <?php if($_SESSION['id']!=$userId && isset($_SESSION['user'])): ?>
-    <a href="<? BASE_URL ?>/conversation/<?= $userId ?>/">
+    <a href="<?= BASE_URL ?>/conversation/<?= $userId ?>/">
       <button type="button" id="sendMessage" class="btn btn-warning">View Messages</button>
     </a>
   <?php endif; ?>
