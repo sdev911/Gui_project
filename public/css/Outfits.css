@@ -1,23 +1,19 @@
-<!-- Each of the images are a consistent and same width -->
 .outfits img{
   width: 100%;
   padding-left: 2%;
   padding-right: 2%;
 }
 
-<!-- everything is displayed in block format -->
 .outfits {
   display: block;
 }
 
-<!-- Each of the images are displayed in line -->
 .outfits li{
   display: inline;
   list-style: none;
   margin: 5px;
 }
 
-<!-- Sets a min width for each of the images -->
 .outfits ul{
   padding: 0px !important;
   text-align: center;
@@ -26,7 +22,15 @@
   min-width: 788px;
 }
 
-<!-- Makes the add to cart button a blue color and the font white -->
+button#update-filters{
+  display: inline;
+  padding: 10px;
+  margin: 2px;
+  border: none;
+  background-color: #008CBA;
+  color: white;
+}
+
 button#addtocart{
   padding: 10px;
   margin: 2px;
@@ -35,15 +39,12 @@ button#addtocart{
   color: white;
 }
 
-<!-- Makes the edit button green with white font -->
 button#edit{
   padding: 10px;
   border: none;
   background-color: #4faf55;
   color: white;
 }
-
-<!-- Makes the delete button red with white font -->
 button#delete{
   padding: 10px;
   border: none;
@@ -51,7 +52,40 @@ button#delete{
   color: white;
 }
 
-<!-- Makes it so that the items do not have a margin -->
+#filterbar {
+  padding: 10px;
+  min-width: 748px;
+  max-width: 748px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  background-color: pink;
+  border-radius: 5px;
+  text-align: center;
+}
+
 #items {
   margin: 0 auto;
 }
+
+div.filter{
+  display: block;
+  padding: 10px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#update-filters{
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  border: none;
+  background-color: #008CBA;
+  color: white;
+}
+
+#filterbar-header{
+  text-align: center;
+  margin: 0px !important;
+}
+
