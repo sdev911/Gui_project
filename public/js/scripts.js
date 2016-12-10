@@ -67,19 +67,9 @@ $.ajax({
 	document.getElementById("catBlurb").innerHTML = resp;
 }
 });
-
-  $.ajax({
-  url: $("#base-url").attr("data-base")+"/nextCatFact",
-  type: 'GET',
-  success: function (resp) {
-	document.getElementById("catBlurb").innerHTML = resp;
-}
-});
 	
 	if (window.location.pathname == '/outfits'){
-		$( window ).load(function() {
-			$('#signupBlurb').modal('show'); 
-		});
+		$('#signupBlurb').modal('show'); 
 	}
 
 
