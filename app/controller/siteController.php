@@ -117,6 +117,20 @@ class SiteController {
 			case 'nextCatFact':
 				$this->nextCatFact();
 				break;
+				
+			case 'inbox':
+				$this->inbox();
+				break;
+
+			case 'conversation':
+				$userId = $_GET['userId'];
+				$this->conversation($userId);
+				break;
+
+			case 'sendMessage':
+				$userId = $_GET['userId'];
+				$this->sendMessage($userId);
+				break;
 
 			// redirect to home page if all else fails
       default:
@@ -384,5 +398,14 @@ private function nextCatFact(){
 			}
 		header('Content-Type: application/json'); //set content type
 		echo json_encode($userArray); //write to the page
+	}
+	
+	public function inbox(){
+	}
+
+	public function conversation($userId){
+	}
+
+	public function sendMessage($userId){
 	}
 }
