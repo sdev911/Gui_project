@@ -33,6 +33,10 @@
     <?php endforeach; ?>
   </tbody>
 </table>
+</div>
+
+<div>
+<?php foreach($users as $user) : ?><!-- Loops through every user -->
 
     <label><?= $user->get('username') ?></label> <!-- Prints the username of each user  -->
     <label>Current permission: </label>
@@ -56,7 +60,6 @@
           <a href="<?=BASE_URL?>/changePermission/<?= $user->get('id') ?>/1"><button >Make Seller</button></a> 
     <?php endif; ?>
 
-    </div>
-  <!--<?php endforeach; ?>-->
-
+  <?php endforeach; ?>
+  </div>
 </div>
