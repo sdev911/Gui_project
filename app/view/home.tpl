@@ -10,7 +10,7 @@
   </div>
 
   <!-- Calls catFact from catFact.js which returns a random catfact string -->
-  <div class="alert alert-info role="alert" style="margin-top: 20px;">
+  <div class="alert alert-info" role="alert" style="margin-top: 20px;">
     <b>Cat Fact: </b><p id="catBlurb"> </p> 
   <button type="button" class="btn btn-primary" id="catFactButton" style = "display: block;">
   Click for Cat Fact
