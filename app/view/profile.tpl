@@ -5,7 +5,7 @@
   <script src="<?= BASE_URL ?>/public/bootstrap/bootstrap-validator/dist/validator.min.js"></script>
   <script src="<?= BASE_URL ?>/public/js/profile.js"></script>
 <div id="content">
-  
+
   <h3 class="col-sm-4 col-md-offset-4"><?=$userInfo->get('username') ?>'s Profile</h3>
  <!-- For each field there is a required tag so it can't be left blank -->
  <!-- If the field is left blank a message will appear notifying the user -->
@@ -55,6 +55,9 @@
 
 
 <div class="container" id="profileInfo">
+  <?php if($_SESSION['id']!=$userId && isset($_SESSION['user'])): ?>
+  <button type="button" id="sendMessage" class="btn btn-warning">Send Message</button>
+  <?php endif; ?>
   <div class="col-sm-4 col-md-offset-4">
     <h4>First Name: <?=$userInfo->get('first_name') ?></h4>
     <h4>Last Name: <?=$userInfo->get('last_name') ?></h4>

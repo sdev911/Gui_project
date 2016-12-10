@@ -103,7 +103,7 @@ class SiteController {
 			case 'getFollowData':
 				$this->getFollowData();
 				break;
-				
+
 			case 'buildFollowArray':
 				$this->buildFollowArray();
 				break;
@@ -116,10 +116,6 @@ class SiteController {
 
 			case 'nextCatFact':
 				$this->nextCatFact();
-				break;
-				
-			case 'inbox':
-				$this->inbox();
 				break;
 
 			case 'conversation':
@@ -300,7 +296,7 @@ private function nextCatFact(){
 		foreach($users as $user){
 			$userCount++; //counts all users
 		}
-		$products = Product::getAllProducts(); 
+		$products = Product::getAllProducts();
 		$productCount = 0;
 		foreach($products as $product){
 			$productCount++; // counts all products
@@ -381,8 +377,7 @@ private function nextCatFact(){
 		echo json_encode($json); //send success json to js
 		exit();
 	}
-	
-	
+
 	// parses and displays a following array
 	public function buildFollowArray(){
 		$userArray = array(); // instantiate an array
@@ -398,9 +393,6 @@ private function nextCatFact(){
 			}
 		header('Content-Type: application/json'); //set content type
 		echo json_encode($userArray); //write to the page
-	}
-	
-	public function inbox(){
 	}
 
 	public function conversation($userId){
