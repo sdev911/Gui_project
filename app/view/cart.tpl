@@ -10,6 +10,24 @@ button#submit-order{
 }
 </style>
 
+<!-- Order Submitted Modal -->
+<div class="modal fade" id="submitBlurb" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">About Us</h4>
+      </div>
+      <div class="modal-body">
+        Your order has been submitted. Thank you for your patronage.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <h2 style="text-align:center">Shopping Cart</h2>
 
 <!-- Contains everything between Shopping Cart and the footer.
@@ -41,7 +59,7 @@ button#submit-order{
         </div>
         </li>
       <?php endforeach; ?>
-      <!-- Enables the submit ordre button-->
+      <!-- Enables the submit order button-->
       <script>
       $(document).ready(function()    {
         $("button#submit-order").attr('enabled', true);
@@ -50,5 +68,5 @@ button#submit-order{
 
   <?php endif ?>
       </ul>
-      <button id="submit-order" style="margin: 0 auto; display: block;">Submit Order</button>
+      <button id="submit-order" data-target="#aboutModal" style="margin: 0 auto; display: block;">Submit Order</button>
     </div>
