@@ -94,7 +94,6 @@ $( window ).load(function() {
   url: $("#base-url").attr("data-base")+"/nextCatFact",
   type: 'GET',
   success: function (resp) {
-        console.log(resp);
 	document.getElementById("catBlurb").innerHTML = resp;
 }
 });
