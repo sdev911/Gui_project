@@ -1,5 +1,9 @@
 <div id="content">
 
+<h3>Total Users: <?= $userCount ?></h3>
+<h3>Total Products: <?= $productCount ?></h3>
+<h3>Total Comments: <?= $commentCount ?></h3>
+
 <?php foreach($users as $user) : ?><!-- Loops through every user -->
     <div>
     <label><?= $user->get('username') ?></label> <!-- Prints the username of each user  -->
