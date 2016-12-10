@@ -18,19 +18,6 @@
         <br>
         <h3 class="info-heading">Price</h3>
         <h4 style="display:block; margin: 0; font-weight:normal;"><?= $product->get("price") ?></h4>
-        <h3 class="info-heading">Color</h3>
-        <br >
-        <select>
-          <option value="blue">Blue</option>
-          <option value="purple">Purple</option>
-        </select>
-        <br >
-        <select>
-          <option value="s">Small</option>
-          <option value="m">Medium</option>
-          <option value="l">Large</option>
-          <option value="xl">Extra-Large</option>
-        </select>
         <br >
         <h3 class="info-heading">Quantity</h3>
         <br >
