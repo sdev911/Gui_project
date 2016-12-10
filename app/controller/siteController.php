@@ -119,7 +119,6 @@ class SiteController {
 				break;
 
 			case 'conversation':
-				echo 'in case';
 				$userId = $_GET['userId'];
 				$this->conversation($userId);
 				break;
@@ -397,10 +396,9 @@ private function nextCatFact(){
 	}
 
 	public function conversation($userId){
-		echo 'in conversation';
-		$messages = Messages::getMessages($_SESSION['id'], $userId); // loads all associated messages
+		// $messages = Messages::getMessages($_SESSION['id'], $userId); // loads all associated messages
 		include_once SYSTEM_PATH.'/view/header.tpl';
-		include_once SYSTEM_PATH.'/view/messages.tpl';
+		// include_once SYSTEM_PATH.'/view/messages.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
 
