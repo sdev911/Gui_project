@@ -12,21 +12,27 @@
       <h2><?= $product->get("title") ?></h2>
     </div>
 
-
+    <!-- Show information about the product including:
+         image, price, quantity selection, rating-->
     <div >
       <img src="<?= BASE_URL ?>/public/img/<?= $product->get('image_url') ?>" id="item-image" alt="Shop This Style">
         <br>
         <h3 class="info-heading">Price</h3>
         <h4 style="display:block; margin: 0; font-weight:normal;"><?= $product->get("price") ?></h4>
+        <?php
+          if(isset($_SESSION['user'])): ?>
         <h3 class="info-heading">Quantity</h3>
         <br >
         <form>
           <input type="text" name="quantity" id="quantity"><br>
         </form>
+        <?php endif; ?>
         <br >
         <h3 class="info-heading" id="ratings-header">Ratings</h3>
         <?php
           if(isset($_SESSION['user'])): ?>
+
+        <!-- Ratings information. Allows the user to select a rating. -->
         <div class="rating" id="item-rating">
 
           <?php if($rating == 5): ?>
@@ -60,8 +66,8 @@
           <?php endif; ?>
 
         </div>
-
         <?php endif; ?>
+        <!-- Shows average rating -->
         <label> Average Rating:  <div id="text-rating"><?=  Rating::ratingByProductId($product->get('id')) ?></div></label>
         <br>
         <h3 class="info-heading">Description</h3>
@@ -69,6 +75,8 @@
         <div id=description>
           <p><?= $product->get("description") ?></p>
         </div>
+        <!-- Allows a user to add an item to their cart.
+             if admin, they can edit or delete the product.-->
         <?php
         if(isset($_SESSION['user'])): ?>
         <a href="<?= BASE_URL ?>/outfits/addtocart/<?= $product->get('id') ?>/"><button id="add-to-cart">Add to Cart</button></a>
@@ -82,12 +90,14 @@
           </button></a>
           <?php endif; ?>
 
+          <!-- Allows a user to post a comment.-->
           <form id="comment" action="<?= BASE_URL ?>/outfits/comment/<?= $product->get('id') ?>/" method="POST">
           <label>Comment: <input type="text" name="commentText"></label>
           <input type="submit" name="createComment" value="Submit Comment">
           </form>
           <?php endif; ?>
-
+          
+          <!-- List all the comments with the username attached. -->
           <?php foreach($comments as $comment) : ?>
         <div>
         <h3>Comment from: <a href="<?=BASE_URL?>/profile/<?= $comment->get('creator_id') ?>"><?= $comment->get('creator_username') ?></a>

@@ -77,7 +77,7 @@ class Rating extends DbObject {
               $average = $average + self::loadById($row['id'])->get('rating'); // adds all ratings
               $counter++;
           }
-          return $average/$counter; // returns the average
+          return round($average/$counter, 2); // returns the average round
       }
     }
 
