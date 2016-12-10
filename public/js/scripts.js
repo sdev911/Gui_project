@@ -69,6 +69,15 @@ $("#contact").click(function(){
     $("#shopthislook ul .container").remove();
   });
 
+  $.ajax({
+  url: $("#base-url").attr("data-base")+"/nextCatFact",
+  type: 'GET',
+  success: function (resp) {
+        console.log(resp);
+	document.getElementById("catBlurb").innerHTML = resp;
+}
+});
+
 
 $("#catFactButton").click(function(){
   $.ajax({
