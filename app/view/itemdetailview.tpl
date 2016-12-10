@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/ItemDetailView.css">
 <div id="content">
-
+<!-- All of the photos are from Luna the Fashion Kitty https://www.facebook.com/the.fashion.kitty/?fref=ts -->
 <div id="boxes">
     <!-- This shows the hierarchy at the item which is "Home -> Outfits -> Item" -->
     <div>
