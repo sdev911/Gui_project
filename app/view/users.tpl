@@ -3,7 +3,6 @@
 <div style-"text-align: center;">
 <h2> User Information & Set User Roles </h2>
 
-    <div class="col-xs-10 col-xs-offset-1">
     <h3>Total Users: <?= $userCount ?></h3>
 <h3>Total Products: <?= $productCount ?></h3>
 <h3>Total Comments: <?= $commentCount ?></h3>
