@@ -26,9 +26,6 @@ RewriteRule ^users/colorData/?$ app/controller/siteController.php?action=getColo
 RewriteRule ^users/changeColor/?$ app/controller/siteController.php?action=changeColor [QSA,L]
 RewriteRule ^nextCatFact/?$ app/controller/siteController.php?action=nextCatFact [QSA,L]
 RewriteRule ^users/followers/?$ app/controller/siteController.php?action=buildFollowArray [QSA,L]
-RewriteRule ^inbox/?$ app/controller/siteController.php?action=inbox [QSA,L]
-RewriteRule ^conversation/(\d+)/?$ app/controller/siteController.php?action=conversation&userId=$1 [QSA,L]
-RewriteRule ^sendMessage/(\d+)/?$ app/controller/siteController.php?action=sendMessage&userId=$1 [QSA,L]
 
 
 # Product

@@ -55,11 +55,6 @@
 
 
 <div class="container" id="profileInfo">
-  <?php if($_SESSION['id']!=$userId && isset($_SESSION['user'])): ?>
-    <a href="<?= BASE_URL ?>/conversation/<?= $userId ?>/">
-      <button type="button" id="sendMessage" class="btn btn-warning">View Messages</button>
-    </a>
-  <?php endif; ?>
   <div class="col-sm-4 col-md-offset-4">
     <h4>First Name: <?=$userInfo->get('first_name') ?></h4>
     <h4>Last Name: <?=$userInfo->get('last_name') ?></h4>

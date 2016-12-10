@@ -118,16 +118,6 @@ class SiteController {
 				$this->nextCatFact();
 				break;
 
-			case 'conversation':
-				$userId = $_GET['userId'];
-				$this->conversation($userId);
-				break;
-
-			case 'sendMessage':
-				$userId = $_GET['userId'];
-				$this->sendMessage($userId);
-				break;
-
 			// redirect to home page if all else fails
       default:
         header('Location: '.BASE_URL.'/');
@@ -395,16 +385,4 @@ private function nextCatFact(){
 		echo json_encode($userArray); //write to the page
 	}
 
-	public function conversation($userId){
-		echo 'here first';
-		$messages = Messages::getMessages($_SESSION['id'], $userId); // loads all associated messages
-		echo 'here';
-		echo $messages;
-		include_once SYSTEM_PATH.'/view/header.tpl';
-		include_once SYSTEM_PATH.'/view/messages.tpl';
-		include_once SYSTEM_PATH.'/view/footer.tpl';
-	}
-
-	public function sendMessage($userId){
-	}
 }
