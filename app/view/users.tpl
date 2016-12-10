@@ -12,8 +12,8 @@
   <thead>
     <tr>
       <th>Username</th>
-      <th>Permission</th>
-      <th>Change Permissions</th>
+      <th>Current Permission</th>
+      <th>Change Permission</th>
     </tr>
   </thead>
   <tbody>
