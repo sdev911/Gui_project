@@ -61,6 +61,8 @@ function drawChart(jsonUrl1, jsonUrl2) {
   .attr("id", "circle")
   .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
+	$('#buttons').hide(); // Hide buttons
+
   svg.append("circle")
   .attr("r", outerRadius);
 
