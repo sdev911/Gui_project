@@ -50,18 +50,6 @@
     <input type="text" name="price" id = "f3"> <!-- Input a price for the item being added -->
   <br>
   <br>
-  <h4>Size Options</h4>
-  <div id="color-options">
-  <ul>
-    <li class="product-and-info">
-  <div id="info">
-    
-
-  </div>
-  </li>
-  </ul>
-  </div>
-  <br>
   <input id="save" type="submit" name="submit" value="Add Item" > <!-- Submit the information for adding an item -->
 </div>
 </div>    <?php endif; ?><?php endif; ?>
