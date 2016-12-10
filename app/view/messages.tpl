@@ -1,4 +1,4 @@
-<!-- <div id="content">
+<div id="content">
   <div id="messages">
     <?php if (isset($_SESSION['user'])): ?>
     <?php foreach($messages as $message) : ?>
@@ -9,4 +9,4 @@
     <?php endforeach; ?>
     <?php endif; ?>
   </div>
-</div> -->
+</div>
