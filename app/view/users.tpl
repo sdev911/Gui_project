@@ -7,6 +7,7 @@
 <h3>Total Products: <?= $productCount ?></h3>
 <h3>Total Comments: <?= $commentCount ?></h3>
 </div>
+<div class="col-xs-8 col-xs-offset-2">
     <table class="table">
   <thead>
     <tr>
