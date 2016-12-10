@@ -68,6 +68,14 @@ $("#contact").click(function(){
     document.getElementById("mainImage4").src=baseURL+"/public/img/cat6.jpg";
     $("#shopthislook ul .container").remove();
   });
+	
+$.ajax({
+  url: $("#base-url").attr("data-base")+"/nextCatFact",
+  type: 'GET',
+  success: function (resp) {
+	document.getElementById("catBlurb").innerHTML = resp;
+}
+});
 
 
 $("#catFactButton").click(function(){
@@ -75,7 +83,6 @@ $("#catFactButton").click(function(){
   url: $("#base-url").attr("data-base")+"/nextCatFact",
   type: 'GET',
   success: function (resp) {
-        console.log(resp);
 	document.getElementById("catBlurb").innerHTML = resp;
 }
 });
