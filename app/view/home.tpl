@@ -10,13 +10,15 @@
   </div>
 
   <!-- Calls catFact from catFact.js which returns a random catfact string -->
-  <div class="alert alert-info col-xs-10 col-xs-offset-1" role="alert" style="margin-top: 20px;">
+  <div class = "row">
+  <div class="alert alert-info col-xs-8" role="alert" style="margin-top: 20px;">
     <b>Cat Fact: </b><p id="catBlurb"> </p> 
   </div>
-<div class = "col-xs-4 col-xs-offset-4">
+<div class = "col-xs-4">
   <button type="button" class="btn btn-primary" id="catFactButton">
   Click for Cat Fact
   </button>
+</div>
 </div>
 
   <!-- These are the original images. They are changed in scripts.js on
