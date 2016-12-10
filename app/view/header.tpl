@@ -1,18 +1,11 @@
-<?php
-
-function isSelected($pn, $link) {
-	if($pn == $link) {
-		return ' id="selected-nav" ';
-	}
-}
-
-?>
 <!doctype html>
 
 <html lang="en">
 <head>
   <meta charset="utf-8">
 
+
+	<!-- Boiler plate: meta info, baseURL, title, css, script calls. -->
   <title>DreamAloud</title>
   <meta name="description" content="Clothing store for dreamers">
   <meta name="author" content="Allison Collier">
@@ -40,6 +33,8 @@ function isSelected($pn, $link) {
 
 <body>
 
+<!-- We use modals for About Us and Contact Us as a user friendly way to provide
+ 		 simple, important information. -->
 <!-- About Us Modal -->
 <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -68,11 +63,11 @@ function isSelected($pn, $link) {
         <h4 class="modal-title" id="myModalLabel">Contact Us</h4>
       </div>
       <div class="modal-body">
-	<p>Dream Aloud</p> 
+	<p>Dream Aloud</p>
 	<p>1094 Dream Drive</p>
-	<p>Blacksburg, VA 24060</p>  
+	<p>Blacksburg, VA 24060</p>
 	<p>540-680-9944</p>
-	<p>Email: customerservice@dreamaloud.me</p>        
+	<p>Email: customerservice@dreamaloud.me</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -80,6 +75,11 @@ function isSelected($pn, $link) {
     </div>
   </div>
 </div>
+
+	<!-- Links in the header.
+			 Default: Logo, outfits, about us, contact us, login, signup
+		   Users: shopping cart, logout, profile
+		 	 Admin: set user roles -->
   <div id="wrapper">
 
 		<div id="header">
@@ -116,7 +116,6 @@ function isSelected($pn, $link) {
 
 			  </div>
 			</nav>
-<div id="base-url" data-base="<?=BASE_URL?>"></div>
 
 <div id="base-url" data-base="<?=BASE_URL?>"></div>
 </div>
