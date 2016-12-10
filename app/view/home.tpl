@@ -1,4 +1,4 @@
-<div id="content" style = "margin: 40px;">
+<div id="content" style = "margin: 100px;">
 
   <!-- Main banner image -->
   <div class="container-fluid">
